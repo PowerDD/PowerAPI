@@ -63,6 +63,10 @@ exports.index = function(req, res, data){
 		data.title = 'Developer Console - ' + data.title;
 		data.titleDescription += ' ';
 	}
+	else if (data.screen == 'repository') {
+		data.title = 'Source Control - ' + data.title;
+		data.titleDescription += ' ';
+	}
 
 	res.render(data.screen, { data: data });
 
