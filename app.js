@@ -11,10 +11,11 @@ var http = require('http')
 	, bodyParser = require('body-parser')
 	, errorHandler = require('errorhandler');
 	//var multer = require('multer');
+global.config = require('./config.js');
 
 var app = express();
 
-app.set('port', process.env.PORT || 9999);
+app.set('port', config.port || 9999);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(favicon(__dirname + '/favicon.ico'));
@@ -22,7 +23,7 @@ app.use(logger('dev'));
 app.use(methodOverride());
 app.use(session({ resave: true,
                   saveUninitialized: true,
-                  secret: 'PowerDD' }));
+                  secret: config.crypto.password }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(multer());
@@ -34,15 +35,13 @@ if ('development' == app.get('env')) {
 
 app.get('*', function(req, res) {
 
-	process.env['systemName'] = 'PowerDD API';
-
 	data = {};
 	data.screen = 'index';
-	data.systemName = process.env.systemName;
-	data.title = process.env.systemName;
+	data.systemName = config.systemName;
+	data.title = config.systemName;
 	data.titleDescription = '';
-	data.apiKey = "33"; //process.env.apiKey;
-	data.shopIdTest = '09A3C5B1-EBF7-443E-B620-48D3B648294E';
+	data.apiKey = config.apiKey;
+	data.shopIdTest = config.shopIdTest ;
         
 	var url = req.headers['uri'].split('/');
 	url = url.filter(function(n){ return n !== ''; });
