@@ -91,7 +91,12 @@ app.post('*', function(req, res) {
 		res.json(json);
 	}
 	else {
+		
+					data.json.info = "xxx";
+					data.json.success = true;
+					data.util.responseJson(req, res, data.json);
 
+/*
 		var azure = require('azure-storage');
 		var table = azure.createTableService();
 
@@ -149,9 +154,6 @@ app.post('*', function(req, res) {
 									}
 									else { // ถ้า API เป็น Application
 										if ( typeof req.headers['referer'] != 'undefined') { // ถ้ามี Header Referer (ถ้าเป็น App ไม่ต้องมี)
-											/*json.error = 'API0007';
-											json.errorMessage = 'API Type is invalid';
-											res.json(json);*/
 											exports.callApi(req, res, data);
 										}
 										else {
@@ -176,7 +178,7 @@ app.post('*', function(req, res) {
 				json.errorStack = error.stack;
 				res.json(json);
 			}
-		});
+		});*/
 
 	}
 });
