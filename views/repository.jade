@@ -7,53 +7,22 @@ block content
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#info', aria-expanded='false')
+					a(data-toggle='collapse', data-parent='#accordion', href='#update', aria-expanded='false')
 						strong Sub Version Update  
 						&#58; ข้อมูลจังหวัด
-			#info.panel-collapse.collapse(role='tabpanel')
+			#update.panel-collapse.collapse(role='tabpanel')
 				.panel-body
-					pre URL : /#{data.screen}/list
+					pre URL : /#{data.screen}/update
 					.panel.panel-default
 						.panel-body
 							form.form-horizontal
 								.form-group
-									label.col-sm-2.control-label(for='input') Language
+									label.col-sm-2.control-label(for='input') Path Name
 									.col-sm-10
-										input.form-control.language(type='text', placeholder='Language')
+										input.form-control.language(type='text', placeholder='Path Name', value='api')
 										p.help-block
-											span.font-pre.label.label-default language
-											|   ภาษา (Th = ภาษาไทย, En = ภาษาอังกฤษ)
-								.form-group.margin-bottom-0
-									.col-sm-offset-2.col-sm-10
-										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
-
-		.panel.panel-default
-			#headingOne.panel-heading(role='tab')
-				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#district', aria-expanded='false')
-						strong District  
-						&#58; ข้อมูลอำเภอ
-			#district.panel-collapse.collapse(role='tabpanel')
-				.panel-body
-					pre URL : /#{data.screen}/district
-					.panel.panel-default
-						.panel-body
-							form.form-horizontal
-								.form-group
-									label.col-sm-2.control-label(for='input') Province ID
-									.col-sm-10
-										input.form-control.province(type='text', placeholder='Province ID')
-										p.help-block
-											span.font-pre.label.label-warning province
-											|   รหัสจังหวัด
-								.form-group
-									label.col-sm-2.control-label(for='input') Language
-									.col-sm-10
-										input.form-control.language(type='text', placeholder='Language')
-										p.help-block
-											span.font-pre.label.label-default language
-											|   ภาษา (Th = ภาษาไทย, En = ภาษาอังกฤษ)
+											span.font-pre.label.label-default path
+											|   ที่เก็บไฟล์
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
