@@ -36,7 +36,6 @@ if ('development' == app.get('env')) {
 
 
 app.get('*', function(req, res) {
-
 	res.send('Hello World!');
 });
 
@@ -44,7 +43,7 @@ app.post('*', function(req, res) {
 
 	//res.header("Access-Control-Allow-Origin", "*");
 	//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");	
-				res.send('Hello World!');
+				res.send('¡¡¡');
 
 	/*if (typeof req.body.apiKey == 'undefined' || req.body.apiKey == '') {
 		json.error = 'API0001';
