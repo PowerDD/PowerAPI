@@ -92,9 +92,9 @@ app.post('*', function(req, res) {
 	}
 	else {
 		
-					data.json.info = "xxx";
-					data.json.success = true;
-					data.util.responseJson(req, res, data.json);
+					json.info = "xxx";
+					json.success = true;
+		res.json(json);
 
 /*
 		var azure = require('azure-storage');
