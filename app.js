@@ -34,14 +34,11 @@ if ('development' == app.get('env')) {
   app.use(errorHandler());
 }
 
-app.all('*', function(req, res, next) {
+app.all('*', function(req, res) {
+
 	
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");	
-	next();
-});
-
-app.get('*', function(req, res) {
 
 	process.env['systemName'] = 'PowerDD API';
 
