@@ -32,7 +32,7 @@ $(function() {
 			form[key] = $(this).val();
 		});	
 		
-		$.post( 'https://' + window.location.host + url, form , function(data){ showData($obj, data) }, 'json');
+		$.post( '//' + window.location.host + url, form , function(data){ showData($obj, data) }, 'json');
 
 	});
 
