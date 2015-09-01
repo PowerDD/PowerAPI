@@ -1,17 +1,16 @@
-var http = require('http');
-var express = require('express');
-var routes = require('./routes')
-  , fs = require('fs')
-  , path = require('path')
-  , util = require('./objects/util');
-
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var methodOverride = require('method-override');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-//var multer = require('multer');
-var errorHandler = require('errorhandler');
+var http = require('http')
+	, express = require('express')
+	, routes = require('./routes')
+	, fs = require('fs')
+	, path = require('path')
+	, util = require('./objects/util')
+	, favicon = require('serve-favicon')
+	, logger = require('morgan')
+	, methodOverride = require('method-override')
+	, session = require('express-session')
+	, bodyParser = require('body-parser')
+	, errorHandler = require('errorhandler');
+	//var multer = require('multer');
 
 var app = express();
 
@@ -25,7 +24,7 @@ app.use(methodOverride());
 app.use(session({ resave: true,
                   saveUninitialized: true,
                   secret: 'PowerDD' }));
-//app.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 //app.use(multer());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -38,7 +37,7 @@ if ('development' == app.get('env')) {
 
 app.get('*', function(req, res) {
 
-process.env['systemName'] = 'PowerDD API';
+	process.env['systemName'] = 'PowerDD API';
 
 	data = {};
 	data.screen = 'index';
@@ -91,10 +90,13 @@ app.post('*', function(req, res) {
 		res.json(json);
 	}
 	else {
-		
-					json.info = "xxx";
-					json.success = true;
+		json.error = 'API0001';
+		json.errorMessage = 'Missing Parameter apiKey';
 		res.json(json);
+		
+					/*json.info = "xxx";
+					json.success = true;
+		res.json(json);*/
 
 /*
 		var azure = require('azure-storage');
