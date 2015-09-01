@@ -37,43 +37,7 @@ if ('development' == app.get('env')) {
 
 app.get('*', function(req, res) {
 
-	process.env['systemName'] = 'PowerDD API';
-
-	data = {};
-	data.screen = 'index';
-	data.systemName = process.env.systemName;
-	data.title = process.env.systemName;
-	data.titleDescription = '';
-	data.apiKey = "33"; //process.env.apiKey;
-	data.shopIdTest = '09A3C5B1-EBF7-443E-B620-48D3B648294E';
-        
-	var url = req.headers['uri'].split('/');
-	url = url.filter(function(n){ return n !== ''; });
-	if ( url.length >= 1 ) {
-		data.screen = url[0];
-		if ( data.screen == 'document' ) {
-			var document = require('./objects/document');
-			document.generate(req, res, data);
-		}
-		else if ( data.screen == 'barcode' ) {
-			var barcode = require('./objects/barcode');
-			barcode.generate(req, res, url[1]);
-		}
-		else {
-			fs.exists('./views/'+data.screen+'.jade', function (exists) {
-				if (exists) {
-					data.subUrl = (url.length == 1 ) ? '' : url[1];
-					routes.index(req, res, data);
-				}
-				else {
-					routes.index(req, res, data);
-				}
-			});
-		}
-	}
-	else {
-		routes.index(req, res, data);
-	}
+	res.send('Hello World!');
 });
 
 app.post('*', function(req, res) {
@@ -81,9 +45,6 @@ app.post('*', function(req, res) {
 	//res.header("Access-Control-Allow-Origin", "*");
 	//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");	
 				res.send('Hello World!');
-
-	var json = {};
-	json.success = false;
 
 	/*if (typeof req.body.apiKey == 'undefined' || req.body.apiKey == '') {
 		json.error = 'API0001';
