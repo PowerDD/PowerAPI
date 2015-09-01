@@ -80,11 +80,12 @@ app.post('*', function(req, res) {
 
 	//res.header("Access-Control-Allow-Origin", "*");
 	//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");	
-				
+				res.send('Hello World!');
+
 	var json = {};
 	json.success = false;
 
-	if (typeof req.body.apiKey == 'undefined' || req.body.apiKey == '') {
+	/*if (typeof req.body.apiKey == 'undefined' || req.body.apiKey == '') {
 		json.error = 'API0001';
 		json.errorMessage = 'Missing Parameter apiKey';
 		res.json(json);
@@ -93,7 +94,7 @@ app.post('*', function(req, res) {
 		json.error = 'API0001';
 		json.errorMessage = 'Missing Parameter apiKey';
 		res.json(json);
-	}
+	}*/
 });
 
 exports.callApi = function(req, res, data) {
