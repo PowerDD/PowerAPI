@@ -178,7 +178,7 @@ html
 										i(class=(data.screen === 'province' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
 										|  Province
 
-						li(class=(data.screen === 'security' || data.screen === 'webclient' || data.screen === 'api' ? 'treeview active' : 'treeview'))
+						li(class=(data.screen === 'security' || data.screen === 'webclient' || data.screen === 'api' || data.screen === 'repository' ? 'treeview active' : 'treeview'))
 							a(href="#")
 								i(class=(data.screen === 'security' || data.screen === 'webclient' || data.screen === 'api' ? 'fa fa-slack text-aqua' : 'fa fa-slack'))
 								span  Utilities
@@ -196,6 +196,10 @@ html
 									a(href="./api")
 										i(class=(data.screen === 'api' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
 										|  API
+								li(class=(data.screen === 'repository' ? 'active' : ''))
+									a(href="./repository")
+										i(class=(data.screen === 'repository' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
+										|  Source Control
 
 					ul.sidebar-menu
 						li.header  Developer
