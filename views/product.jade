@@ -1,0 +1,546 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#info', aria-expanded='false')
+						strong Product Information  
+						&#58; ข้อมูลสินค้า
+			#info.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/info
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Data Type')
+										p.help-block
+											span.font-pre.label.label-warning type
+											|   ประเภทของข้อมูล (item, category, categoryUrl, brand, brandUrl, all)
+								.form-group
+									label.col-sm-2.control-label(for='input') Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   ค่าที่ต้องการใช้ค้นหาข้อมูล
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity
+									.col-sm-10
+										input.form-control.entity(type='text', placeholder='Entity')
+										p.help-block
+											span.font-pre.label.label-default entity
+											|   ชื่อคอลัมน์ที่ต้อง (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Name,Price)
+								.form-group
+									label.col-sm-2.control-label(for='input') Active
+									.col-sm-10
+										input.form-control.active(type='text', placeholder='Active')
+										p.help-block
+											span.font-pre.label.label-default active
+											|   แสดงเฉพาะสินค้ายังขายอยู่หรือไม่ (1 = ขายอยู่, 0 = ไม่ขาย, 2 = ทั้งหมด) Default = 1
+								.form-group
+									label.col-sm-2.control-label(for='input') Visible
+									.col-sm-10
+										input.form-control.visible(type='text', placeholder='Visible')
+										p.help-block
+											span.font-pre.label.label-default visible
+											|   แสดงเฉพาะสินค้าที่ลูกค้าสามารถเห็นได้หรือไม่ (1 = แสดง, 0 = ไม่แสดง, 2 = ทั้งหมด) Default = 1
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#infoAll', aria-expanded='false')
+						strong Product Information All
+						&#58; ข้อมูลสินค้าทั้งหมด
+			#infoAll.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/all
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Key
+									.col-sm-10
+										input.form-control.memberKey(type='text', placeholder='Member Key')
+										p.help-block
+											span.font-pre.label.label-default memberKey
+											|   Member Key
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#addProduct', aria-expanded='false')
+						strong Add Product  
+						&#58; เพิ่มข้อมูลสินค้า
+			#addProduct.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/add
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Product Name
+									.col-sm-10
+										input.form-control.name(type='text', placeholder='Product Name')
+										p.help-block
+											span.font-pre.label.label-warning name
+											|   ชื่อสินค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') SKU
+									.col-sm-10
+										input.form-control.sku(type='text', placeholder='SKU')
+										p.help-block
+											span.font-pre.label.label-default sku
+											|   รหัสประเภทสินค้า (ร้านค้าตั้งเอง) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Buyer Code
+									.col-sm-10
+										input.form-control.buyerCode(type='text', placeholder='Buyer Code')
+										p.help-block
+											span.font-pre.label.label-default buyerCode
+											|   รหัสประเภทสินค้าของผู้สั่งซื้อ
+								.form-group
+									label.col-sm-2.control-label(for='input') Barcode
+									.col-sm-10
+										input.form-control.barcode(type='text', placeholder='Barcode')
+										p.help-block
+											span.font-pre.label.label-default barcode
+											|   รหัสประเภทสินค้า 13 หลัก (ฺBarcode ที่มาจากผู้ผลิต) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Brand
+									.col-sm-10
+										input.form-control.brand(type='text', placeholder='Brand')
+										p.help-block
+											span.font-pre.label.label-default brand
+											|   รหัสยี่ห้อสินค้า 
+								.form-group
+									label.col-sm-2.control-label(for='input') Category
+									.col-sm-10
+										input.form-control.category(type='text', placeholder='Category')
+										p.help-block
+											span.font-pre.label.label-default category
+											|   หมวดหมู่หลักของสินค้า 
+								.form-group
+									label.col-sm-2.control-label(for='input') Warranty
+									.col-sm-10
+										input.form-control.warranty(type='text', placeholder='Warranty')
+										p.help-block
+											span.font-pre.label.label-default warranty
+											|   จำนวนวันที่รับประกัน
+								.form-group
+									label.col-sm-2.control-label(for='input') Location
+									.col-sm-10
+										input.form-control.location(type='text', placeholder='Location')
+										p.help-block
+											span.font-pre.label.label-default location
+											|   สถานที่เก็บสินค้า 
+								.form-group
+									label.col-sm-2.control-label(for='input') Active
+									.col-sm-10
+										input.form-control.active(type='text', placeholder='Active')
+										p.help-block
+											span.font-pre.label.label-default active
+											|   สินค้ายังขายอยู่หรือไม่ (1 = ขายอยู่)
+								.form-group
+									label.col-sm-2.control-label(for='input') Visible
+									.col-sm-10
+										input.form-control.visible(type='text', placeholder='Visible')
+										p.help-block
+											span.font-pre.label.label-default visible
+											|   แสดงสินค้าให้ลูกค้าเห็นหรือไม่ (1 = แสดง) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Description
+									.col-sm-10
+										input.form-control.description(type='text', placeholder='Description')
+										p.help-block
+											span.font-pre.label.label-default description
+											|   รายละเอียดของสินค้า 
+								.form-group
+									label.col-sm-2.control-label(for='input') Featured
+									.col-sm-10
+										input.form-control.featured(type='text', placeholder='Featured')
+										p.help-block
+											span.font-pre.label.label-default featured
+											|   จุดเด่นของสินค้า (ถ้ามีหลายอย่างให้คั่นด้วยเครื่องหมาย | เช่น ทนความร้อนสูง|ชาร์จไฟฟ้าได้เร็ว) 
+								.form-group
+									label.col-sm-2.control-label(for='input') In The Box
+									.col-sm-10
+										input.form-control.inTheBox(type='text', placeholder='In The Box')
+										p.help-block
+											span.font-pre.label.label-default inTheBox
+											|   สิ่งที่แถมมาในกล่อง (ถ้ามีหลายอย่างให้คั่นด้วยเครื่องหมาย | เช่น สาย USB|ฟิล์ม) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Youtube
+									.col-sm-10
+										input.form-control.youtube(type='text', placeholder='Youtube')
+										p.help-block
+											span.font-pre.label.label-default youtube
+											|   Link Youtube (ถ้ามีหลาย Link ให้คั่นด้วยเครื่องหมาย | เช่น link1|link2) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Description Image
+									.col-sm-10
+										input.form-control.descriptionImage(type='text', placeholder='Description Image')
+										p.help-block
+											span.font-pre.label.label-default descriptionImage
+											|   URL รูปภาพรายละเอียดสินค้า (ถ้ามีหลาย Link ให้คั่นด้วยเครื่องหมาย | เช่น link1|link2) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Color
+									.col-sm-10
+										input.form-control.color(type='text', placeholder='Color')
+										p.help-block
+											span.font-pre.label.label-default color
+											|   สีของสินค้า (ถ้ามีหลายสีให้คั่นด้วยเครื่องหมาย | เช่น red|green|blue) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Cost
+									.col-sm-10
+										input.form-control.cost(type='text', placeholder='Cost')
+										p.help-block
+											span.font-pre.label.label-default cost
+											|   ต้นทุนของสินค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Price
+									.col-sm-10
+										input.form-control.price(type='text', placeholder='Price')
+										p.help-block
+											span.font-pre.label.label-default price
+											|   ราคาขายปลีก (แพงที่สุด) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 1
+									.col-sm-10
+										input.form-control.price1(type='text', placeholder='Price 1')
+										p.help-block
+											span.font-pre.label.label-default price1
+											|   ราคาพิเศษช่อง 1 
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 2
+									.col-sm-10
+										input.form-control.price2(type='text', placeholder='Price 2')
+										p.help-block
+											span.font-pre.label.label-default price2
+											|   ราคาพิเศษช่อง 2
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 3
+									.col-sm-10
+										input.form-control.price3(type='text', placeholder='Price 3')
+										p.help-block
+											span.font-pre.label.label-default price3
+											|   ราคาพิเศษช่อง 3
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 4
+									.col-sm-10
+										input.form-control.price4(type='text', placeholder='Price 4')
+										p.help-block
+											span.font-pre.label.label-default price4
+											|   ราคาพิเศษช่อง 4
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 5
+									.col-sm-10
+										input.form-control.price5(type='text', placeholder='Price 5')
+										p.help-block
+											span.font-pre.label.label-default price5
+											|   ราคาพิเศษช่อง 5
+								.form-group
+									label.col-sm-2.control-label(for='input') Width
+									.col-sm-10
+										input.form-control.width(type='text', placeholder='Width')
+										p.help-block
+											span.font-pre.label.label-default width
+											|   ความกว้างของสินค้า (เซนติเมตร)
+								.form-group
+									label.col-sm-2.control-label(for='input') Length
+									.col-sm-10
+										input.form-control.length(type='text', placeholder='Length')
+										p.help-block
+											span.font-pre.label.label-default length
+											|   ความยาวของสินค้า (เซนติเมตร)
+								.form-group
+									label.col-sm-2.control-label(for='input') Height
+									.col-sm-10
+										input.form-control.height(type='text', placeholder='Height')
+										p.help-block
+											span.font-pre.label.label-default height
+											|   ความสูงของสินค้า (เซนติเมตร)
+								.form-group
+									label.col-sm-2.control-label(for='input') Weight
+									.col-sm-10
+										input.form-control.weight(type='text', placeholder='Weight')
+										p.help-block
+											span.font-pre.label.label-default weight
+											|   น้ำหนักของสินค้า (กรัม)
+								.form-group
+									label.col-sm-2.control-label(for='input') Gross Weight
+									.col-sm-10
+										input.form-control.grossWeight(type='text', placeholder='Gross Weight')
+										p.help-block
+											span.font-pre.label.label-default grossWeight
+											|   น้ำหนักของสินค้าทั้งหมด (รวมกล่อง) (กรัม)
+								.form-group
+									label.col-sm-2.control-label(for='input') Stock
+									.col-sm-10
+										input.form-control.stock(type='text', placeholder='Stock')
+										p.help-block
+											span.font-pre.label.label-default stock
+											|   จำนวนสินค้าในคลัง
+								.form-group
+									label.col-sm-2.control-label(for='input') On Cart
+									.col-sm-10
+										input.form-control.onCart(type='text', placeholder='On Cart')
+										p.help-block
+											span.font-pre.label.label-default onCart
+											|   จำนวนสินค้าในตะกร้า
+								.form-group
+									label.col-sm-2.control-label(for='input') On Order
+									.col-sm-10
+										input.form-control.onOrder(type='text', placeholder='On Order')
+										p.help-block
+											span.font-pre.label.label-default onOrder
+											|   จำนวนสินค้าที่รอจัดส่ง
+								.form-group
+									label.col-sm-2.control-label(for='input') Cover Image
+									.col-sm-10
+										input.form-control.coverImage(type='text', placeholder='Cover Image')
+										p.help-block
+											span.font-pre.label.label-default coverImage
+											|   URL รูปภาพหน้าปกสินค้า (คั่นขนาดรูปภาพด้วยเครื่องหมาย | โดยเรียงตามขนาด เล็ก|กลาง|ใหญ่|ต้นฉบับ) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 1
+									.col-sm-10
+										input.form-control.image1(type='text', placeholder='Image 1')
+										p.help-block
+											span.font-pre.label.label-default image1
+											|   URL รูปภาพสินค้า รูปที่ 1 (คั่นขนาดรูปภาพด้วยเครื่องหมาย | โดยเรียงตามขนาด เล็ก|กลาง|ใหญ่|ต้นฉบับ) 
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 2
+									.col-sm-10
+										input.form-control.image2(type='text', placeholder='Image 2')
+										p.help-block
+											span.font-pre.label.label-default image2
+											|   URL รูปภาพสินค้า รูปที่ 2
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 3
+									.col-sm-10
+										input.form-control.image3(type='text', placeholder='Image 3')
+										p.help-block
+											span.font-pre.label.label-default image3
+											|   URL รูปภาพสินค้า รูปที่ 3
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 4
+									.col-sm-10
+										input.form-control.image4(type='text', placeholder='Image 4')
+										p.help-block
+											span.font-pre.label.label-default image4
+											|   URL รูปภาพสินค้า รูปที่ 4
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 5
+									.col-sm-10
+										input.form-control.image5(type='text', placeholder='Image 5')
+										p.help-block
+											span.font-pre.label.label-default image5
+											|   URL รูปภาพสินค้า รูปที่ 5
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 6
+									.col-sm-10
+										input.form-control.image6(type='text', placeholder='Image 6')
+										p.help-block
+											span.font-pre.label.label-default image6
+											|   URL รูปภาพสินค้า รูปที่ 6
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 7
+									.col-sm-10
+										input.form-control.image7(type='text', placeholder='Image 7')
+										p.help-block
+											span.font-pre.label.label-default image7
+											|   URL รูปภาพสินค้า รูปที่ 7
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 8
+									.col-sm-10
+										input.form-control.image8(type='text', placeholder='Image 8')
+										p.help-block
+											span.font-pre.label.label-default image8
+											|   URL รูปภาพสินค้า รูปที่ 8
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 9
+									.col-sm-10
+										input.form-control.image9(type='text', placeholder='Image 9')
+										p.help-block
+											span.font-pre.label.label-default image9
+											|   URL รูปภาพสินค้า รูปที่ 9
+								.form-group
+									label.col-sm-2.control-label(for='input') Image 10
+									.col-sm-10
+										input.form-control.image10(type='text', placeholder='Image 10')
+										p.help-block
+											span.font-pre.label.label-default image10
+											|   URL รูปภาพสินค้า รูปที่ 10
+								.form-group
+									label.col-sm-2.control-label(for='input') Rating
+									.col-sm-10
+										input.form-control.rating(type='text', placeholder='Rating')
+										p.help-block
+											span.font-pre.label.label-default rating
+											|   คะแนน Review (0.0 - 5.0)
+								.form-group
+									label.col-sm-2.control-label(for='input') Review Count
+									.col-sm-10
+										input.form-control.reviewCount(type='text', placeholder='Review Count')
+										p.help-block
+											span.font-pre.label.label-default reviewCount
+											|   จำนวนคนที่มา Review แล้วให้คะแนน
+								.form-group
+									label.col-sm-2.control-label(for='input') Tag
+									.col-sm-10
+										input.form-control.tag(type='text', placeholder='Tag')
+										p.help-block
+											span.font-pre.label.label-default tag
+											|   Tag ของสินค้า (ถ้ามีหลาย Tag ให้คั่นด้วยเครื่องหมาย | เช่น cable|iphone) 
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#update', aria-expanded='false')
+						strong Update Product  
+						&#58; แก้ไขข้อมูลสินค้า
+			#update.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/update
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Product ID
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='Product ID')
+										p.help-block
+											span.font-pre.label.label-warning id
+											|   รหัสสินค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity
+									.col-sm-10
+										input.form-control.entity(type='text', placeholder='Entity')
+										p.help-block
+											span.font-pre.label.label-warning entity
+											|   ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Name,Price)
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Entity Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Product Name,99)
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#delete', aria-expanded='false')
+						strong Delete Product  
+						&#58; ลบข้อมูลสินค้า
+			#delete.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/delete
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Product ID
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='Product ID')
+										p.help-block
+											span.font-pre.label.label-warning id
+											|   รหัสสินค้า
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#category_brand', aria-expanded='false')
+						strong Category and Brand  
+						&#58; หมวดหมู่ และยี่ห้อของสินค้า
+			#category_brand.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/category_brand
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Active
+									.col-sm-10
+										input.form-control.active(type='text', placeholder='Active')
+										p.help-block
+											span.font-pre.label.label-default active
+											|   แสดงเฉพาะสินค้ายังขายอยู่หรือไม่ (1 = ขายอยู่, 0 = ไม่ขาย, 2 = ทั้งหมด) Default = 1
+								.form-group
+									label.col-sm-2.control-label(for='input') Visible
+									.col-sm-10
+										input.form-control.visible(type='text', placeholder='Visible')
+										p.help-block
+											span.font-pre.label.label-default visible
+											|   แสดงเฉพาะสินค้าที่ลูกค้าสามารถเห็นได้หรือไม่ (1 = แสดง, 0 = ไม่แสดง, 2 = ทั้งหมด) Default = 1
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')

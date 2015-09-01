@@ -1,0 +1,198 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#info', aria-expanded='false')
+						strong Shop Configuration Information  
+						&#58; ข้อมูลการตั้งค่าต่างๆ ของร้านค้า
+			#info.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/info
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#cartExpire', aria-expanded='false')
+						strong Cart Expiration Time  
+						&#58; เวลาหมดอายุของสินค้าในรถเข็น
+			#cartExpire.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/cart-expiration
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Data Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   จำนวนชั่วโมง หรือ จำนวนวัน
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Data Type')
+										p.help-block
+											span.font-pre.label.label-default type
+											|   เวลา (H = ชั่วโมง, D = วัน) Default = H
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#orderExpire', aria-expanded='false')
+						strong Order Expiration Time  
+						&#58; เวลาหมดอายุของใบสั่งซื้อสินค้า
+			#orderExpire.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/order-expiration
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Data Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   จำนวนชั่วโมง หรือ จำนวนวัน
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Data Type')
+										p.help-block
+											span.font-pre.label.label-default type
+											|   เวลา (H = ชั่วโมง, D = วัน) Default = H
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+					
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#newproductExpire', aria-expanded='false')
+						strong New Products Expiration Time  
+						&#58; เวลาหมดอายุของสินค้าใหม่
+			#newproductExpire.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/newproduct-expiration
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Data Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   จำนวนวัน
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#memberTypeToBuy', aria-expanded='false')
+						strong Member Type To Buy  
+						&#58; กำหนดประเภทสมาชิกในการซื้อ
+			#memberTypeToBuy.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/membertype-buy
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Data Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   ประเภทสมาชิก (ตัวอย่าง : Member, Dealer)
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')			
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#update', aria-expanded='false')
+						strong Update Configuration
+						&#58; แก้ไขข้อมูลการตั้งค่า
+			#update.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/update
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   ข้อมูล (JSON String) เช่น {"Username":"Hello World","Password":"pAsSwOrD"}
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+

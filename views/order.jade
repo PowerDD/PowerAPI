@@ -1,0 +1,81 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#info', aria-expanded='false')
+						strong Order Information  
+						&#58; ข้อมูลสินค้าที่สั่งซื้อ
+			#info.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/info/memberKey
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Access Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Access Type')
+										p.help-block
+											span.font-pre.label.label-default type
+											|   วิธีการเข้าถึงข้อมูล (M = Member Key, A = Access Key) Default = M
+								.form-group
+									label.col-sm-2.control-label(for='input') Key
+									.col-sm-10
+										input.form-control.key(type='text', placeholder='Key')
+										p.help-block
+											span.font-pre.label.label-warning key
+											|   Key ข้อมูล MemberKey หรือ AccessKey
+								.form-group
+									label.col-sm-2.control-label(for='input') Order Number
+									.col-sm-10
+										input.form-control.orderNo(type='text', placeholder='Order Number')
+										p.help-block
+											span.font-pre.label.label-warning orderNo
+											|   หมายเลขคำสั่งซื้อ
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#history', aria-expanded='false')
+						strong Order History  
+						&#58; ข้อมูลประวัติการสั่งซื้อ
+			#history.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/history
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Key
+									.col-sm-10
+										input.form-control.memberKey(type='text', placeholder='Member Key')
+										p.help-block
+											span.font-pre.label.label-warning memberKey
+											|   memberKey
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')

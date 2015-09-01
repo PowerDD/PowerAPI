@@ -1,0 +1,554 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+					
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#info', aria-expanded='false')
+						strong Member Information   
+						&#58; ข้อมูลต่างๆ ของสมาชิก
+			#info.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/info
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Key
+									.col-sm-10
+										input.form-control.memberKey(type='text', placeholder='Member Key')
+										p.help-block 
+											span.font-pre.label.label-warning memberKey
+											|   Member Key
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#register', aria-expanded='false')
+						strong Register  
+						&#58; สมัครสมาชิก
+			#register.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/register
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Data Type')
+										p.help-block
+											span.font-pre.label.label-warning type
+											|   ประเภทของข้อมูล (Web, Desktop, Android, iOS, Facebook, Google, Microsoft)
+								.form-group
+									label.col-sm-2.control-label(for='input') Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   ข้อมูล (JSON String) เช่น {"Username":"Hello World","Password":"pAsSwOrD"}
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#existUsername', aria-expanded='false')
+						strong Username Exist  
+						&#58; ตรวจสอบว่ามี Username ในระบบหรือไม่
+			#existUsername.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/exist/username
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Username
+									.col-sm-10
+										input.form-control.username(type='text', placeholder='Username')
+										p.help-block
+											span.font-pre.label.label-warning username
+											|   ชื่อผู้ใช้
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')				
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#existEmail', aria-expanded='false')
+						strong Email Exist  
+						&#58; ตรวจสอบว่ามีอีเมลในระบบหรือไม่
+			#existEmail.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/exist/email
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Email
+									.col-sm-10
+										input.form-control.email(type='text', placeholder='Email')
+										p.help-block 
+											span.font-pre.label.label-warning email
+											|   อีเมล
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')					
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#existMobile', aria-expanded='false')
+						strong Mobile Phone Number Exist   
+						&#58; ตรวจสอบว่ามีเบอร์โทรศัพท์มือถือในระบบหรือไม่
+			#existMobile.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/exist/mobile
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Mobile Phone Number
+									.col-sm-10
+										input.form-control.mobile(type='text', placeholder='Mobile Phone Number')
+										p.help-block 
+											span.font-pre.label.label-warning mobile
+											|   เบอร์โทรศัพท์มือถือ
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')				
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#existMemberKey', aria-expanded='false')
+						strong Member Key Exist   
+						&#58; ตรวจสอบว่ามี Member Key ในระบบหรือไม่
+			#existMemberKey.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/exist/memberKey
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Key
+									.col-sm-10
+										input.form-control.memberKey(type='text', placeholder='Member Key')
+										p.help-block 
+											span.font-pre.label.label-warning memberKey
+											|   Member Key
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')					
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#login', aria-expanded='false')
+						strong Login  
+						&#58; เข้าระบบ
+			#login.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/login
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Username
+									.col-sm-10
+										input.form-control.username(type='text', placeholder='Username')
+										p.help-block 
+											span.font-pre.label.label-warning username
+											|   ชื่อผู้ใช้ หรือ เบอร์โทรศัพท์ หรือ อีเมล
+								.form-group
+									label.col-sm-2.control-label(for='input') Password
+									.col-sm-10
+										input.form-control.password(type='text', placeholder='Password')
+										p.help-block 
+											span.font-pre.label.label-warning password
+											|   รหัสผ่าน
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')				
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#logout', aria-expanded='false')
+						strong Logout   
+						&#58; ออกจากระบบ
+			#logout.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/logout
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Key
+									.col-sm-10
+										input.form-control.memberKey(type='text', placeholder='Member Key')
+										p.help-block 
+											span.font-pre.label.label-warning memberKey
+											|   Member Key
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#MemberTypeInfo', aria-expanded='false')
+						strong Member Type Info
+						&#58; ข้อมูลต่างๆ ของประเภทสมาชิก
+			#MemberTypeInfo.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/membertype/info
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') ID
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='ID')
+										p.help-block
+											span.font-pre.label.label-default id
+											|   ID (Example: Guest, Member)
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#AddMemberType', aria-expanded='false')
+						strong Add Member Type   
+						&#58; เพิ่มประเภทสมาชิก
+			#AddMemberType.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/membertype/add
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') ID
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='ID')
+										p.help-block
+											span.font-pre.label.label-warning id
+											|   ID (Example: Guest, Member)
+								.form-group
+									label.col-sm-2.control-label(for='input') Level
+									.col-sm-10
+										input.form-control.level(type='text', placeholder='Level')
+										p.help-block 
+											span.font-pre.label.label-warning level
+											|   Level (Example: 0, 1)
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#MemberPrice', aria-expanded='false')
+						strong Member Price   
+						&#58; กำหนดราคาสินค้าให้ประเภทสมาชิก
+			#MemberPrice.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/memberprice
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Type
+									.col-sm-10
+										input.form-control.memberType(type='text', placeholder='Member Type')
+										p.help-block
+											span.font-pre.label.label-warning memberType
+											|   Member Type
+								.form-group
+									label.col-sm-2.control-label(for='input') Sell Price
+									.col-sm-10
+										input.form-control.sellPrice(type='text', placeholder='Sell Price')
+										p.help-block 
+											span.font-pre.label.label-warning sellPrice
+											|   Sell Price (Sell Price is Channel of Product price)
+								.form-group
+									label.col-sm-2.control-label(for='input') Sell Step
+									.col-sm-10
+										input.form-control.sellStep(type='text', placeholder='Sell Step')
+										p.help-block 
+											span.font-pre.label.label-default sellStep
+											|   Sell Step (default: 0)
+								.form-group
+									label.col-sm-2.control-label(for='input') Sell Max Step
+									.col-sm-10
+										input.form-control.sellMaxStep(type='text', placeholder='Sell Max Step')
+										p.help-block 
+											span.font-pre.label.label-default sellMaxStep
+											|   Sell Max Step
+								.form-group
+									label.col-sm-2.control-label(for='input') Quantity 1
+									.col-sm-10
+										input.form-control.qty1(type='text', placeholder='Quantity 1')
+										p.help-block 
+											span.font-pre.label.label-default qty1
+											|   Quantity 1
+								.form-group
+									label.col-sm-2.control-label(for='input') Quantity 2
+									.col-sm-10
+										input.form-control.qty2(type='text', placeholder='Quantity 2')
+										p.help-block 
+											span.font-pre.label.label-default qty2
+											|   Quantity 2
+								.form-group
+									label.col-sm-2.control-label(for='input') Quantity 3
+									.col-sm-10
+										input.form-control.qty3(type='text', placeholder='Quantity 3')
+										p.help-block 
+											span.font-pre.label.label-default qty3
+											|   Quantity 3
+								.form-group
+									label.col-sm-2.control-label(for='input') Quantity 4
+									.col-sm-10
+										input.form-control.qty4(type='text', placeholder='Quantity 4')
+										p.help-block 
+											span.font-pre.label.label-default qty4
+											|   Quantity 4
+								.form-group
+									label.col-sm-2.control-label(for='input') Quantity 5
+									.col-sm-10
+										input.form-control.qty5(type='text', placeholder='Quantity 5')
+										p.help-block 
+											span.font-pre.label.label-default qty5
+											|   Quantity 5
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 1
+									.col-sm-10
+										input.form-control.price1(type='text', placeholder='Price 1')
+										p.help-block 
+											span.font-pre.label.label-default price1
+											|   Price 1
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 2
+									.col-sm-10
+										input.form-control.price2(type='text', placeholder='Price 2')
+										p.help-block 
+											span.font-pre.label.label-default price2
+											|   Price 2
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 3
+									.col-sm-10
+										input.form-control.price3(type='text', placeholder='Price 3')
+										p.help-block 
+											span.font-pre.label.label-default price3
+											|   Price 3
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 4
+									.col-sm-10
+										input.form-control.price4(type='text', placeholder='Price 4')
+										p.help-block 
+											span.font-pre.label.label-default price4
+											|   Price 4
+								.form-group
+									label.col-sm-2.control-label(for='input') Price 5
+									.col-sm-10
+										input.form-control.price5(type='text', placeholder='Price 5')
+										p.help-block 
+											span.font-pre.label.label-default price5
+											|   Price 5
+											
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#MemberMapping', aria-expanded='false')
+						strong Member Mapping   
+						&#58; กำหนดประเภทสมาชิกให้สมาชิก
+			#MemberMapping.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/mapping
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Member ID
+									.col-sm-10
+										input.form-control.memberId(type='text', placeholder='Member ID')
+										p.help-block
+											span.font-pre.label.label-warning memberId
+											|   Member ID 
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Type
+									.col-sm-10
+										input.form-control.memberType(type='text', placeholder='Member Type')
+										p.help-block 
+											span.font-pre.label.label-warning memberType
+											|   Member Type
+								.form-group
+									label.col-sm-2.control-label(for='input') Sell Price
+									.col-sm-10
+										input.form-control.sellPrice(type='text', placeholder='Sell Price')
+										p.help-block 
+											span.font-pre.label.label-default sellPrice
+											|   Sell Price
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#MemberRoles', aria-expanded='false')
+						strong Member Roles   
+						&#58;  ข้อมูลสิทธิ์ของสมาชิกในการใช้งานระบบ
+			#MemberRoles.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/role/info
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Key
+									.col-sm-10
+										input.form-control.memberKey(type='text', placeholder='Member Key')
+										p.help-block
+											span.font-pre.label.label-warning memberKey
+											|   Member Key 
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#update', aria-expanded='false')
+						strong Update Member Information
+						&#58; แก้ไขข้อมูลส่วนตัว
+			#update.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/info/update
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Key
+									.col-sm-10
+										input.form-control.memberKey(type='text', placeholder='Member Key')
+										p.help-block
+											span.font-pre.label.label-warning memberKey
+											|   Member Key
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity
+									.col-sm-10
+										input.form-control.entity(type='text', placeholder='Entity')
+										p.help-block
+											span.font-pre.label.label-warning entity
+											|   ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Firstname, Lastname, SelectedMemberType)
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Entity Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น John, Connor, Member)
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')

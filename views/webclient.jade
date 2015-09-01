@@ -1,0 +1,95 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#getHtml', aria-expanded='false')
+						strong Get HTML from Website  
+						&#58; อ่านข้อความจากเว็บไซต์เป็น Code HTML
+			#getHtml.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/get/html
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') URL
+									.col-sm-10
+										input.form-control.url(type='text', placeholder='URL')
+										p.help-block
+											span.font-pre.label.label-warning url
+											|   เว็บไซต์
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#azure', aria-expanded='false')
+						strong Azure  
+						&#58; Query Data
+			#azure.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/get/azure
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Table
+									.col-sm-10
+										input.form-control.table(type='text', placeholder='Table')
+										p.help-block
+											span.font-pre.label.label-warning table
+											|   Table
+									label.col-sm-2.control-label(for='input') PartitionKey
+									.col-sm-10
+										input.form-control.partitionkey(type='text', placeholder='PartitionKey')
+										p.help-block
+											span.font-pre.label.label-warning partitionkey
+											|   PartitionKey
+									label.col-sm-2.control-label(for='input') RowKey
+									.col-sm-10
+										input.form-control.rowkey(type='text', placeholder='RowKey')
+										p.help-block
+											span.font-pre.label.label-warning rowkey
+											|   RowKey
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#product', aria-expanded='false')
+						strong Check Products  
+						&#58; ตรวจสอบสินค้า มีในระบบหรือไม่
+			#product.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/get/product
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group									
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shopid(type='text', placeholder='Shop ID')
+										p.help-block
+											span.font-pre.label.label-warning shopid
+											|   Shop ID
+									label.col-sm-2.control-label(for='input') Barcode
+									.col-sm-10
+										input.form-control.barcode(type='text', placeholder='Barcode')
+										p.help-block
+											span.font-pre.label.label-warning barcode
+											|   Barcode
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')

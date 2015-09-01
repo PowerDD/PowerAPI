@@ -1,0 +1,238 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#info', aria-expanded='false')
+						strong Claim Information  
+						&#58; ข้อมูลการเคลมสินค้า
+			#info.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/info
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   Shop ID
+								.form-group
+									label.col-sm-2.control-label(for='input') Claim ID
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='Claim ID')
+										p.help-block
+											span.font-pre.label.label-default id
+											|   Claim ID
+								.form-group
+									label.col-sm-2.control-label(for='input') Claim Date From
+									.col-sm-10
+										input.form-control.claimdate_from(type='text', placeholder='Claim Date From')
+										p.help-block
+											span.font-pre.label.label-default claimdate_from
+											|   Claim Date From (format 'YYYY-MM-DD')
+								.form-group
+									label.col-sm-2.control-label(for='input') Claim Date To
+									.col-sm-10
+										input.form-control.claimdate_to(type='text', placeholder='Claim Date To')
+										p.help-block
+											span.font-pre.label.label-default claimdate_to
+											|   Claim Date To (format 'YYYY-MM-DD')
+								.form-group
+									label.col-sm-2.control-label(for='input') Status
+									.col-sm-10
+										input.form-control.status(type='text', placeholder='Status')
+										p.help-block
+											span.font-pre.label.label-default status
+											|   Status
+								
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#add', aria-expanded='false')
+						strong Claim Add  
+						&#58; เพิ่มข้อมูลการเคลม
+			#add.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/add
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   Shop ID
+								.form-group
+									label.col-sm-2.control-label(for='input') Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Type', value="web")
+										p.help-block
+											span.font-pre.label.label-warning type
+											|   Type (Example: web, app)
+								.form-group
+									label.col-sm-2.control-label(for='input') Barcode
+									.col-sm-10
+										input.form-control.barcode(type='text', placeholder='Barcode')
+										p.help-block
+											span.font-pre.label.label-warning barcode
+											|   Barcode
+								.form-group
+									label.col-sm-2.control-label(for='input') Product
+									.col-sm-10
+										input.form-control.product(type='text', placeholder='Product')
+										p.help-block
+											span.font-pre.label.label-warning product
+											|   Product
+								.form-group
+									label.col-sm-2.control-label(for='input') Description
+									.col-sm-10
+										input.form-control.description(type='text', placeholder='Description')
+										p.help-block
+											span.font-pre.label.label-warning description
+											|   Description
+								.form-group
+									label.col-sm-2.control-label(for='input') Firstname
+									.col-sm-10
+										input.form-control.firstname(type='text', placeholder='Firstname')
+										p.help-block
+											span.font-pre.label.label-warning firstname
+											|   Firstname
+								.form-group
+									label.col-sm-2.control-label(for='input') Lastname
+									.col-sm-10
+										input.form-control.lastname(type='text', placeholder='Lastname')
+										p.help-block
+											span.font-pre.label.label-warning lastname
+											|   Lastname
+								.form-group
+									label.col-sm-2.control-label(for='input') Nickname
+									.col-sm-10
+										input.form-control.nickname(type='text', placeholder='Nickname')
+										p.help-block
+											span.font-pre.label.label-default nickname
+											|   Nickname
+								.form-group
+									label.col-sm-2.control-label(for='input') Address
+									.col-sm-10
+										input.form-control.address(type='text', placeholder='Address')
+										p.help-block
+											span.font-pre.label.label-warning address
+											|   Address
+								.form-group
+									label.col-sm-2.control-label(for='input') Address 2
+									.col-sm-10
+										input.form-control.address2(type='text', placeholder='Address 2')
+										p.help-block
+											span.font-pre.label.label-default address2
+											|   Address 2
+								.form-group
+									label.col-sm-2.control-label(for='input') Province
+									.col-sm-10
+										input.form-control.province(type='text', placeholder='Province')
+										p.help-block
+											span.font-pre.label.label-warning province
+											|   Province
+								.form-group
+									label.col-sm-2.control-label(for='input') District
+									.col-sm-10
+										input.form-control.district(type='text', placeholder='District')
+										p.help-block
+											span.font-pre.label.label-warning district
+											|   District
+								.form-group
+									label.col-sm-2.control-label(for='input') Sub District
+									.col-sm-10
+										input.form-control.sub_district(type='text', placeholder='Sub District')
+										p.help-block
+											span.font-pre.label.label-warning sub_district
+											|   Sub District
+								.form-group
+									label.col-sm-2.control-label(for='input') Zipcode
+									.col-sm-10
+										input.form-control.zipcode(type='text', placeholder='Zipcode')
+										p.help-block
+											span.font-pre.label.label-warning zipcode
+											|   Zipcode
+								.form-group
+									label.col-sm-2.control-label(for='input') Tel.
+									.col-sm-10
+										input.form-control.tel(type='text', placeholder='Tel.')
+										p.help-block
+											span.font-pre.label.label-warning tel
+											|   Tel.
+								.form-group
+									label.col-sm-2.control-label(for='input') Email
+									.col-sm-10
+										input.form-control.email(type='text', placeholder='Email')
+										p.help-block
+											span.font-pre.label.label-default email
+											|   Email
+								.form-group
+									label.col-sm-2.control-label(for='input') Images
+									.col-sm-10
+										input.form-control.images(type='text', placeholder='Images')
+										p.help-block
+											span.font-pre.label.label-warning images
+											|   Images
+								
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#update', aria-expanded='false')
+						strong Claim Update  
+						&#58; ข้อมูลการเคลมสินค้า
+			#update.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/update
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   Shop ID
+								.form-group
+									label.col-sm-2.control-label(for='input') Claim ID
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='Claim ID')
+										p.help-block
+											span.font-pre.label.label-warning id
+											|   Claim ID
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity
+									.col-sm-10
+										input.form-control.entity(type='text', placeholder='Entity')
+										p.help-block
+											span.font-pre.label.label-warning entity
+											|   Entity (ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Description,Status))
+								.form-group
+									label.col-sm-2.control-label(for='input') Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   Value (ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Broken,SH))
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')

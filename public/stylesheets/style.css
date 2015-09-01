@@ -1,0 +1,30 @@
+.margin-bottom-0 { margin-bottom: 0px !important }
+.margin-bottom-5 { margin-bottom: 5px !important }
+.margin-bottom-10 { margin-bottom: 10px !important }
+.margin-bottom-15 { margin-bottom: 15px !important }
+.margin-bottom-20 { margin-bottom: 20px !important }
+.margin-top-0 { margin-top: 0px !important }
+.margin-top-2 { margin-top: 2px !important }
+.margin-top-3 { margin-top: 3px !important }
+.margin-top-5 { margin-top: 5px !important }
+.margin-top-10 { margin-top: 10px !important }
+.margin-top-15 { margin-top: 15px !important }
+.margin-top-20 { margin-top: 20px !important }
+.margin-left-3 { margin-left:3px !important }
+.margin-left-5 { margin-left:5px !important }
+.margin-right-5 { margin-right:5px !important }
+.padding-left-0 { padding-left: 0px !important }
+.padding-left-5 { padding-left: 5px !important }
+.padding-left-10 { padding-left: 10px !important }
+.padding-left-15 { padding-left: 15px !important }
+.padding-left-20 { padding-left: 20px !important }
+.padding-right-0 { padding-right: 0px !important }
+.padding-top-0 { padding-top: 0px !important }
+.padding-top-5 { padding-top: 5px !important }
+.padding-top-15 { padding-top: 15px !important }
+.padding-top-20 { padding-top: 20px !important }
+.padding-bottom-0 { padding-bottom: 0px !important }
+
+.jsonview a { color: blue !important }
+
+.font-pre { font-family: Menlo,Monaco,Consolas,"Courier New",monospace !important; font-size: 0.85em; }

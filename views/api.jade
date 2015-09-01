@@ -1,0 +1,68 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#addApiProject', aria-expanded='false')
+						strong Add API Project  
+						&#58; เพิ่ม API Project
+			#addApiProject.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/add/project
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Name
+									.col-sm-10
+										input.form-control.name(type='text', placeholder='Name')
+										p.help-block
+											span.font-pre.label.label-warning name
+											|   ชื่อระบบ
+								.form-group
+									label.col-sm-2.control-label(for='input') Description
+									.col-sm-10
+										input.form-control.description(type='text', placeholder='Description')
+										p.help-block
+											span.font-pre.label.label-default description
+											|   คำอธิบายเกี่ยวกับระบบ
+								.form-group
+									label.col-sm-2.control-label(for='input') Access Type
+									.col-sm-10
+										input.form-control.accessType(type='text', placeholder='Access Type')
+										p.help-block
+											span.font-pre.label.label-warning accessType
+											|   
+											a(href="http://powerwiki.azurewebsites.net/index.php?title=PowerDD_Azure_Storage_Tables_-_API#.E0.B8.AA.E0.B8.B4.E0.B8.97.E0.B8.98.E0.B8.B4.E0.B9.8C.E0.B8.81.E0.B8.B2.E0.B8.A3.E0.B9.83.E0.B8.8A.E0.B9.89.E0.B8.87.E0.B8.B2.E0.B8.99_API") สิทธิ์การใช้งาน API  
+											| (G = Guest, M = Member, S = Shop, A = Administrator)
+								.form-group
+									label.col-sm-2.control-label(for='input') Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Type')
+										p.help-block
+											span.font-pre.label.label-warning type
+											|   
+											a(href="http://powerwiki.azurewebsites.net/index.php?title=PowerDD_Azure_Storage_Tables_-_API#.E0.B8.9B.E0.B8.A3.E0.B8.B0.E0.B9.80.E0.B8.A0.E0.B8.97_API") ประเภท API  
+											| (A = Android, i = iOS, D = Desktop, W = Website)
+								.form-group
+									label.col-sm-2.control-label(for='input') Website
+									.col-sm-10
+										input.form-control.web(type='text', placeholder='Website')
+										p.help-block
+											span.font-pre.label.label-default web
+											|   เว็บไซต์ที่เรียกใช้ API
+								.form-group
+									label.col-sm-2.control-label(for='input') Expiry Date
+									.col-sm-10
+										input.form-control.expire(type='text', placeholder='Expiry Date')
+										p.help-block
+											span.font-pre.label.label-default expire
+											|   วันหมดอายุของ API
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')

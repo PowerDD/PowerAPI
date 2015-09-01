@@ -1,0 +1,64 @@
+extends layout
+
+block content
+
+	.col-md-6
+		.box.box-solid
+			.box-header.with-border
+				h3.box-title  API Informaition
+				.box-tools.pull-right
+					button.btn.btn-box-tool(data-widget='collapse')
+						i.fa.fa-minus					
+					.btn-group
+						button.btn.btn-box-tool.dropdown-toggle(data-toggle='dropdown')
+							i.fa.fa-gear
+						ul.dropdown-menu(role='menu')
+							li
+								a(href='#')
+									i.fa.fa-plus-square
+									| Add New Project
+							li.divider
+							li
+								a(href='#')
+									i.fa.fa-trash
+									| Delete All Project
+
+			.box-body
+				.box-group.panel-group(role='tablist', aria-multiselectable='true')
+					.panel.box.box-primary
+						.box-header.with-border
+							h4.box-title
+								a(data-toggle="collapse", data-parent="#accordion", href="#api1")
+									i.fa.fa-apple
+									|  API Testing
+						#api1.panel-collapse.collapse
+							.box-body.clearfix
+								dl.dl-horizontal
+									dt  Application ID
+									dd.appId  API0002348
+									dt  API Key
+									dd.appKey  7C0F43F7-B4A1-4CB2-85B1-50D8D73C4A1E
+									dt  Expiry Date
+									dd.appExpire  Never
+								.text-center
+									a.btn.btn-sm.btn-default(href="javascript:void(0)")
+										i.fa.fa-lg.fa-refresh
+										|  Generate New API Key
+									a.btn.btn-sm.btn-default.margin-left-5(href="javascript:void(0)")
+										i.fa.fa-lg.fa-trash
+										|  Delete Project
+
+								
+					.panel.box.box-primary
+						.box-header.with-border
+							h4.box-title
+								a(data-toggle="collapse", data-parent="#accordion", href="#api2")
+									|  Collapsible Group Item #2
+						#api2.panel-collapse.collapse
+							.box-body
+								|   Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably hav
+
+
+	.col-md-6
+
+	.clearfix

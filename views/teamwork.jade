@@ -1,0 +1,29 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#collapseAddTeamwork', aria-expanded='false')
+						strong Add Teamwork  
+						&#58; เพิ่มข้อมูลทีมงาน
+			#collapseAddTeamwork.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /brand/add
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Username
+									.col-sm-10
+										input.form-control.username(type='text', placeholder='Username')
+										p.help-block
+											span.font-pre.label.label-warning username
+											|   ชื่อผู้ใช้
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')

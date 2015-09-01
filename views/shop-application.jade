@@ -1,0 +1,50 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#info', aria-expanded='false')
+						strong Shop Application Information  
+						&#58; ข้อมูลต่างๆ ของโปรแกรมที่ร้านค้าใช้อยู่
+			#info.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/info
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') API Key
+									.col-sm-10
+										input.form-control.apiKey(type='text', placeholder='API Key')
+										p.help-block
+											span.font-pre.label.label-warning apiKey
+											|   รหัส API
+								.form-group
+									label.col-sm-2.control-label(for='input') License Key
+									.col-sm-10
+										input.form-control.licenseKey(type='text', placeholder='License Key')
+										p.help-block
+											span.font-pre.label.label-warning licenseKey
+											|   รหัส License
+								.form-group
+									label.col-sm-2.control-label(for='input') Device ID
+									.col-sm-10
+										input.form-control.deviceId(type='text', placeholder='Device ID')
+										p.help-block
+											span.font-pre.label.label-warning deviceId
+											|   รหัสเครื่องที่เข้าใช้งาน
+								.form-group
+									label.col-sm-2.control-label(for='input') Device Name
+									.col-sm-10
+										input.form-control.deviceName(type='text', placeholder='Device Name')
+										p.help-block
+											span.font-pre.label.label-warning deviceName
+											|   ชื่อเครื่องที่เข้าใช้งาน
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')

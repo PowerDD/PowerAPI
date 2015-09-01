@@ -1,0 +1,67 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#encrypt', aria-expanded='false')
+						strong Encrypt Message  
+						&#58; เข้ารหัสข้อความ
+			#encrypt.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/encrypt
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Message
+									.col-sm-10
+										input.form-control.message(type='text', placeholder='Message')
+										p.help-block
+											span.font-pre.label.label-warning message
+											|   ข้อความ
+								.form-group
+									label.col-sm-2.control-label(for='input') Key
+									.col-sm-10
+										input.form-control.key(type='text', placeholder='Key')
+										p.help-block
+											span.font-pre.label.label-default key
+											|   Key ที่ใช้ในการเข้ารหัส
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#decrypt', aria-expanded='false')
+						strong Decrypt Message  
+						&#58; ถอดรหัสข้อความ
+			#decrypt.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/decrypt
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Message
+									.col-sm-10
+										input.form-control.message(type='text', placeholder='Message')
+										p.help-block
+											span.font-pre.label.label-warning message
+											|   ข้อความ
+								.form-group
+									label.col-sm-2.control-label(for='input') Key
+									.col-sm-10
+										input.form-control.key(type='text', placeholder='Key')
+										p.help-block
+											span.font-pre.label.label-default key
+											|   Key ที่ใช้ในการถอดรหัส
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
