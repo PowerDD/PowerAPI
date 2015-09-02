@@ -31,10 +31,12 @@ exports.process = function(req, res, data) {
 
 exports.warrantyInfo = function(req, res, data) {
 	if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
+		data.json.return = true;
 		data.json.success = true;
 		data.json.result = data.result;
 		data.util.responseJson(req, res, data.json);
 	}else{
+		data.json.return = true;
 		data.json.success = false;
 		data.util.responseJson(req, res, data.json);
 	}	
