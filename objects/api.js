@@ -103,13 +103,14 @@ exports.callApi = function(req, res, data) {
 		url[0] = null;
 		url[1] = null;
 
-		fs.exists('./objects/'+control+'.js', function (exists) {
+		fs.exists(__dirname+'/'+control+'.js', function (exists) {
 			if (exists) {
 				delete data.object;
 				data.object = require('../objects/'+control);
 				data.object.action(req, res, data);
 			}
 			else {
+				data.json.data = __dirname;
 				data.json.error = 'API0008';
 				data.json.errorMessage = 'API ' + control.toUpperCase() + ' is not implemented';
 				data.util.responseJson(req, res, data.json);
