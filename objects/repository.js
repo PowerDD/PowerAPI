@@ -1,10 +1,9 @@
 exports.action = function(req, res, data) {
-	
 	try {
 		if (data.action == 'update'){
 			if (typeof req.body.path != 'undefined' && req.body.path != '') {
 				data.json.return = false;
-				exports.update();
+				exports.update(req, res, data);
 			}
 		}
 		else {
@@ -26,11 +25,16 @@ exports.update = function(req, res, data) {
 	var Client = require('svn-spawn');
 	var client = new Client({ cwd: '/var/www/powerdd/'+req.body.path+'/' });
 
-	client.update(function(err, data) {
+	client.update(function(error, result) {
 		if(!error){
-			client.getInfo(function(err, data) {
+			client.getInfo(function(err, result) {
 				if(!error){
-					data.json.info = data;
+					data.json.return = true;
+					data.json.info = {};
+					data.json.info.revision = result.$.revision;
+					data.json.info.url = result.url;
+					data.json.info.author = result.commit.author;
+					data.json.info.date = result.commit.date;
 					data.json.success = true;
 					data.util.responseJson(req, res, data.json);
 				}

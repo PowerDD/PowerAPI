@@ -1,8 +1,7 @@
 //## - - - MS SQL - - - ##//
 exports.query = function(req, res, data){
-	var sql = require('mssql')
-		, require('../config.js');
-	var connection = new sql.Connection(config.mssql, function (err) {
+	var sql = require('mssql');
+	var connection = new sql.Connection(global.config.mssql, function (err) {
 		var request = new sql.Request(connection);
 		request.query(data.command, function (err, recordset, returnValue) {
 			if (!err){
@@ -10,19 +9,17 @@ exports.query = function(req, res, data){
 				data.object.process(req, res, data);
 			}else{
 				var json = {};
-				json.success = false;
-				json.error = 'UTL0001';
-				json.errorMessage = err.message;
-				res.json(json);
+				data.json.error = 'UTL0001';
+				data.json.errorMessage = err.message;
+				exports.responseJson(req, res, data.json);
 			}
 		});
 	 });
 };
 
 exports.queryMultiple = function(req, res, data){
-	var sql = require('mssql')
-		, require('../config.js');
-	var connection = new sql.Connection(config.mssql, function (err) {
+	var sql = require('mssql');
+	var connection = new sql.Connection(global.config.mssql, function (err) {
 		var request = new sql.Request(connection);
 		request.multiple = true;
 		request.query(data.command, function (err, recordset, returnValue) {
@@ -30,11 +27,9 @@ exports.queryMultiple = function(req, res, data){
 				data.result = recordset;
 				data.object.process(req, res, data);
 			}else{
-				var json = {};
-				json.success = false;
-				json.error = 'UTL0002';
-				json.errorMessage = err.message;
-				res.json(json);
+				data.json.error = 'UTL0002';
+				data.json.errorMessage = err.message;
+				exports.responseJson(req, res, data.json);
 			}
 		});
 	 });
@@ -51,4 +46,13 @@ exports.responseJson = function(req, res, json) {
 		}
 		res.json(json);
 	}
+};
+
+exports.responseError = function(req, res, error) {
+	var json = {};
+	json.success = false;
+	json.error = 'ERR0001';
+	json.errorMessage = error.message;
+	json.errorStack = error.stack;
+	res.json(json);
 };

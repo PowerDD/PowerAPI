@@ -16,7 +16,7 @@ exports.action = function(req, res, data) {
 			}
 		}
 		else {
-			data.json.error = 'API0011';
+			data.json.error = 'API00xxx';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
 		}
 
@@ -31,13 +31,101 @@ exports.action = function(req, res, data) {
 
 
 
-exports.process = function(req, res, data) {		
-	json.error = 'API xxx';
-	json.errorMessage = 'ppp';
-	res.json(json);
+exports.process = function(req, res, data) {
+	if (data.method == 'checkApiKey') {
+		exports.checkApiKey(req, res, data);
+	}
+	else {
+		data.json.error = 'API0002';
+		data.json.errorMessage = 'Unknow Action';
+		data.util.responseJson(req, res, data.json);
+	}
 }
 
 //## Internal Method ##//
+
+// ตรวจสอบ API ว่าสามารถเข้าใช้งาน API ได้หรือไม่ //
+exports.checkApiKey = function(req, res, data) {
+	if (data.result[0][0].exist != '1') { // ไม่มี API นี้ในระบบ
+		data.json.error = 'API0002';
+		data.json.errorMessage = 'API Key ' + req.body.apiKey + ' not found';
+		data.util.responseJson(req, res, data.json);
+	}
+	else { // มี API นี้ในระบบ
+		if (data.result[1][0].active != '1') { // ถ้า API ไม่ Active
+			data.json.error = 'API0003';
+			data.json.errorMessage = 'API Key ' + req.body.apiKey + ' is not active';
+			data.util.responseJson(req, res, data.json);
+		}
+		else { // ถ้า API Active อยู่
+			if (data.result[1][0].isExpired == '1') { // ถ้าหมดอายุแล้ว
+				data.json.error = 'API0004';
+				data.json.errorMessage = 'API Key ' + req.body.apiKey + ' has expired';
+				data.util.responseJson(req, res, data.json);
+			}
+			else {
+				if (data.result[1][0].type == 'web') { // ถ้า API เป็นเว็บ
+					if ( typeof req.headers.referer == 'undefined' ) { // ถ้าไม่มี Header Referer						
+						data.json.error = 'API0005';
+						data.json.errorMessage = 'Missing HTTP referer header';
+						data.util.responseJson(req, res, data.json);
+					}
+					else {
+						var url = req.headers.referer.split('/');
+						if ( data.result[1][0].website != url[2] ) { // ถ้าเว็บที่เรียกใช้ API ไม่ตรงกับข้อมูลในระบบ
+							data.json.error = 'API0006';
+							data.json.errorMessage = 'This operation is not allowed for origin '+url[2];
+							data.util.responseJson(req, res, data.json);
+						}
+						else {
+							exports.callApi(req, res, data);
+						}
+					}
+				}
+				else { // ถ้า API เป็น Application
+					data.json.success = true;
+					data.json.result = data.result;
+					data.util.responseJson(req, res, data.json);
+				}
+			}
+		}
+	}
+}
+
+exports.callApi = function(req, res, data) {	
+	var fs = require('fs');
+
+	var url = req.headers.uri.split('/');
+	url = url.filter(function(n){ return n !== ''; });
+	if ( url.length >= 2 ) {
+		var control = url[0];
+		data.action = url[1];
+		url[0] = null;
+		url[1] = null;
+
+		fs.exists('./objects/'+control+'.js', function (exists) {
+			if (exists) {
+				delete data.object;
+				data.object = require('../objects/'+control);
+				data.object.action(req, res, data);
+			}
+			else {
+				data.json.error = 'API0008';
+				data.json.errorMessage = 'API ' + control.toUpperCase() + ' is not implemented';
+				data.util.responseJson(req, res, data.json);
+			}
+		});
+	}
+	else { // กรอก URL มาไม่ครบ (ไม่มี Control หรือ Action)
+		data.json.error = 'API0009';
+		data.json.errorMessage = 'Please send API URL and Action request to server';
+		data.util.responseJson(req, res, data.json);
+	}
+};
+
+
+
+
 exports.addProject = function(req, res, data) {
 	data.table.retrieveEntity('API', 'Config', 'maxProjectId', function(error, result, response){
 		if(error){
