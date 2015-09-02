@@ -7,7 +7,7 @@ exports.action = function(req, res, data) {
 			if (typeof req.body.barcode != 'undefined' && req.body.barcode != '' ) {
 					data.json.return = false;
 					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\'';
-					util.queryMultiple(req, res, data);
+					data.util.queryMultiple(req, res, data);
 			}
 		}
 		data.util.responseJson(req, res, data.json);
