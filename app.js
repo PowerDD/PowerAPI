@@ -86,10 +86,13 @@ app.post('*', function(req, res) {
 		res.json(json);
 	}
 	else {
-		
-		json.error = 'AAA';
-		json.errorMessage = 'XXX';
-		res.json(json);
+
+		var data = {};
+		data.util = util;
+		data.action = 'checkApiKey';
+		data.command = 'EXEC sp_ApiExist \''+req.body.apiKey+'\'';
+		data.object = require('./objects/api');
+		util.query(req, res, data);
 
 /*
 		var azure = require('azure-storage');

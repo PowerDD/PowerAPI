@@ -28,6 +28,15 @@ exports.action = function(req, res, data) {
 	}
 };
 
+
+
+
+exports.process = function(req, res, data) {		
+	json.error = 'API xxx';
+	json.errorMessage = 'ppp';
+	res.json(json);
+}
+
 //## Internal Method ##//
 exports.addProject = function(req, res, data) {
 	data.table.retrieveEntity('API', 'Config', 'maxProjectId', function(error, result, response){
