@@ -36,7 +36,8 @@ exports.warrantyInfo = function(req, res, data) {
 			data.util.responseJson(req, res, data.json);
 		}else{
 			data.json.return = true;
-			data.json.success = false;
+			data.json.success = true;
+			data.json.result = [];
 			data.util.responseJson(req, res, data.json);
 		}	
 	}
