@@ -27,7 +27,7 @@ exports.process = function(req, res, data) {
 		data.json.errorMessage = 'Unknow Action';
 		data.util.responseJson(req, res, data.json);
 	}
-}
+};
 
 exports.warrantyInfo = function(req, res, data) {
 	if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
@@ -35,7 +35,8 @@ exports.warrantyInfo = function(req, res, data) {
 		data.json.result = data.result;
 		data.util.responseJson(req, res, data.json);
 	}else{
+		data.json.return = true;
 		data.json.success = false;
 		data.util.responseJson(req, res, data.json);
 	}	
-}
+};
