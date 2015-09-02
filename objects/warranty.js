@@ -7,7 +7,7 @@ exports.action = function(req, res, data) {
 			if (typeof req.body.barcode != 'undefined' && req.body.barcode != '' ) {
 					data.json.return = false;
 					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\'';
-					data.util.queryMultiple(req, res, data); //
+					data.util.queryMultiple(req, res, data); 
 			}
 		}
 		data.util.responseJson(req, res, data.json);
@@ -30,7 +30,12 @@ exports.process = function(req, res, data) {
 }
 
 exports.warrantyInfo = function(req, res, data) {
-	data.json.success = true;
-	data.json.result = data.result;
-	data.util.responseJson(req, res, data.json);
+	if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
+		data.json.success = true;
+		data.json.result = data.result;
+		data.util.responseJson(req, res, data.json);
+	}else{
+		data.json.success = false;
+		data.util.responseJson(req, res, data.json);
+	}	
 }
