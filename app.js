@@ -89,7 +89,7 @@ app.post('*', function(req, res) {
 
 		var data = {};
 		data.util = util;
-		data.method = 'checkApiKey';
+		data.action = 'checkApiKey';
 		data.command = 'EXEC sp_ApiExist \''+req.body.apiKey+'\'';
 		data.object = require('./objects/api');
 

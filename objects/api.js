@@ -32,7 +32,7 @@ exports.action = function(req, res, data) {
 
 
 exports.process = function(req, res, data) {
-	if (data.method == 'checkApiKey') {
+	if (data.action == 'checkApiKey') {
 		exports.checkApiKey(req, res, data);
 	}
 	else {
