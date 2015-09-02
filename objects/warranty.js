@@ -45,9 +45,9 @@ exports.warrantyInfo = function(req, res, data) {
 			values.ShopName = data.result[1][0];
 			values.CustomerID = data.result[1][0];
 			values.CustomerName = data.result[1][0];*/
-			values.shop = data.result[1][1].shop;
-			values.product = data.result[1][1].product;
-			values.docNo = data.result[1][1].docNo;
+			values.shop = data.result[1][0].shop;
+			values.product = data.result[1][0].product;
+			values.docNo = data.result[1][0].docNo;
 			
 			data.json.result = values;
 			data.util.responseJson(req, res, data.json);
