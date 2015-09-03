@@ -40,6 +40,7 @@ exports.warrantyInfo = function(req, res, data) {
 			values.productName = data.result[1][0].productName;
 			values.sellDate = data.result[1][0].sellDate;
 			values.warranty = data.result[1][0].warranty;
+			values.daysRemaining = data.result[1][0].daysRemaining;
 			values.expireDate = data.result[1][0].expireDate;
 			values.customer = data.result[1][0].customer;
 			values.customerName = data.result[1][0].customerName;
