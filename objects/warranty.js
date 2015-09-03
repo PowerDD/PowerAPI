@@ -49,7 +49,7 @@ exports.warrantyInfo = function(req, res, data) {
 			values.product = data.result[1][0].product;
 			values.docNo = data.result[1][0].docNo;
 			
-			data.json.result = values;
+			data.json.result = data.result;
 			data.util.responseJson(req, res, data.json);
 		}else{
 			data.json.return = true;
