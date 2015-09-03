@@ -11,7 +11,7 @@ exports.generate = function(req, res, url) {
 	.stream(function streamOut (err, stdout, stderr) {
             if (err) return next(err);
             stdout.pipe(res); //pipe to response
-            stdout.on('error', next);
+            //stdout.on('error', next);
 	});
 
 };
