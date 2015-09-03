@@ -72,7 +72,7 @@ exports.checkApiKey = function(req, res, data) {
 					}
 					else {
 						var url = req.headers.referer.split('/');
-						if ( data.result[1][0].website != url[2] ) { // ถ้าเว็บที่เรียกใช้ API ไม่ตรงกับข้อมูลในระบบ
+						if ( data.result[1][0].website.indexOf(url[2]) != -1  ) { // ถ้าเว็บที่เรียกใช้ API ไม่ตรงกับข้อมูลในระบบ
 							data.json.error = 'API0006';
 							data.json.errorMessage = 'This operation is not allowed for origin '+url[2];
 							data.util.responseJson(req, res, data.json);
