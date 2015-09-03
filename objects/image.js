@@ -7,11 +7,15 @@ exports.generate = function(req, res, url) {
 	writeStream.writable = true;
 
 	gm('/var/www/powerdd/src/img/1.jpg')
-	.resize(100, 100)
-	.stream(function streamOut (err, stdout, stderr) {
-            if (err) return next(err);
-            stdout.pipe(res); //pipe to response
-            //stdout.on('error', next);
+		.resize(500, 500)
+		.append("../public/images/watermark/remax.png")
+		.stream(function streamOut (error, stdout, stderr) {
+			if (!error) {
+				stdout.pipe(res);
+			}
+			else {
+				res.send(error);
+			}
 	});
 
 };
