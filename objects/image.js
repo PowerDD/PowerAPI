@@ -1,5 +1,6 @@
 exports.generate = function(req, res, url) {
 
+	var stream = require('stream')
 	var gm = require('gm');
 
 	gm('/var/www/powerdd/src/img/1.jpg')
