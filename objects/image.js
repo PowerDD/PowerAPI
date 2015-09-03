@@ -8,7 +8,7 @@ exports.generate = function(req, res, url) {
 
 	gm('/var/www/powerdd/src/img/1.jpg')
 		.resize(500, 500)
-		.append("../public/images/watermark/remax.png")
+		.append('/var/www/powerdd/src/img/remax.png')
 		.stream(function streamOut (error, stdout, stderr) {
 			if (!error) {
 				stdout.pipe(res);
