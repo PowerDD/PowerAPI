@@ -55,6 +55,10 @@ app.get('*', function(req, res) {
 			var barcode = require('./objects/barcode');
 			barcode.generate(req, res, url[1]);
 		}
+		else if ( data.screen == 'img' ) {
+			var image = require('./objects/image');
+			image.generate(req, res, url);
+		}
 		else {
 			fs.exists('./views/'+data.screen+'.jade', function (exists) {
 				if (exists) {
