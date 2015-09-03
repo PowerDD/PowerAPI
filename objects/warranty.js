@@ -32,25 +32,20 @@ exports.warrantyInfo = function(req, res, data) {
 		if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
 			data.json.return = true;
 			data.json.success = true;
-			var values = {};
-			/*values.ProductID = data.result[1][0];
-			values.SKU = rdata.result[1][0];
-			values.ProductName = data.result[1][0];
-			values.Barcode = data.result[1][0];
-			values.SellDate = data.result[1][0];
-			values.Warranty = data.result[1][0];
-			values.DaysRemaining = data.result[1][0];
-			values.ExpireDate = data.result[1][0];
-			values.ShopID = data.result[1][0];
-			values.ShopName = data.result[1][0];
-			values.CustomerID = data.result[1][0];
-			values.CustomerName = data.result[1][0];
-			
+			var values = {};			
 			values.shop = data.result[1][0].shop;
+			values.shopName = data.result[1][0].shopName;
+			values.barcode = data.result[1][0].barcode;		
 			values.product = data.result[1][0].product;
-			values.docNo = data.result[1][0].docNo;*/ 
-			
-			data.json.result = data.result[1];
+			values.productName = data.result[1][0].productName;
+			values.sellDate = data.result[1][0].sellDate;
+			values.warranty = data.result[1][0].warranty;
+			values.expireDate = data.result[1][0].expireDate;
+			values.customer = data.result[1][0].customer;
+			values.customerName = data.result[1][0].customerName;
+		
+			data.json.result = values;
+			//data.json.Detail = data.result[1];
 			data.util.responseJson(req, res, data.json);
 		}else{
 			data.json.return = true;
