@@ -1,29 +1,24 @@
 exports.action = function(req, res, data) {
-	data.tableName = 'Claim';
-	data.arrayNameList = '|Images|';	
-	data.arrayRejectList = '|Timestamp|'; // ชื่อ Entity ที่ไม่ต้องการให้ส่งข้อมูล;
-	data.arrayEntityList = '|ClaimDate|Product|Barcode|BarcodeClaim|Action|Description|Firstname|Lastname|Nickname|Address|Address2|Province|District|Sub_District|Tel|Email|Status|Images|CustomerTrackNo|TrackNo|CreateBy|CreateDate|UpdateBy|UpdateDate|'; // ชื่อ Entity ทั้งหมดที่เพิ่มค่าได้
-
 	try{
 		if (data.action == 'info'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
 					data.json.return = false;
 					data.util.getShop(req, res, data);
 			}
-		}		
+		}
 		else if (data.action == 'add'){
-			if (typeof req.body.shop != 'undefined' && req.body.shop != '' && 
+			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
 				typeof req.body.type != 'undefined' && req.body.type != '' &&
 				typeof req.body.barcode != 'undefined' && req.body.barcode != '' &&
 				typeof req.body.product != 'undefined' && req.body.product != '' &&
 				typeof req.body.description != 'undefined' && req.body.description != '' &&
 				typeof req.body.firstname != 'undefined' && req.body.firstname != '' &&
 				typeof req.body.lastname != 'undefined' && req.body.lastname != '' &&
-				typeof req.body.address != 'undefined' && req.body.address != '' &&				
+				typeof req.body.address != 'undefined' && req.body.address != '' &&
 				typeof req.body.province != 'undefined' && req.body.province != '' &&
 				typeof req.body.district != 'undefined' && req.body.district != '' &&
 				typeof req.body.sub_district != 'undefined' && req.body.sub_district != '' &&
-				typeof req.body.zipcode != 'undefined' && req.body.zipcode != '' &&				
+				typeof req.body.zipcode != 'undefined' && req.body.zipcode != '' &&
 				typeof req.body.tel != 'undefined' && req.body.tel != '' &&
 				typeof req.body.images != 'undefined' && req.body.images != '') {
 					data.json.return = false;
@@ -36,6 +31,10 @@ exports.action = function(req, res, data) {
 				typeof req.body.value != 'undefined' && req.body.value != '') {
 					data.json.return = false;
 					data.util.getShop(req, res, data);
+			}
+			else if ( typeof req.body.shop != 'undefined') {
+
+
 			}
 		}else {
 			data.json.error = 'API0011';
@@ -61,57 +60,9 @@ exports.actionAfterGetShop = function(req, res, data) {
 };
 //## Internal Method ##//
 exports.getGeClaimInfo = function(req, res, data) {
-	//if (typeof req.body.withuotsh == 'undefined' || req.body.withuotsh == '') req.body.withuotsh = true;
-	req.body.withuotsh = true;
-	if (req.body.status === 'SH') req.body.withuotsh = false;
-	var subQuery = ((req.body.withuotsh == true) ?  " and Status ne 'SH'" :'');
-	
-	if (typeof req.body.status != 'undefined' && req.body.status != '') {
-		subQuery += ' and Status eq '+"'"+req.body.status+"'";
-	}
-	
-	if (typeof req.body.claimdate_from != 'undefined' && req.body.claimdate_from != ''){
-		subQuery += ' and ClaimDate ge '+"datetime'"+req.body.claimdate_from+"T00:00:00Z'";
-	}
-	
-	if (typeof req.body.claimdate_to != 'undefined' && req.body.claimdate_to != ''){
-		subQuery += ' and ClaimDate le '+"datetime'"+req.body.claimdate_to+"T00:00:00Z'";
-	}
-	
-	if (typeof req.body.id != 'undefined' && req.body.id != ''){
-		var query = new data.azure.TableQuery().where('PartitionKey eq ?', data.shop).and('RowKey eq ?'+subQuery, req.body.id);
-	}else{
-		var query = new data.azure.TableQuery().where('PartitionKey eq ?', data.shop).and('RowKey ne ?'+subQuery, 'MaxID');
-	}
-	
-	data.table.queryEntities(data.tableName,query, null, function(error, result, response) {
-		if(!error){
-			if ( result.entries.length != 0 ) { // ถ้ามีข้อมูล	
-				var array = [];	
-				for ( var i=0; i < result.entries.length; i++){
-					var obj = data.util.renderData(result.entries[i], data);
-					obj.ClaimNo = obj.RowKey;
-					delete obj.RowKey;
-					delete obj.PartitionKey;
-					array.push(obj);
-				}
-				data.json.return = true;
-				data.json.success = true;
-				data.json.result = array;
-				data.util.responseJson(req, res, data.json);
-			}
-			else {				
-				data.json.return = true;
-				data.json.success = false;
-				delete data.json.error;
-				delete data.json.errorMessage;
-				data.util.responseJson(req, res, data.json);
-			}
-		}
-		else {
-			data.util.responseError(req, res, error);
-		}
-	});
+	data.json.return = true;
+	data.json.result = data.shop;
+	data.util.responseJson(req, res, data.json);
 
 };
 
@@ -136,18 +87,18 @@ exports.addClaim = function(req, res, data) {
 						var task = { PartitionKey: {'_': data.shop}, RowKey: {'_': 'MaxID'}, No: {'_': 0} };
 						var batch = new data.azure.TableBatch();
 						batch.insertEntity(task, {echoContent: true});
-						data.table.executeBatch(data.tableName, batch, function (error, result, response) {  if(error) data.util.responseError(req, res, error); else 
+						data.table.executeBatch(data.tableName, batch, function (error, result, response) {  if(error) data.util.responseError(req, res, error); else
 							exports.actionAfterGetShop(req, res, data); // เรียก Function นี้ซ้ำ
 						});
 						//## - - - - END ถ้าไม่เคยมีการกำหนดค่า MaxID - - - - ##//
 					}
 				});
-				
+
 			}else { // End Create Table
-				data.util.responseError(req, res, error);			
+				data.util.responseError(req, res, error);
 			}
 		});
-		
+
 	}catch(error) {
 		data.util.responseError(req, res, error);
 	}
@@ -162,7 +113,7 @@ exports.addClaimWeb = function(req, res, data) {
 		task.Barcode = {'_': req.body.barcode};
 		task.BarcodeClaim = {'_': ''};
 		task.Action = {'_': ''};
-		task.Product = {'_': req.body.product};		
+		task.Product = {'_': req.body.product};
 		task.Description = {'_': req.body.description};
 		task.Firstname = {'_': req.body.firstname};
 		task.Lastname = {'_': req.body.lastname};
@@ -201,7 +152,7 @@ exports.addClaimWeb = function(req, res, data) {
 			}});
 			//## - - - - END เพิ่มค่า MaxID - - - - ##//
 
-						
+
 		}});
 	}catch(error) {
 		data.util.responseError(req, res, error);
@@ -226,7 +177,7 @@ exports.updateClaim = function(req, res, data) {
 						data.json.return = true;
 						data.json.error = 'PRD0006';
 						data.json.errorMessage = 'Entity length does not match entity value length ['+checker.entityList.length+'/'+sp.length+']';
-						data.util.responseJson(req, res, data.json);							
+						data.util.responseJson(req, res, data.json);
 					}
 					else {
 						var task = { PartitionKey: {'_': data.shop}, RowKey: {'_': req.body.id} };
@@ -251,7 +202,7 @@ exports.updateClaim = function(req, res, data) {
 				data.json.error = 'PRD0002';
 				data.json.errorMessage = 'Claim No. ' + req.body.id + ' not found';
 				data.util.responseJson(req, res, data.json);
-			}			
+			}
 		});
 	}catch(error) {
 		data.util.responseError(req, res, error);

@@ -37,7 +37,7 @@ exports.queryMultiple = function(req, res, data){
 
 
 //## - - - Common Method - - - ##//
-exports.responseJson = function(req, res, json) {	
+exports.responseJson = function(req, res, json) {
 	if (json.return) {
 		delete json.return;
 		if (json.success) {
@@ -55,4 +55,35 @@ exports.responseError = function(req, res, error) {
 	json.errorMessage = error.message;
 	json.errorStack = error.stack;
 	res.json(json);
+};
+
+//## Query Data ##//
+exports.getShop = function(req, res, data) {
+	data.action = 'getShop';
+	data.command = 'EXEC sp_getShop \''+req.body.shop+'\'';
+	data.util.queryMultiple(req, res, data);
+};
+//## Return Data ##//
+exports.process = function(req, res, data) {
+	try {
+		if (data.action == 'getShop') {
+			if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
+				data.json.return = false;
+				data.shop = data.result[1][0].shop;
+				data.shopType = data.result[1][0].shopType;
+				data.object.actionAfterGetShop(req, res, data);
+			}else{
+				data.json.return = true;
+				data.json.error = 'UTL0001';
+				data.json.errorMessage = 'Shop ' + req.body.shop + ' not found';
+			}
+		}
+		else {
+			data.json.error = 'API0002';
+			data.json.errorMessage = 'Unknow Action';
+			data.util.responseJson(req, res, data.json);
+		}
+	} catch(error) {
+			exports.responseError(req, res, error);
+	}
 };
