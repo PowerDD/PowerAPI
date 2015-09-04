@@ -25,7 +25,11 @@ exports.queryMultiple = function(req, res, data){
 		request.query(data.command, function (err, recordset, returnValue) {
 			if (!err){
 				data.result = recordset;
-				data.object.process(req, res, data);
+				if(typeof data.function != 'undefined' && data.function != ''){
+					exports.process(req, res, data);
+				}else {
+					data.object.process(req, res, data);
+				}
 			}else{
 				data.json.error = 'UTL0002';
 				data.json.errorMessage = err.message;
@@ -59,14 +63,9 @@ exports.responseError = function(req, res, error) {
 
 //## Query Data ##//
 exports.getShop = function(req, res, data) {
-	// data.function = 'getShop';
-	// data.command = 'EXEC sp_getShop \''+req.body.shop+'\'';
-	// exports.queryMultiple(req, res, data);
-
-	data.json.return = true;
-	data.json.success = true;
-	data.json.result = data.object;
-	exports.responseJson(req, res, data.json);
+	data.function = 'getShop';
+	data.command = 'EXEC sp_getShop \''+req.body.shop+'\'';
+	exports.queryMultiple(req, res, data);
 };
 //## Return Data ##//
 exports.process = function(req, res, data) {
