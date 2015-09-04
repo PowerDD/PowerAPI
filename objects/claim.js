@@ -60,13 +60,13 @@ exports.actionAfterGetShop = function(req, res, data) {
 };
 //## Internal Method ##//
 exports.getGeClaimInfo = function(req, res, data) {
-	data.json.return = true;
-	data.json.success = true;
-	data.json.result = data.shop;
-	data.util.responseJson(req, res, data.json);
-
+	try {
+		data.command = 'EXEC sp_ClaimInfo \''+data.shop+'\', \''+req.body.id+'\', \''+req.body.claimdate_from+'\', \''+req.body.claimdate_to+'\', \''+req.body.status+'\'';
+		data.util.queryMultiple(req, res, data);
+	} catch(error) {
+		data.util.responseError(req, res, error);
+	}
 };
-
 exports.addClaim = function(req, res, data) {
 	try{
 		data.table.createTableIfNotExists(data.tableName, function(error, result, response){ // ถ้ายังไม่มี Table นี้ ให้สร้าง
@@ -209,4 +209,26 @@ exports.updateClaim = function(req, res, data) {
 		data.util.responseError(req, res, error);
 	}
 
+};
+
+exports.process = function(req, res, data) {
+	if (data.action == 'info') {
+			if (data.result[0][0].exist != '0' ){
+				data.json.return = true;
+				data.json.success = true;
+				data.json.result = data.result[1];
+				data.util.responseJson(req, res, data.json);
+			}else {
+				data.json.return = true;
+				data.json.success = false;
+				delete data.json.error;
+				delete data.json.errorMessage;
+				data.util.responseJson(req, res, data.json);
+			}
+	}
+	else {
+		data.json.error = 'API0002';
+		data.json.errorMessage = 'Unknow Action';
+		data.util.responseJson(req, res, data.json);
+	}
 };
