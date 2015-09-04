@@ -83,9 +83,11 @@ exports.checkApiKey = function(req, res, data) {
 					}
 				}
 				else { // ถ้า API เป็น Application
-					data.json.success = true;
+					/*data.json.success = true;
 					data.json.result = data.result;
 					data.util.responseJson(req, res, data.json);
+					*/
+					exports.callApi(req, res, data);
 				}
 			}
 		}
