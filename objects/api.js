@@ -36,7 +36,7 @@ exports.process = function(req, res, data) {
 		exports.checkApiKey(req, res, data);
 	}
 	else {
-		data.json.error = 'API0002';
+		data.json.error = 'API0007';
 		data.json.errorMessage = 'Unknow Action';
 		data.util.responseJson(req, res, data.json);
 	}
