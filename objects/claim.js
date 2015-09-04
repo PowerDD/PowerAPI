@@ -61,6 +61,7 @@ exports.actionAfterGetShop = function(req, res, data) {
 //## Internal Method ##//
 exports.getGeClaimInfo = function(req, res, data) {
 	data.json.return = true;
+	data.json.success = true;
 	data.json.result = data.shop;
 	data.util.responseJson(req, res, data.json);
 
