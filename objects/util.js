@@ -61,7 +61,7 @@ exports.responseError = function(req, res, error) {
 exports.getShop = function(req, res, data) {
 	data.action = 'getShop';
 	data.command = 'EXEC sp_getShop \''+req.body.shop+'\'';
-	data.util.queryMultiple(req, res, data);
+	exports.queryMultiple(req, res, data);
 };
 //## Return Data ##//
 exports.process = function(req, res, data) {
