@@ -1,3 +1,4 @@
+var InternalMethod = false;
 //## - - - MS SQL - - - ##//
 exports.query = function(req, res, data){
 	var sql = require('mssql');
@@ -25,7 +26,7 @@ exports.queryMultiple = function(req, res, data){
 		request.query(data.command, function (err, recordset, returnValue) {
 			if (!err){
 				data.result = recordset;
-				if(typeof data.function != 'undefined' && data.function != ''){
+				if(InternalMethod){
 					exports.process(req, res, data);
 				}else {
 					data.object.process(req, res, data);
@@ -63,14 +64,15 @@ exports.responseError = function(req, res, error) {
 
 //## Query Data ##//
 exports.getShop = function(req, res, data) {
-	data.function = 'getShop';
+	InternalMethod = true;
+	data.method = 'getShop';
 	data.command = 'EXEC sp_getShop \''+req.body.shop+'\'';
 	exports.queryMultiple(req, res, data);
 };
 //## Return Data ##//
 exports.process = function(req, res, data) {
 	try {
-		if (data.function == 'getShop') {
+		if (data.method == 'getShop') {
 			if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
 				data.json.return = false;
 				data.shop = data.result[1][0].shop;
@@ -84,7 +86,7 @@ exports.process = function(req, res, data) {
 		}
 		else {
 			data.json.error = 'API0002';
-			data.json.errorMessage = 'Unknow Action';
+			data.json.errorMessage = 'Unknow Method';
 			exports.responseJson(req, res, data.json);
 		}
 	} catch(error) {
