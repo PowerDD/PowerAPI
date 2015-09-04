@@ -31,8 +31,13 @@ exports.queryMultiple = function(req, res, data){
 		var request = new sql.Request(connection);
 		request.multiple = true;
 		request.query(data.command, function (err, recordset, returnValue) {
-			if (!err){				
-				if (recordset.length > 0) {
+			if (!err){
+				data.json.return = true;
+				data.json.success = true;
+				data.json.result = recordset.length ;
+				exports.responseJson(req, res, data.json);
+
+				/*if (recordset.length > 0) {
 					data.result = recordset;
 					data.object.process(req, res, data);
 				}
@@ -42,7 +47,7 @@ exports.queryMultiple = function(req, res, data){
 					data.json.errorMessage = 'Data Not found';
 					exports.responseJson(req, res, data.json);
 				}
-			}
+			}*/
 			else {
 				data.json.error = 'UTL0003';
 				data.json.errorMessage = err.message;
