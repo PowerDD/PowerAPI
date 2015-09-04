@@ -46,8 +46,8 @@ exports.queryMultiple = function(req, res, data){
 					data.json.error = 'UTL0001';
 					data.json.errorMessage = 'Data Not found';
 					exports.responseJson(req, res, data.json);
-				}
-			}*/
+				}*/
+			}
 			else {
 				data.json.error = 'UTL0003';
 				data.json.errorMessage = err.message;
