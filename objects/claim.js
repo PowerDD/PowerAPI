@@ -3,7 +3,8 @@ exports.action = function(req, res, data) {
 		if (data.action == 'info'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
 					data.json.return = false;
-					data.command = 'EXEC sp_ClaimInfo \''+data.shop+'\'';//, \''+req.body.id+'\', \''+req.body.claimdate_from+'\', \''+req.body.claimdate_to+'\', \''+req.body.status+'\'
+					data.json.returnResult = true;
+					data.command = 'EXEC sp_ClaimInfo \''+data.shop+'\', \''+req.body.id+'\', \''+req.body.claimdate_from+'\', \''+req.body.claimdate_to+'\', \''+req.body.status+'\'';
 					data.util.query(req, res, data);
 			}
 		}
@@ -41,31 +42,5 @@ exports.action = function(req, res, data) {
 	}
 	catch(error) {
 		data.util.responseError(req, res, error);
-	}
-};
-exports.process = function(req, res, data) {
-	if (data.action == 'info') {
-		data.json.return = true;
-		data.json.success = true;
-		data.json.result = data.result;
-		data.util.responseJson(req, res, data.json);
-
-			/*if (data.result[0][0].exist != '0' ){
-				data.json.return = true;
-				data.json.success = true;
-				data.json.result = data.result;
-				data.util.responseJson(req, res, data.json);
-			}else {
-				data.json.return = true;
-				data.json.success = false;
-				delete data.json.error;
-				delete data.json.errorMessage;
-				data.util.responseJson(req, res, data.json);
-			}*/
-	}
-	else {
-		data.json.error = 'API0002';
-		data.json.errorMessage = 'Unknow Action';
-		data.util.responseJson(req, res, data.json);
 	}
 };
