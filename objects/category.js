@@ -52,6 +52,7 @@ exports.process = function(req, res, data) {
 		data.json.success = true;
 		data.json.return = true;
 		data.json.result = data.result;
+		data.json.test = data.json.return;
 		data.util.responseJson(req, res, data.json);
 	}
 	else {

@@ -11,6 +11,7 @@ exports.query = function(req, res, data){
 					data.object.process(req, res, data);
 				}
 				else {
+					data.json.return = true;
 					data.json.error = 'UTL0001';
 					data.json.errorMessage = 'Data Not found';
 					exports.responseJson(req, res, data.json);
@@ -37,6 +38,7 @@ exports.queryMultiple = function(req, res, data){
 					data.object.process(req, res, data);
 				}
 				else {
+					data.json.return = true;
 					data.json.error = 'UTL0001';
 					data.json.errorMessage = 'Data Not found';
 					exports.responseJson(req, res, data.json);
