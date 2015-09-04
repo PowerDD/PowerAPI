@@ -65,7 +65,7 @@ exports.getShop = function(req, res, data) {
 
 	data.json.return = true;
 	data.json.success = true;
-	data.json.result = data.action;
+	data.json.result = data.object;
 	exports.responseJson(req, res, data.json);
 };
 //## Return Data ##//
