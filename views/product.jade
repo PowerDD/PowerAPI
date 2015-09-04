@@ -29,7 +29,7 @@ block content
 										input.form-control.type(type='text', placeholder='Data Type')
 										p.help-block
 											span.font-pre.label.label-warning type
-											|   ประเภทของข้อมูล (item, category, categoryUrl, brand, brandUrl, all)
+											|   ประเภทของข้อมูล (categoryName)
 								.form-group
 									label.col-sm-2.control-label(for='input') Value
 									.col-sm-10
@@ -37,13 +37,6 @@ block content
 										p.help-block
 											span.font-pre.label.label-warning value
 											|   ค่าที่ต้องการใช้ค้นหาข้อมูล
-								.form-group
-									label.col-sm-2.control-label(for='input') Entity
-									.col-sm-10
-										input.form-control.entity(type='text', placeholder='Entity')
-										p.help-block
-											span.font-pre.label.label-default entity
-											|   ชื่อคอลัมน์ที่ต้อง (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Name,Price)
 								.form-group
 									label.col-sm-2.control-label(for='input') Active
 									.col-sm-10
@@ -62,6 +55,7 @@ block content
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
