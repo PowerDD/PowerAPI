@@ -46,7 +46,6 @@ exports.action = function(req, res, data) {
 exports.process = function(req, res, data) {
 	if (data.action == 'info') {
 		data.json.return = true;
-		data.json.success = true;
 		data.json.result = data.result;
 		data.util.responseJson(req, res, data.json);
 

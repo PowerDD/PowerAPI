@@ -31,7 +31,7 @@ exports.queryMultiple = function(req, res, data){
 		var request = new sql.Request(connection);
 		request.multiple = true;
 		request.query(data.command, function (err, recordset, returnValue) {
-			if (!err){
+			if (!err){				
 				if (recordset.length > 0) {
 					data.result = recordset;
 					data.object.process(req, res, data);
