@@ -7,7 +7,21 @@ exports.query = function(req, res, data){
 			if (!err){
 				if (recordset.length > 0) {
 					data.result = recordset;
-					data.object.process(req, res, data);
+					if ( typeof data.json.returnResult == 'undefined' ) {
+						data.object.process(req, res, data);
+					}
+					else {
+						if ( data.json.returnResult ) {
+							delete data.json.returnResult;
+							data.json.success = true;
+							data.json.return = true;
+							data.json.result = data.result;
+							data.util.responseJson(req, res, data.json);
+						}
+						else {	
+							data.object.process(req, res, data);
+						}
+					}
 				}
 				else {
 					data.json.return = true;
@@ -34,7 +48,21 @@ exports.queryMultiple = function(req, res, data){
 			if (!err){
 				if (recordset.length > 0) {
 					data.result = recordset;
-					data.object.process(req, res, data);
+					if ( typeof data.json.returnResult == 'undefined' ) {
+						data.object.process(req, res, data);
+					}
+					else {
+						if ( data.json.returnResult ) {
+							delete data.json.returnResult;
+							data.json.success = true;
+							data.json.return = true;
+							data.json.result = data.result;
+							data.util.responseJson(req, res, data.json);
+						}
+						else {	
+							data.object.process(req, res, data);
+						}
+					}
 				}
 				else {
 					data.json.return = true;

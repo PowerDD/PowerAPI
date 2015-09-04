@@ -5,6 +5,7 @@ exports.action = function(req, res, data) {
 		if (data.action == 'info'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
 				data.json.return = false;
+				data.json.returnResult = true;
 				data.command = 'EXEC sp_ShopCategory \''+req.body.shop+'\'';
 				data.util.query(req, res, data); 
 			}
@@ -48,11 +49,7 @@ exports.action = function(req, res, data) {
 
 //## Internal Method ##//
 exports.process = function(req, res, data) {
-	if (data.action == 'info') {
-		data.json.success = true;
-		data.json.return = true;
-		data.json.result = data.result;
-		data.util.responseJson(req, res, data.json);
+	if (data.action == 'xxx') {
 	}
 	else {
 		data.json.error = 'API0002';
