@@ -59,9 +59,14 @@ exports.responseError = function(req, res, error) {
 
 //## Query Data ##//
 exports.getShop = function(req, res, data) {
-	data.function = 'getShop';
-	data.command = 'EXEC sp_getShop \''+req.body.shop+'\'';
-	exports.queryMultiple(req, res, data);
+	// data.function = 'getShop';
+	// data.command = 'EXEC sp_getShop \''+req.body.shop+'\'';
+	// exports.queryMultiple(req, res, data);
+
+	data.json.return = true;
+	data.json.success = true;
+	data.json.result = data.action;
+	exports.responseJson(req, res, data.json);
 };
 //## Return Data ##//
 exports.process = function(req, res, data) {
