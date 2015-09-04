@@ -1,4 +1,4 @@
-var InternalMethod = false;
+//var InternalMethod = false;
 //## - - - MS SQL - - - ##//
 exports.query = function(req, res, data){
 	var sql = require('mssql');
@@ -6,11 +6,18 @@ exports.query = function(req, res, data){
 		var request = new sql.Request(connection);
 		request.query(data.command, function (err, recordset, returnValue) {
 			if (!err){
-				data.result = recordset;
-				data.object.process(req, res, data);
-			}else{
-				var json = {};
-				data.json.error = 'UTL0001';
+				if (recordset.length > 0) {
+					data.result = recordset;
+					data.object.process(req, res, data);
+				}
+				else {
+					data.json.error = 'UTL0001';
+					data.json.errorMessage = 'Data Not found';
+					exports.responseJson(req, res, data.json);
+				}
+			}
+			else {
+				data.json.error = 'UTL0002';
 				data.json.errorMessage = err.message;
 				exports.responseJson(req, res, data.json);
 			}
@@ -25,14 +32,25 @@ exports.queryMultiple = function(req, res, data){
 		request.multiple = true;
 		request.query(data.command, function (err, recordset, returnValue) {
 			if (!err){
+				if (recordset.length > 0) {
+					data.result = recordset;
+					data.object.process(req, res, data);
+				}
+				else {
+					data.json.error = 'UTL0001';
+					data.json.errorMessage = 'Data Not found';
+					exports.responseJson(req, res, data.json);
+				}
+				/*
 				data.result = recordset;
 				if(InternalMethod){
 					exports.process(req, res, data);
 				}else {
 					data.object.process(req, res, data);
-				}
-			}else{
-				data.json.error = 'UTL0002';
+				}*/
+			}
+			else {
+				data.json.error = 'UTL0003';
 				data.json.errorMessage = err.message;
 				exports.responseJson(req, res, data.json);
 			}
@@ -62,6 +80,7 @@ exports.responseError = function(req, res, error) {
 	res.json(json);
 };
 
+/*
 //## Query Data ##//
 exports.getShop = function(req, res, data) {
 	InternalMethod = true;
@@ -69,6 +88,7 @@ exports.getShop = function(req, res, data) {
 	data.command = 'EXEC sp_getShop \''+req.body.shop+'\'';
 	exports.queryMultiple(req, res, data);
 };
+
 //## Return Data ##//
 exports.process = function(req, res, data) {
 	try {
@@ -93,3 +113,4 @@ exports.process = function(req, res, data) {
 			exports.responseError(req, res, error);
 	}
 };
+*/
