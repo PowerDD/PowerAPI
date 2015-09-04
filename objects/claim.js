@@ -2,8 +2,13 @@ exports.action = function(req, res, data) {
 	try{
 		if (data.action == 'info'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
-					data.json.return = false;
-					data.util.getShop(req, res, data);
+					/*data.json.return = false;
+					data.util.getShop(req, res, data);*/
+
+					data.json.return = true;
+					data.json.success = true;
+					data.json.result = data.action;
+					data.util.responseJson(req, res, data.json);
 			}
 		}
 		else if (data.action == 'add'){
