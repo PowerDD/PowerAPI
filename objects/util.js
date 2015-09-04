@@ -59,14 +59,14 @@ exports.responseError = function(req, res, error) {
 
 //## Query Data ##//
 exports.getShop = function(req, res, data) {
-	data.action = 'getShop';
+	data.function = 'getShop';
 	data.command = 'EXEC sp_getShop \''+req.body.shop+'\'';
 	exports.queryMultiple(req, res, data);
 };
 //## Return Data ##//
 exports.process = function(req, res, data) {
 	try {
-		if (data.action == 'getShop') {
+		if (data.function == 'getShop') {
 			if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
 				data.json.return = false;
 				data.shop = data.result[1][0].shop;
@@ -81,7 +81,7 @@ exports.process = function(req, res, data) {
 		else {
 			data.json.error = 'API0002';
 			data.json.errorMessage = 'Unknow Action';
-			data.util.responseJson(req, res, data.json);
+			exports.responseJson(req, res, data.json);
 		}
 	} catch(error) {
 			exports.responseError(req, res, error);
