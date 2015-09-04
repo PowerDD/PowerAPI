@@ -61,7 +61,7 @@ exports.actionAfterGetShop = function(req, res, data) {
 //## Internal Method ##//
 exports.getGeClaimInfo = function(req, res, data) {
 	try {
-		data.command = 'EXEC sp_ClaimInfo \''+data.shop+'\', \''+req.body.id+'\', \''+req.body.claimdate_from+'\', \''+req.body.claimdate_to+'\', \''+req.body.status+'\'';
+		data.command = 'EXEC sp_ClaimInfo \''+data.shop+'\'';//, \''+req.body.id+'\', \''+req.body.claimdate_from+'\', \''+req.body.claimdate_to+'\', \''+req.body.status+'\'
 		data.util.queryMultiple(req, res, data);
 	} catch(error) {
 		data.util.responseError(req, res, error);
