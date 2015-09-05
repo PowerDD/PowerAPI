@@ -93,7 +93,7 @@ exports.mkdir = function(req, res, data) {
 	var shell = require('shelljs');
 	shell.exec('mkdir "/var/www/powerdd/src/img/product/'+data.result[0].shop+'"', {async:false});
 	for(i=0; i<data.result.length; i++) {
-		shell.exec('mkdir "/var/www/powerdd/src/img/product/'+data.result[i].shop+'/'+data.result[i].url+'"', {async:true});
+		shell.exec('mkdir "/var/www/powerdd/src/img/product/'+data.result[i].shop+'/'+data.result[i].sku+'"', {async:true});
 	}
 	data.json.return = true;
 	data.json.success = true;
