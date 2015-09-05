@@ -72,4 +72,7 @@ exports.mkdir = function(req, res, data) {
 	for(i=0; i<data.result.length; i++) {
 		shell.exec('mkdir /var/www/powerdd/src/img/category/88888888/'+data.result[i].name, {async:true});
 	}
+	data.json.return = true;
+	data.json.success = true;
+	data.util.responseJson(req, res, data.json);
 };
