@@ -36,7 +36,7 @@ exports.action = function(req, res, data) {
 		else if (data.action == 'mkdir'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
 				data.json.return = false;
-				data.command = 'EXEC sp_ShopCategory \''+req.body.shop+'\'';
+				data.command = 'EXEC sp_ShopCategory4Mkdir \''+req.body.shop+'\'';
 				data.util.query(req, res, data); 
 			}
 		}
@@ -68,8 +68,9 @@ exports.process = function(req, res, data) {
 
 exports.mkdir = function(req, res, data) {
 	var shell = require('shelljs');
+	shell.exec('mkdir "/var/www/powerdd/src/img/category/'+data.result[i].shop+'"', {async:true});
 	for(i=0; i<data.result.length; i++) {
-		shell.exec('mkdir "/var/www/powerdd/src/img/category/88888888/'+data.result[i].name+'"', {async:true});
+		shell.exec('mkdir "/var/www/powerdd/src/img/category/'+data.result[i].shop+'/'+data.result[i].url+'"', {async:true});
 	}
 	data.json.return = true;
 	data.json.success = true;
