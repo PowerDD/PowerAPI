@@ -5,7 +5,7 @@ exports.action = function(req, res, data) {
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
 				typeof req.body.type != 'undefined' && req.body.type != '' &&
 				typeof req.body.value != 'undefined' && req.body.value != '') {
-				var type = '|categoryName|'; // ชื่อ type ที่สามารถเรียกดูข้อมูลได้
+				var type = '|byCategoryName|'; // ชื่อ type ที่สามารถเรียกดูข้อมูลได้
 				if ( type.indexOf('|'+req.body.type+'|') == -1 ) { // ถ้าชื่อ Entity ไม่ถูกต้อง
 					data.json.return = true;
 					data.json.error = 'PRD0001';
@@ -15,8 +15,10 @@ exports.action = function(req, res, data) {
 				else {
 					data.json.return = false;
 					data.json.returnResult = true;
-					if (req.body.type == 'categoryName') 
-						data.command = 'EXEC sp_ShopProductByCategoryName \''+req.body.shop+'\', \''+req.body.value+'\'';
+					if (req.body.type == 'byCategoryName') 
+						data.command = 'EXEC sp_ShopProductByCategoryName \''+req.body.shop+'\', \''+req.body.value+'\', NULL, ' + 
+							( (typeof req.body.active != 'undefined' && req.body.active != '') ? '\''+req.body.active+'\'' : 'NULL' ) + 
+							', '+( (typeof req.body.visible != 'undefined' && req.body.visible != '') ? '\''+req.body.visible+'\'' : 'NULL' )
 					data.util.query(req, res, data); 
 				}
 			}
