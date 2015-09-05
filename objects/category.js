@@ -57,11 +57,19 @@ exports.action = function(req, res, data) {
 
 //## Internal Method ##//
 exports.process = function(req, res, data) {
-	if (data.action == 'xxx') {
+	if (data.action == 'mkdir') {
+		exports.mkdir(req, res, data);
 	}
 	else {
 		data.json.error = 'API0002';
 		data.json.errorMessage = 'Unknow Action';
 		data.util.responseJson(req, res, data.json);
+	}
+};
+
+exports.mkdir = function(req, res, data) {
+	var shell = require('shelljs');
+	for(i=0; i<data.result.length; i++) {
+		shell.exec('mkdir /var/www/powerdd/src/img/category/88888888/'+data.result[i].name, {async:true});
 	}
 };
