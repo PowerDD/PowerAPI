@@ -68,7 +68,7 @@ exports.process = function(req, res, data) {
 
 exports.mkdir = function(req, res, data) {
 	var shell = require('shelljs');
-	shell.exec('mkdir "/var/www/powerdd/src/img/category/'+data.result[i].shop+'"', {async:true});
+	shell.exec('mkdir "/var/www/powerdd/src/img/category/'+data.result[0].shop+'"', {async:false});
 	for(i=0; i<data.result.length; i++) {
 		shell.exec('mkdir "/var/www/powerdd/src/img/category/'+data.result[i].shop+'/'+data.result[i].url+'"', {async:true});
 	}
