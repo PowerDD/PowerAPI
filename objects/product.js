@@ -35,8 +35,10 @@ exports.action = function(req, res, data) {
 				typeof req.body.id != 'undefined' && req.body.id != '' &&
 				typeof req.body.entity != 'undefined' && req.body.entity != '' &&
 				typeof req.body.value != 'undefined' && req.body.value != '') {
-				data.json.return = false;
-				data.util.getShop(req, res, data);
+					data.json.return = false;
+					data.json.returnResult = true;
+					data.command = 'EXEC sp_ShopProductUpdate \''+req.body.shop+'\', \''+req.body.id+'\', \''+req.body.entity+'\', \''+req.body.value+'\'';
+					data.util.execute(req, res, data); 
 			}
 		}
 		else if (data.action == 'delete'){

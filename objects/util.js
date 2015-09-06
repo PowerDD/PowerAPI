@@ -80,6 +80,38 @@ exports.queryMultiple = function(req, res, data){
 	 });
 };
 
+exports.execute = function(req, res, data){
+	var sql = require('mssql');
+	var connection = new sql.Connection(global.config.mssql, function (err) {
+		var request = new sql.Request(connection);
+		request.query(data.command, function (err, recordset, returnValue) {
+			if (!err){
+				data.result = returnValue;
+				if ( typeof data.json.returnResult == 'undefined' ) {
+					data.object.process(req, res, data);
+				}
+				else {
+					if ( data.json.returnResult ) {
+						delete data.json.returnResult;
+						data.json.success = true;
+						data.json.return = true;
+						data.json.result = data.result;
+						data.util.responseJson(req, res, data.json);
+					}
+					else {	
+						data.object.process(req, res, data);
+					}
+				}
+			}
+			else {
+				data.json.error = 'UTL0004';
+				data.json.errorMessage = err.message;
+				exports.responseJson(req, res, data.json);
+			}
+		});
+	 });
+};
+
 //## - - - Common Method - - - ##//
 exports.responseJson = function(req, res, json) {
 	if (json.return) {
