@@ -6,7 +6,7 @@ exports.action = function(req, res, data) {
 				&& typeof req.body.type != 'undefined' && req.body.type != '') {
 				data.json.return = false;
 				data.json.returnResult = true;
-				data.command = 'EXEC sp_ShopProductProperties'+((req.body.type == 'special') ? 'Special' : 'Common')+' \''+req.body.shop+'\'';
+				data.command = 'EXEC '+((req.body.type == 'category') ? 'sp_ShopCategoryEntity' : 'sp_ShopProductPropertiesCommon')+' \''+req.body.shop+'\'';
 				data.util.query(req, res, data); 
 			}
 		}
