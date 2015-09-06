@@ -109,13 +109,14 @@ exports.callApi = function(req, res, data) {
 			if (exists) {
 				delete data.object;
 				data.object = require('../objects/'+control);
+				data.json.error = 'API0010';
+				data.json.errorMessage = 'Please fill out all required fields';
 				data.object.action(req, res, data);
 			}
 			else {
-				data.json.data = __dirname;
-				data.json.error = 'API0008';
-				data.json.errorMessage = 'API ' + control.toUpperCase() + ' is not implemented';
-				data.util.responseJson(req, res, data.json);
+				json.error = 'API0008';
+				json.errorMessage = 'API ' + data.control.toUpperCase() + ' is not implemented';
+				res.json(json);
 			}
 		});
 	}
