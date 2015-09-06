@@ -93,9 +93,9 @@ html
 										i(class=(data.screen === 'teamwork' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
 										|  Teamwork
 
-						li(class=(data.screen === 'product' || data.screen === 'category' || data.screen === 'brand' || data.screen === 'warranty' || data.screen === 'claim'? 'treeview active' : 'treeview'))
+						li(class=(data.screen === 'product' || data.screen === 'category' || data.screen === 'brand' || data.screen === 'warranty' || data.screen === 'claim' || data.screen === 'properties' ? 'treeview active' : 'treeview'))
 							a(href="#")
-								i(class=(data.screen === 'product' || data.screen === 'category' || data.screen === 'brand' || data.screen === 'warranty' || data.screen === 'claim' ? 'fa fa-cubes text-aqua' : 'fa fa-cubes'))
+								i(class=(data.screen === 'product' || data.screen === 'category' || data.screen === 'brand' || data.screen === 'warranty' || data.screen === 'claim' || data.screen === 'properties' ? 'fa fa-cubes text-aqua' : 'fa fa-cubes'))
 								span  Product
 								i.fa.fa-angle-left.pull-right
 							ul.treeview-menu
@@ -111,6 +111,10 @@ html
 									a(href="./brand")
 										i(class=(data.screen === 'brand' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
 										|  Brand
+								li(class=(data.screen === 'properties' ? 'active' : ''))
+									a(href="./properties")
+										i(class=(data.screen === 'properties' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
+										|  Properties
 								li(class=(data.screen === 'warranty' ? 'active' : ''))
 									a(href="./warranty")
 										i(class=(data.screen === 'warranty' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))

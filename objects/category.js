@@ -1,5 +1,4 @@
 exports.action = function(req, res, data) {
-	data.tableName = 'Category';
 	
 	try {
 		if (data.action == 'info'){
