@@ -8,7 +8,7 @@ block content
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
 					a(data-toggle='collapse', data-parent='#accordion', href='#info', aria-expanded='false')
-						strong Product Properties Information  
+						strong Product Common Properties Information  
 						&#58; ข้อมูลคุณสมบัติทั่วไปของสินค้า
 			#info.panel-collapse.collapse(role='tabpanel')
 				.panel-body
@@ -23,6 +23,13 @@ block content
 										p.help-block
 											span.font-pre.label.label-warning shop
 											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Data Type', value="common")
+										p.help-block
+											span.font-pre.label.label-warning type
+											|   ประเภทข้อมูล (common, special)
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit

@@ -2,10 +2,11 @@ exports.action = function(req, res, data) {
 	
 	try {
 		if (data.action == 'info'){
-			if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
+			if (typeof req.body.shop != 'undefined' && req.body.shop != '' 
+				&& typeof req.body.type != 'undefined' && req.body.type != '') {
 				data.json.return = false;
 				data.json.returnResult = true;
-				data.command = 'EXEC sp_ShopProductPropertiesCommon \''+req.body.shop+'\'';
+				data.command = 'EXEC sp_ShopProductProperties'+((req.body.type == 'special') ? 'Special' : 'Common')+' \''+req.body.shop+'\'';
 				data.util.query(req, res, data); 
 			}
 		}
