@@ -14,15 +14,19 @@ exports.action = function(req, res, data) {
 				}
 				else {
 					data.json.return = false;
-					data.json.returnResult = true;
-					if (req.body.type == 'byCategoryName') 
+					if (req.body.type == 'byCategoryName') {
+						data.json.returnResult = true;
 						data.command = 'EXEC sp_ShopProductByCategoryName \''+req.body.shop+'\', \''+req.body.value+'\', NULL, ' + 
 							( (typeof req.body.active != 'undefined' && req.body.active != '') ? '\''+req.body.active+'\'' : 'NULL' ) + 
 							', '+( (typeof req.body.visible != 'undefined' && req.body.visible != '') ? '\''+req.body.visible+'\'' : 'NULL' );
-					else if (req.body.type == 'byCategoryUrl4Web') 
+					}
+					else if (req.body.type == 'byCategoryUrl4Web') {
+						data.json.returnResult = true;
 						data.command = 'EXEC sp_ShopProductByCategoryUrl \''+req.body.shop+'\', \''+req.body.value+'\'';
-					else if (req.body.type == 'item') 
+					}
+					else if (req.body.type == 'item') {
 						data.command = 'EXEC sp_ShopProductItem \''+req.body.shop+'\', \''+req.body.value+'\'';
+					}
 					data.util.query(req, res, data); 
 				}
 			}
@@ -90,6 +94,11 @@ exports.process = function(req, res, data) {
 	if (data.action == 'mkdir') {
 		exports.mkdir(req, res, data);
 	}
+	if (data.action == 'info') {
+		if (req.body.type == 'item') {
+			exports.getItemImage(req, res, data);
+		}
+	}
 	else {
 		data.json.error = 'API0002';
 		data.json.errorMessage = 'Unknow Action';
@@ -104,6 +113,13 @@ exports.mkdir = function(req, res, data) {
 		shell.exec('mkdir "/var/www/powerdd/src/img/product/'+data.result[i].shop+'/'+data.result[i].sku+'"', {async:true});
 	}
 	data.json.return = true;
+	data.json.success = true;
+	data.util.responseJson(req, res, data.json);
+};
+
+exports.getItemImage = function(req, res, data) {
+	data.json.return = true;
+	data.json.result = data.result[0];
 	data.json.success = true;
 	data.util.responseJson(req, res, data.json);
 };
