@@ -15,7 +15,7 @@ exports.action = function(req, res, data) {
 		data.util.responseError(req, res, error);
 	}
 };
-/*
+
 //## Internal Method ##//
 exports.process = function(req, res, data) {
 	if (data.action == 'info') {
@@ -37,12 +37,12 @@ exports.warrantyInfo = function(req, res, data) {
 			data.util.responseJson(req, res, data.json);
 		}else{
 			data.json.return = true;
-			data.json.success = true;
-			data.json.result = [];
+			data.json.error = 'UTL0001';
+			data.json.errorMessage = 'Data Not found';
 			data.util.responseJson(req, res, data.json);
 		}
 	}
 	catch(error) {
 		data.util.responseError(req, res, error);
 	}
-};*/
+};
