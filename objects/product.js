@@ -124,6 +124,7 @@ exports.getItemImage = function(req, res, data) {
 	{
 		var sp = data.result[0].image.split(',');
 		imageList.push(sp[0]);
+		data.result[0].cover = sp[0];
 	}
 
 	var fs = require('fs');
