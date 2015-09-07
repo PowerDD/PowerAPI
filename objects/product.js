@@ -120,6 +120,7 @@ exports.mkdir = function(req, res, data) {
 exports.getItemImage = function(req, res, data) {
 	data.json.return = true;
 	data.json.result = data.result[0];
+
 	data.json.success = true;
 	data.util.responseJson(req, res, data.json);
 };
