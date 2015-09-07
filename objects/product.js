@@ -118,6 +118,32 @@ exports.mkdir = function(req, res, data) {
 };
 
 exports.getItemImage = function(req, res, data) {
+
+	delete data.result[0].image;
+
+	var files = fs.readdirSync('/var/www/powerdd/src/img/product/'+data.result[0].shop+'/'+data.result[0].sku+'/');
+	var type = '|jpg|jpeg|png|gif|'; // ชื่อ type รูปภาพ
+	var image = [];
+	var imageDetail = [];
+	for (f = 0; f < files.length; f++) {
+		var sp = files[f].toLowerCase().split('.');
+		if ( type.indexOf('|'+sp[sp.length-1]+'|') == -1 ) {
+			if ( data.util.isNumeric(parseInt(sp[0])) ) {
+				image.push( files[f] );
+			}
+			else if ( files[f].toLowerCase().substr(0,1) == 'd' ) {
+				imageDetail.push( files[f] );
+			}
+		}
+	}
+	if (image.length > 0) {
+		data.result[0].image = image;
+	}
+	if (imageDetail.length > 0) {
+		data.result[0].image = imageDetail;
+		imageDetail.sort();
+	}
+
 	data.json.return = true;
 	data.json.result = data.result[0];
 

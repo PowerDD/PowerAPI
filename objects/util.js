@@ -123,6 +123,7 @@ exports.responseJson = function(req, res, json) {
 		res.json(json);
 	}
 };
+
 exports.responseError = function(req, res, error) {
 	var json = {};
 	json.success = false;
@@ -130,4 +131,8 @@ exports.responseError = function(req, res, error) {
 	json.errorMessage = error.message;
 	json.errorStack = error.stack;
 	res.json(json);
+};
+
+exports.isNumeric = function(input) {
+    return (input - 0) == input && (''+input).trim().length > 0;
 };
