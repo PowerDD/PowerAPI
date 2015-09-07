@@ -21,6 +21,8 @@ exports.action = function(req, res, data) {
 							', '+( (typeof req.body.visible != 'undefined' && req.body.visible != '') ? '\''+req.body.visible+'\'' : 'NULL' );
 					else if (req.body.type == 'byCategoryUrl4Web') 
 						data.command = 'EXEC sp_ShopProductByCategoryUrl \''+req.body.shop+'\', \''+req.body.value+'\'';
+					else if (req.body.type == 'item') 
+						data.command = 'EXEC sp_ShopProductItem \''+req.body.shop+'\', \''+req.body.value+'\'';
 					data.util.query(req, res, data); 
 				}
 			}
