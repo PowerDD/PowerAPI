@@ -119,6 +119,13 @@ exports.mkdir = function(req, res, data) {
 
 exports.getItemImage = function(req, res, data) {
 
+	var imageList = [];
+	if ( data.result[0].image != null )
+	{
+		var sp = data.result[0].image.split(',');
+		imageList.push(sp[0]);
+	}
+
 	var fs = require('fs');
 	delete data.result[0].image;
 
@@ -128,12 +135,14 @@ exports.getItemImage = function(req, res, data) {
 	var imageDetail = [];
 	for (f = 0; f < files.length; f++) {
 		var sp = files[f].toLowerCase().split('.');
-		if ( type.indexOf('|'+sp[sp.length-1]+'|') == -1 ) {
+		if ( type.indexOf('|'+sp[sp.length-1]+'|') != -1 ) {
 			if ( data.util.isNumeric(parseInt(sp[0])) ) {
 				image.push( files[f] );
+				imageList.push(files[f]);
 			}
 			else if ( files[f].toLowerCase().substr(0,1) == 'd' ) {
 				imageDetail.push( files[f] );
+				imageList.push(files[f]);
 			}
 		}
 	}
@@ -141,8 +150,8 @@ exports.getItemImage = function(req, res, data) {
 		data.result[0].image = image;
 	}
 	if (imageDetail.length > 0) {
-		data.result[0].image = imageDetail;
 		imageDetail.sort();
+		data.result[0].imageDetail = imageDetail;
 	}
 
 	data.json.return = true;
@@ -150,4 +159,12 @@ exports.getItemImage = function(req, res, data) {
 
 	data.json.success = true;
 	data.util.responseJson(req, res, data.json);
+
+	if (imageList.length > 0) {
+		data.json.return = false;
+		data.json.returnResult = true;
+		data.command = 'UPDATE Product SET image = \''+imageList.toString()+'\' WHERE shop = \''+data.result[0].shop+'\' AND sku = \''+data.result[0].sku+'\'';
+		data.util.query(req, res, data);
+	}
+
 };
