@@ -28,6 +28,7 @@ exports.process = function(req, res, data) {
 	if (data.action == 'info') {
 		exports.warrantyInfo(req, res, data);
 	}else if (data.action == 'remax') {
+		data.json.return = true;		
 		exports.productRemax(req, res, data);
 	}else{ 
 		data.json.error = 'API0002';
@@ -57,7 +58,6 @@ exports.warrantyInfo = function(req, res, data) {
 exports.productRemax = function(req, res, data) {
 	try{
 		if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
-			data.json.return = true;
 			data.json.success = true;
 			var values = {};
 			values.productName = data.result[1][0].productName;
