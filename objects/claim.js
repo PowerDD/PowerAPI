@@ -2,11 +2,9 @@ exports.action = function(req, res, data) {
 	try{
 		if (data.action == 'info'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
-					//data.json.return = false;
+					data.json.return = false;
 					data.json.returnResult = true;
-					data.command = 'EXEC sp_ClaimInfo \''+data.shop+'\', \''+req.body.id+'\', \''+req.body.claimdate_from+'\', \''+req.body.claimdate_to+'\', \''+req.body.status+'\'';
-					data.json.result = data.command;
-					data.util.responseJson(req, res, data.json);
+					data.command = 'EXEC sp_ClaimInfo \''+req.body.shop+'\', \''+req.body.id+'\', \''+req.body.claimdate_from+'\', \''+req.body.claimdate_to+'\', \''+req.body.status+'\'';
 					data.util.query(req, res, data);
 			}
 		}
