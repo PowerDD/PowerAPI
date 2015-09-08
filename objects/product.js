@@ -155,6 +155,16 @@ exports.getItemImage = function(req, res, data) {
 		data.result[0].imageDetail = imageDetail;
 	}
 
+	if ( data.result[0].detail != null )
+	{
+		delete data.result[0].detail;
+		data.result[0].detail = {};
+		var sp = data.result[0].detail.split("\n");
+		if ( sp.trim() != '' ){
+			data.result[0].detail.push( sp.trim() );
+		}
+	}
+
 	data.json.return = true;
 	data.json.result = data.result[0];
 
