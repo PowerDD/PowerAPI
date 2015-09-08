@@ -10,7 +10,7 @@ exports.action = function(req, res, data) {
 		}
 		else if (data.action == 'add'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
-				typeof req.body.type != 'undefined' && req.body.type != '' &&
+				typeof req.body.from != 'undefined' && req.body.from != '' &&
 				typeof req.body.barcode != 'undefined' && req.body.barcode != '' &&
 				typeof req.body.product != 'undefined' && req.body.product != '' &&
 				typeof req.body.description != 'undefined' && req.body.description != '' &&
@@ -24,15 +24,20 @@ exports.action = function(req, res, data) {
 				typeof req.body.tel != 'undefined' && req.body.tel != '' &&
 				typeof req.body.images != 'undefined' && req.body.images != '') {
 					data.json.return = false;
-					data.util.getShop(req, res, data);
+					data.json.returnResult = true;
+					data.command = 'EXEC sp_ClaimAdd \''+req.body.from+'\',\''+req.body.shop+'\',\''+req.body.babrcode+'\',\''+req.body.product+'\',\''+req.body.description+'\',\''+req.body.firstname+'\',\''+req.body.lastname+'\',\''+req.body.nickname+'\',\''+req.body.address+'\',\''+req.body.address2+'\',\''+req.body.province+'\',\''+req.body.district+'\',\''+req.body.subDistrict+'\',\''+req.body.zipcode+'\',\''+req.body.tel+'\',\''+req.body.email+'\',\''+req.body.images+'\',\''+req.body.lastShop+'\',\''+req.body.firstname+'\',\''+req.body.firstname+'\'';
+					data.util.query(req, res, data);
 			}
 		}
 		else if (data.action == 'update'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
-				typeof req.body.entity != 'undefined' && req.body.entity != '' &&
+				typeof req.body.column != 'undefined' && req.body.column != '' &&
+				typeof req.body.id != 'undefined' && req.body.id != '' &&
 				typeof req.body.value != 'undefined' && req.body.value != '') {
 					data.json.return = false;
-					data.util.getShop(req, res, data);
+					data.json.returnResult = true;
+					data.command = 'EXEC sp_ClaimUpdate \''+req.body.shop+'\', \''+req.body.id+'\', \''+req.body.column+'\', \''+req.body.value+'\'';
+					data.util.query(req, res, data);
 			}
 		}else {
 			data.json.error = 'API0011';

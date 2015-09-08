@@ -78,10 +78,10 @@ block content
 								.form-group
 									label.col-sm-2.control-label(for='input') Type
 									.col-sm-10
-										input.form-control.type(type='text', placeholder='Type', value="web")
+										input.form-control.from(type='text', placeholder='Type', value="W")
 										p.help-block
-											span.font-pre.label.label-warning type
-											|   Type (Example: web, app)
+											span.font-pre.label.label-warning from
+											|   Add From (Example: W, A)
 								.form-group
 									label.col-sm-2.control-label(for='input') Barcode
 									.col-sm-10
@@ -155,7 +155,7 @@ block content
 								.form-group
 									label.col-sm-2.control-label(for='input') Sub District
 									.col-sm-10
-										input.form-control.sub_district(type='text', placeholder='Sub District')
+										input.form-control.subDistrict(type='text', placeholder='Sub District')
 										p.help-block
 											span.font-pre.label.label-warning sub_district
 											|   Sub District
@@ -187,6 +187,13 @@ block content
 										p.help-block
 											span.font-pre.label.label-warning images
 											|   Images
+								.form-group
+									label.col-sm-2.control-label(for='input') Last Shop
+									.col-sm-10
+										input.form-control.lastShop(type='text', placeholder='Last Shop')
+										p.help-block
+											span.font-pre.label.label-warning lastShop
+											|   Last Shop 
 								
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
@@ -212,19 +219,19 @@ block content
 											span.font-pre.label.label-warning shop
 											|   Shop ID
 								.form-group
-									label.col-sm-2.control-label(for='input') Claim ID
+									label.col-sm-2.control-label(for='input') Claim No
 									.col-sm-10
-										input.form-control.id(type='text', placeholder='Claim ID')
+										input.form-control.id(type='text', placeholder='Claim No')
 										p.help-block
 											span.font-pre.label.label-warning id
-											|   Claim ID
+											|   Claim No
 								.form-group
-									label.col-sm-2.control-label(for='input') Entity
+									label.col-sm-2.control-label(for='input') Column
 									.col-sm-10
-										input.form-control.entity(type='text', placeholder='Entity')
+										input.form-control.column(type='text', placeholder='Column')
 										p.help-block
-											span.font-pre.label.label-warning entity
-											|   Entity (ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Description,Status))
+											span.font-pre.label.label-warning column
+											|   Column (ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น description,status))
 								.form-group
 									label.col-sm-2.control-label(for='input') Value
 									.col-sm-10
