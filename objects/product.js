@@ -160,8 +160,10 @@ exports.getItemImage = function(req, res, data) {
 		delete data.result[0].detail;
 		data.result[0].detail = {};
 		var sp = data.result[0].detail.split("\n");
-		if ( sp.trim() != '' ){
-			data.result[0].detail.push( sp.trim() );
+		for(i=0; i<sp.length; i++) {
+			if ( sp[i].trim() != '' ){
+				data.result[0].detail.push( sp[i].trim() );
+			}
 		}
 	}
 
