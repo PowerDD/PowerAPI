@@ -27,7 +27,12 @@ block content
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
-			#info.panel-collapse.collapse(role='tabpanel')
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#remax', aria-expanded='false')
+						strong Remax Thailand Products  
+						&#58; ตรวจสอบสินค้าของ Remax Thailand
+			#remax.panel-collapse.collapse(role='tabpanel')
 				.panel-body
 					pre URL : /#{data.screen}/remax
 					.panel.panel-default
