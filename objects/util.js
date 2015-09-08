@@ -5,7 +5,7 @@ exports.query = function(req, res, data){
 		var request = new sql.Request(connection);
 		request.query(data.command, function (err, recordset, returnValue) {
 			if (!err){
-				if (recordset.length > 0) {
+				if (typeof recordset != 'undefined' && recordset.length > 0) {
 					data.result = recordset;
 					if ( typeof data.json.returnResult == 'undefined' ) {
 						data.object.process(req, res, data);
@@ -120,7 +120,10 @@ exports.responseJson = function(req, res, json) {
 			delete json.error;
 			delete json.errorMessage;
 		}
-		res.json(json);
+		try { 
+			res.json(json); 
+		} catch (ex) {
+		}		
 	}
 };
 
@@ -130,7 +133,10 @@ exports.responseError = function(req, res, error) {
 	json.error = 'ERR0001';
 	json.errorMessage = error.message;
 	json.errorStack = error.stack;
-	res.json(json);
+	try { 
+		res.json(json); 
+	} catch (ex) {
+	}		
 };
 
 exports.isNumeric = function(input) {

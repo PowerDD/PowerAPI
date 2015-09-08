@@ -157,12 +157,52 @@ exports.getItemImage = function(req, res, data) {
 
 	if ( data.result[0].detail != null )
 	{
+		var sp = data.result[0].detail.split("\n");
 		delete data.result[0].detail;
 		data.result[0].detail = [];
-		var sp = data.result[0].detail.split("\n");
 		for(i=0; i<sp.length; i++) {
-			if ( sp[i].trim() != '' ){
-				data.result[0].detail.push( sp[i].trim() );
+			var msg = sp[i].trim();
+			if ( msg != '' ){
+				data.result[0].detail.push( (msg.substr(0,2) == '- ') ? msg.replace('- ', '') : msg );
+			}
+		}
+	}
+
+	if ( data.result[0].inBox != null )
+	{
+		var sp = data.result[0].inBox.split("\n");
+		delete data.result[0].inBox;
+		data.result[0].inBox = [];
+		for(i=0; i<sp.length; i++) {
+			var msg = sp[i].trim();
+			if ( msg != '' ){
+				data.result[0].inBox.push( (msg.substr(0,2) == '- ') ? msg.replace('- ', '') : msg );
+			}
+		}
+	}
+
+	if ( data.result[0].howToUse != null )
+	{
+		var sp = data.result[0].howToUse.split("\n");
+		delete data.result[0].howToUse;
+		data.result[0].howToUse = [];
+		for(i=0; i<sp.length; i++) {
+			var msg = sp[i].trim();
+			if ( msg != '' ){
+				data.result[0].howToUse.push( (msg.substr(0,2) == '- ') ? msg.replace('- ', '') : msg );
+			}
+		}
+	}
+
+	if ( data.result[0].specialProperties != null )
+	{
+		var sp = data.result[0].specialProperties.split("\n");
+		delete data.result[0].specialProperties;
+		data.result[0].specialProperties = [];
+		for(i=0; i<sp.length; i++) {
+			var msg = sp[i].trim();
+			if ( msg != '' ){
+				data.result[0].specialProperties.push( (msg.substr(0,2) == '- ') ? msg.replace('- ', '') : msg );
 			}
 		}
 	}
