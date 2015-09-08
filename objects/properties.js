@@ -10,6 +10,17 @@ exports.action = function(req, res, data) {
 				data.util.query(req, res, data); 
 			}
 		}
+		else if (data.action == 'update'){
+			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
+				typeof req.body.type != 'undefined' && req.body.type != '' &&
+				typeof req.body.key != 'undefined' && req.body.key != '' &&
+				typeof req.body.value != 'undefined' && req.body.value != '') {
+					data.json.return = false;
+					data.json.returnResult = true;
+					data.command = 'EXEC sp_ShopPropertiesUpdate \''+req.body.shop+'\',\''+req.body.type+'\', \''+req.body.key+'\', \''+req.body.value+'\'';
+					data.util.execute(req, res, data); 
+			}
+		}
 		else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
