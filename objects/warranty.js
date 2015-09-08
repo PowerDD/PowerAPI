@@ -1,4 +1,3 @@
-var Moment = require('moment');
 exports.action = function(req, res, data) {
 	try{
 		if (data.action == 'info'){
