@@ -27,9 +27,7 @@ exports.action = function(req, res, data) {
 exports.process = function(req, res, data) {
 	if (data.action == 'info') {
 		exports.warrantyInfo(req, res, data);
-	}else if (data.action == 'remax') {
-		exports.productRemax(req, res, data);
-	}else {
+	}else{
 		data.json.error = 'API0002';
 		data.json.errorMessage = 'Unknow Action';
 		data.util.responseJson(req, res, data.json);
