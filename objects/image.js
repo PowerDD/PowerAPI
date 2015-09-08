@@ -25,7 +25,7 @@ exports.generate = function(req, res, url) {
 				var boxSplit = value.height/count;
 				var gabX = ((value.width/2)-textWidth)/2;
 				var gabY = (boxSplit-textHeight)/2;
-				if (name.toLowerCase().indexOf('.gif') != -1) {
+				if (name.toLowerCase().indexOf('.gif') == -1) {
 					for(i=0; i<count; i++){
 						img.draw(['image Over '+gabX+','+((boxSplit*i)+gabY)+' '+textWidth+','+(textWidth/8)+' /var/www/powerdd/src/img/watermark/'+brand+'-text.png']);
 						if ( i < count-1 ) {
