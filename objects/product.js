@@ -155,17 +155,17 @@ exports.getItemImage = function(req, res, data) {
 		data.result[0].imageDetail = imageDetail;
 	}
 
-	/*if ( data.result[0].detail != null )
+	if ( data.result[0].detail != null )
 	{
 		delete data.result[0].detail;
-		data.result[0].detail = {};
+		data.result[0].detail = [];
 		var sp = data.result[0].detail.split("\n");
 		for(i=0; i<sp.length; i++) {
 			if ( sp[i].trim() != '' ){
 				data.result[0].detail.push( sp[i].trim() );
 			}
 		}
-	}*/
+	}
 
 	data.json.return = true;
 	data.json.result = data.result[0];
