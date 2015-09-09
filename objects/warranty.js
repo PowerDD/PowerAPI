@@ -11,7 +11,7 @@ exports.action = function(req, res, data) {
 					data.json.return = false;
 					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\',\''+ 'countCheckRemaxProductOnWeb' +'\'';
 					data.util.queryMultiple(req, res, data);
-			}
+			} 
 		}else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
