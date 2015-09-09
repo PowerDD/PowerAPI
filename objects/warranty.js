@@ -3,13 +3,13 @@ exports.action = function(req, res, data) {
 		if (data.action == 'info'){
 			if (typeof req.body.barcode != 'undefined' && req.body.barcode != '' ) {
 					data.json.return = false;
-					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\',\''+(typeof req.body.logName != 'undefined')? req.body.logName : ''+'\'';
+					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\',\''+ '' +'\'';
 					data.util.queryMultiple(req, res, data);
 			}
 		}else if (data.action == 'remax'){
 			if (typeof req.body.barcode != 'undefined' && req.body.barcode != '' ) {
 					data.json.return = false;
-					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\',\''+(typeof req.body.logName != 'undefined')? req.body.logName : ''+'\'';
+					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\',\''+ 'countCheckRemaxProductOnWeb' +'\'';
 					data.util.queryMultiple(req, res, data);
 			}
 		}else {
