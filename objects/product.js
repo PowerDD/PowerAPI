@@ -19,7 +19,6 @@ exports.action = function(req, res, data) {
 						data.command = 'EXEC sp_ShopProductByCategoryName \''+req.body.shop+'\', \''+req.body.value+'\', NULL, ' + 
 							( (typeof req.body.active != 'undefined' && req.body.active != '') ? '\''+req.body.active+'\'' : 'NULL' ) + 
 							', '+( (typeof req.body.visible != 'undefined' && req.body.visible != '') ? '\''+req.body.visible+'\'' : 'NULL' );
-						data.json.command = data.command;
 					}
 					else if (req.body.type == 'byCategoryUrl4Web') {
 						data.json.returnResult = true;
