@@ -26,7 +26,7 @@ exports.action = function(req, res, data) {
 				typeof req.body.lastShop != 'undefined' && req.body.lastShop != '') {
 					data.json.return = false;
 					data.json.returnResult = true;
-					data.command = 'EXEC sp_ClaimAdd \''+req.body.from+'\',\''+req.body.shop+'\',\''+req.body.babrcode+'\',\''+req.body.product+'\',\''+req.body.description+'\',\''+req.body.firstname+'\',\''+req.body.lastname+'\',\''+req.body.nickname+'\',\''+req.body.address+'\',\''+req.body.address2+'\',\''+req.body.province+'\',\''+req.body.district+'\',\''+req.body.subDistrict+'\',\''+req.body.zipcode+'\',\''+req.body.tel+'\',\''+req.body.email+'\',\''+req.body.images+'\',\''+req.body.lastShop+'\',\''+req.body.firstname+'\',\''+req.body.firstname+'\'';
+					data.command = 'EXEC sp_ClaimAdd \''+req.body.from+'\',\''+req.body.shop+'\',\''+req.body.barcode+'\',\''+req.body.product+'\',\''+req.body.description+'\',\''+req.body.firstname+'\',\''+req.body.lastname+'\',\''+req.body.nickname+'\',\''+req.body.address+'\',\''+req.body.address2+'\',\''+req.body.province+'\',\''+req.body.district+'\',\''+req.body.subDistrict+'\',\''+req.body.zipcode+'\',\''+req.body.tel+'\',\''+req.body.email+'\',\''+req.body.images+'\',\''+req.body.lastShop+'\',\''+req.body.firstname+'\',\''+req.body.firstname+'\'';
 					data.util.query(req, res, data);
 			}
 		}
