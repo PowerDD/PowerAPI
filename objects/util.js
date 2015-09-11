@@ -31,6 +31,7 @@ exports.query = function(req, res, data){
 				}
 			}
 			else {
+				data.json.return = true;
 				data.json.error = 'UTL0002';
 				data.json.errorMessage = err.message;
 				exports.responseJson(req, res, data.json);
@@ -72,6 +73,7 @@ exports.queryMultiple = function(req, res, data){
 				}
 			}
 			else {
+				data.json.return = true;
 				data.json.error = 'UTL0003';
 				data.json.errorMessage = err.message;
 				exports.responseJson(req, res, data.json);
