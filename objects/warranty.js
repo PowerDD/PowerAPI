@@ -56,7 +56,11 @@ exports.warrantyInfo = function(req, res, data) {
 };
 exports.productRemax = function(req, res, data) {
 	try{
-		if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
+		data.json.return = true;
+		data.json.error = 'TEST';
+		data.json.errorMessage = 'TEST';
+		data.util.responseJson(req, res, data.json);
+		/*if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
 			data.json.return = true;
 			data.json.success = true;
 			var values = {};
@@ -69,7 +73,7 @@ exports.productRemax = function(req, res, data) {
 			data.json.error = 'UTL0001';
 			data.json.errorMessage = 'Data Not found';
 			data.util.responseJson(req, res, data.json);
-		}
+		}*/
 	}
 	catch(error) {
 		data.util.responseError(req, res, error);
