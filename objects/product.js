@@ -78,7 +78,7 @@ exports.action = function(req, res, data) {
 		else if (data.action == 'pos'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '' ) {
 				data.json.returnResult = true;
-				data.command = 'EXEC sp_Pos_ShopProductInfo \''+req.body.shop+'\'');
+				data.command = 'EXEC sp_Pos_ShopProductInfo \''+req.body.shop+'\'';
 			}
 		}
 		else {
