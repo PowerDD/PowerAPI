@@ -568,11 +568,36 @@ block content
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
 					a(data-toggle='collapse', data-parent='#accordion', href='#infoAllPos', aria-expanded='false')
-						strong Product Information All
-						&#58; ข้อมูล
+						strong Product Information [Pos]
+						&#58; ข้อมูลสินค้า แยกตามร้านค้า
 			#infoAllPos.panel-collapse.collapse(role='tabpanel')
 				.panel-body
 					pre URL : /#{data.screen}/pos
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+					
+					
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#barcodePos', aria-expanded='false')
+						strong Barcode Information [Pos]
+						&#58; ข้อมูลบาร์โค้ดสินค้า แยกตามร้านค้า
+			#barcodePos.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/barcodePos
 					.panel.panel-default
 						.panel-body
 							form.form-horizontal
