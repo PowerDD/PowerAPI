@@ -8,14 +8,9 @@ exports.action = function(req, res, data) {
 			}
 		}else if (data.action == 'remax'){
 			if (typeof req.body.barcode != 'undefined' && req.body.barcode != '' ) {
-					/*data.json.return = false;
+					data.json.return = false;
 					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\',\''+ 'countCheckRemaxProductOnWeb' +'\'';
-					data.util.queryMultiple(req, res, data);*/
-					
-					data.json.return = true;
-					data.json.error = 'Test';
-					data.json.errorMessage = 'Data Not found';
-					data.util.responseJson(req, res, data.json);
+					data.util.queryMultiple(req, res, data);
 			} 
 		}else {
 			data.json.error = 'API0011';
