@@ -80,6 +80,7 @@ exports.action = function(req, res, data) {
 				data.json.return = false;
 				data.json.returnResult = true;
 				data.command = 'EXEC sp_Pos_ShopProductInfo \''+req.body.shop+'\'';
+				data.util.query(req, res, data)
 			}
 		}
 		else {
