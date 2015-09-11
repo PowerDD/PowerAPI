@@ -8,7 +8,8 @@ exports.action = function(req, res, data) {
 			}
 		}else if (data.action == 'remax'){
 			if (typeof req.body.barcode != 'undefined' && req.body.barcode != '' ) {
-					data.json.return = true;
+					data.json.return = false;
+					data.json.returnResult = true;
 					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\',\''+ 'countCheckRemaxProductOnWeb' +'\'';
 					data.util.queryMultiple(req, res, data);
 			} 
