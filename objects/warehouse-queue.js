@@ -4,9 +4,10 @@ exports.action = function(req, res, data) {
 		if (data.action == 'properties'){
 			if (data.subAction[0] == 'info'){
 				if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
-						data.json.return = false;
-						data.command = 'EXEC sp_WarehouseProperties \''+req.body.shop+'\'';
-						data.util.execute(req, res, data); 
+					data.json.return = false;
+					data.json.returnResult = true;
+					data.command = 'EXEC sp_WarehouseProperties \''+req.body.shop+'\'';
+					data.util.execute(req, res, data); 
 				}
 			}
 		}
