@@ -5,7 +5,6 @@ exports.action = function(req, res, data) {
 			if (data.subAction[0] == 'info'){
 				if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
 					data.json.return = false;
-					data.json.returnResult = true;
 					data.command = 'EXEC sp_WarehouseProperties \''+req.body.shop+'\'';
 					data.util.queryMultiple(req, res, data); 
 				}
@@ -30,12 +29,10 @@ exports.action = function(req, res, data) {
 exports.process = function(req, res, data) {
 	if (data.action == 'properties'){
 		if (data.subAction[0] == 'info'){
-			/*data.json.shippingType = data.result[0];
+			data.json.shippingType = data.result[0];
 			data.json.priority = data.result[1];
 			data.json.category = data.result[2];
-			data.json.user = data.result[3];*/
-
-			//data.json.category = data.result[2];
+			data.json.user = data.result[3];
 
 			data.json.return = true;
 			data.json.success = true;
