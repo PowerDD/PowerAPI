@@ -7,7 +7,7 @@ exports.action = function(req, res, data) {
 					data.json.return = false;
 					data.json.returnResult = true;
 					data.command = 'EXEC sp_WarehouseProperties \''+req.body.shop+'\'';
-					data.util.execute(req, res, data); 
+					data.util.queryMultiple(req, res, data); 
 				}
 			}
 		}
