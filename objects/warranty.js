@@ -8,9 +8,14 @@ exports.action = function(req, res, data) {
 			}
 		}else if (data.action == 'remax'){
 			if (typeof req.body.barcode != 'undefined' && req.body.barcode != '' ) {
-					data.json.return = false;
+					/*data.json.return = false;
 					data.command = 'EXEC sp_WarrantyInfo \''+req.body.barcode+'\',\''+ 'countCheckRemaxProductOnWeb' +'\'';
-					data.util.queryMultiple(req, res, data);
+					data.util.queryMultiple(req, res, data);*/
+					
+					data.json.return = true;
+					data.json.error = 'Test';
+					data.json.errorMessage = 'Data Not found';
+					data.util.responseJson(req, res, data.json);
 			} 
 		}else {
 			data.json.error = 'API0011';
@@ -56,11 +61,7 @@ exports.warrantyInfo = function(req, res, data) {
 };
 exports.productRemax = function(req, res, data) {
 	try{
-		data.json.return = true;
-		data.json.error = 'TEST';
-		data.json.errorMessage = 'TEST';
-		data.util.responseJson(req, res, data.json);
-		/*if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
+		if (data.result[0][0].exist != '0' ){ // ถ้ามีข้อมูล
 			data.json.return = true;
 			data.json.success = true;
 			var values = {};
@@ -73,7 +74,7 @@ exports.productRemax = function(req, res, data) {
 			data.json.error = 'UTL0001';
 			data.json.errorMessage = 'Data Not found';
 			data.util.responseJson(req, res, data.json);
-		}*/
+		}
 	}
 	catch(error) {
 		data.util.responseError(req, res, error);
