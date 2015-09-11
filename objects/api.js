@@ -104,6 +104,7 @@ exports.callApi = function(req, res, data) {
 		data.action = url[1];
 		url[0] = null;
 		url[1] = null;
+		data.subAction = url.filter(function(n){ return n !== null; });
 
 		fs.exists(__dirname+'/'+control+'.js', function (exists) {
 			if (exists) {

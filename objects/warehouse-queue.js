@@ -2,16 +2,14 @@ exports.action = function(req, res, data) {
 
 	try {
 		if (data.action == 'properties'){
-					//data.json.return = true;
-					data.json.result = data.subAction;
-			/*if (data.subAction[0] == 'info'){
+			if (data.subAction[0] == 'info'){
 				if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
 					data.json.return = false;
 					data.json.returnResult = true;
 					data.command = 'EXEC sp_WarehouseProperties \''+req.body.shop+'\'';
 					data.util.execute(req, res, data); 
 				}
-			}*/
+			}
 		}
 		else {
 			data.json.error = 'API0011';
@@ -29,7 +27,7 @@ exports.action = function(req, res, data) {
 
 
 //## Internal Method ##//
-exports.actionAfterGetShop = function(req, res, data) {
+exports.process = function(req, res, data) {
 	if (data.action == 'properties'){
 		if (data.subAction[0] == 'info'){
 			/*data.json.shippingType = data.result[0];
