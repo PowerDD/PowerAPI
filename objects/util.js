@@ -46,13 +46,7 @@ exports.queryMultiple = function(req, res, data){
 		request.multiple = true;
 		request.query(data.command, function (err, recordset, returnValue) {
 			if (!err){
-				
-							data.json.success = true;
-							data.json.return = true;
-							data.json.result = recordset;
-							data.util.responseJson(req, res, data.json);
-
-				/*if (recordset.length > 0) {
+				if (recordset.length > 0) {
 					data.result = recordset;
 					if ( typeof data.json.returnResult == 'undefined' ) {
 						data.object.process(req, res, data);
@@ -75,7 +69,7 @@ exports.queryMultiple = function(req, res, data){
 					data.json.error = 'UTL0001';
 					data.json.errorMessage = 'Data Not found';
 					exports.responseJson(req, res, data.json);
-				}*/
+				}
 			}
 			else {
 				data.json.error = 'UTL0003';
