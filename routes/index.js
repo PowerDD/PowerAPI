@@ -67,6 +67,10 @@ exports.index = function(req, res, data){
 		data.title = 'Source Control - ' + data.title;
 		data.titleDescription += ' ';
 	}
+	else if (data.screen == 'warehouse-queue') {
+		data.title = 'Warehouse Queue - ' + data.title;
+		data.titleDescription += 'คิวการจัดสินค้า';
+	}
 
 	res.render(data.screen, { data: data });
 
