@@ -138,6 +138,17 @@ html
 									a(href="./order")
 										i(class=(data.screen === 'order' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
 										|  Order
+										
+						li(class=(data.screen === 'warehouse-queue' ? 'treeview active' : 'treeview'))
+							a(href="#")
+								i(class=(data.screen === 'warehouse-queue' ? 'fa fa-shopping-cart text-aqua' : 'fa fa-shopping-cart'))
+								span  Warehouse
+								i.fa.fa-angle-left.pull-right
+							ul.treeview-menu
+								li(class=(data.screen === 'warehouse-queue' ? 'active' : ''))
+									a(href="./warehouse-queue")
+										i(class=(data.screen === 'warehouse-queue' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
+										|  Queue
 
 						li(class=(data.screen === 'shipping' ? 'treeview active' : 'treeview'))
 							a(href="#")
