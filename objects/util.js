@@ -106,6 +106,7 @@ exports.execute = function(req, res, data){
 				}
 			}
 			else {
+				data.json.return = true;
 				data.json.error = 'UTL0004';
 				data.json.errorMessage = err.message;
 				exports.responseJson(req, res, data.json);
