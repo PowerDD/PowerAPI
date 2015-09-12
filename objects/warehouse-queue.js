@@ -15,7 +15,7 @@ exports.action = function(req, res, data) {
 					typeof req.body.name != 'undefined' && req.body.name != '') {
 						data.json.return = false;
 						data.json.returnResult = true;
-						data.command = 'EXEC sp_WarehousePropertiesUpdate \''+req.body.shop+'\', \''+req.body.type+'\', \''+req.body.name+'\', '+req.body.priority+', \''+req.body.description+'\'';
+						data.command = 'EXEC sp_WarehousePropertiesUpdate \''+req.body.shop+'\', \''+req.body.type+'\', \''+req.body.name+'\', \''+req.body.priority+'\', \''+req.body.description+'\'';
 						data.util.execute(req, res, data);
 				}
 			}
