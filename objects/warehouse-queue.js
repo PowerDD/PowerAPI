@@ -19,6 +19,16 @@ exports.action = function(req, res, data) {
 						data.util.execute(req, res, data);
 				}
 			}
+			if (data.subAction[0] == 'delete'){
+				if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
+					typeof req.body.type != 'undefined' && req.body.type != '' &&
+					typeof req.body.name != 'undefined' && req.body.name != '') {
+						data.json.return = false;
+						data.json.returnResult = true;
+						data.command = 'EXEC sp_WarehousePropertiesDelete \''+req.body.shop+'\', \''+req.body.type+'\', \''+req.body.name+'\'';
+						data.util.execute(req, res, data);
+				}
+			}
 		}
 		else {
 			data.json.error = 'API0011';

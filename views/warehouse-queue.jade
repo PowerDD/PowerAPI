@@ -32,7 +32,7 @@ block content
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
 					a(data-toggle='collapse', data-parent='#accordion', href='#update', aria-expanded='false')
-						strong Update Product  
+						strong Update Warehouse Properties  
 						&#58; แก้ไขข้อมูลต่างๆ เกี่ยวกับการจัดการคลังสินค้า
 			#update.panel-collapse.collapse(role='tabpanel')
 				.panel-body
@@ -75,6 +75,44 @@ block content
 										p.help-block
 											span.font-pre.label.label-default description
 											|   รายละเอียดอื่นๆ
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#delete', aria-expanded='false')
+						strong Delete Warehouse Properties  
+						&#58; ลบข้อมูลต่างๆ เกี่ยวกับการจัดการคลังสินค้า
+			#delete.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/properties/delete
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Data Type')
+										p.help-block
+											span.font-pre.label.label-warning type
+											|   ประเภทข้อมูล
+								.form-group
+									label.col-sm-2.control-label(for='input') Name
+									.col-sm-10
+										input.form-control.name(type='text', placeholder='Name')
+										p.help-block
+											span.font-pre.label.label-warning name
+											|   ชื่อคุณสมบัติ
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
