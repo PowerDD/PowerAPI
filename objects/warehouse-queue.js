@@ -51,8 +51,9 @@ exports.process = function(req, res, data) {
 		if (data.subAction[0] == 'info'){
 			data.json.shippingType = data.result[0];
 			data.json.priority = data.result[1];
-			data.json.category = data.result[2];
+			data.json.zone = data.result[2];
 			data.json.user = data.result[3];
+			data.json.category = data.result[4];
 
 			data.json.return = true;
 			data.json.success = true;
