@@ -1,7 +1,15 @@
 exports.action = function(req, res, data) {
 
 	try {
-		if (data.action == 'properties'){
+		if (data.action == 'queue'){
+			if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
+				data.json.return = false;
+				data.json.returnResult = true;
+				data.command = 'EXEC sp_WarehouseQueue \''+req.body.shop+'\'';
+				data.util.query(req, res, data); 
+			}
+		}
+		else if (data.action == 'properties') {
 			if (data.subAction[0] == 'info'){
 				if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
 					data.json.return = false;
