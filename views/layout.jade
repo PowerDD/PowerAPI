@@ -74,9 +74,9 @@ html
 
 					ul.sidebar-menu
 						li.header  API
-						li(class=(data.screen === 'member' || data.screen === 'dealer' || data.screen === 'teamwork' ? 'treeview active' : 'treeview'))
+						li(class=(data.screen === 'member' || data.screen === 'dealer' || data.screen === 'teamwork' || data.screen === 'customer' ? 'treeview active' : 'treeview'))
 							a(href="#")
-								i(class=(data.screen === 'member' || data.screen === 'dealer' || data.screen === 'teamwork' ? 'fa fa-user text-aqua' : 'fa fa-user'))
+								i(class=(data.screen === 'member' || data.screen === 'dealer' || data.screen === 'teamwork' || data.screen === 'customer' ? 'fa fa-user text-aqua' : 'fa fa-user'))
 								span  Member
 								i.fa.fa-angle-left.pull-right
 							ul.treeview-menu
@@ -92,7 +92,11 @@ html
 									a(href="./teamwork")
 										i(class=(data.screen === 'teamwork' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
 										|  Teamwork
-
+								li(class=(data.screen === 'customer' ? 'active' : ''))
+									a(href="./customer")
+										i(class=(data.screen === 'customer' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
+										|  Customer
+						
 						li(class=(data.screen === 'product' || data.screen === 'category' || data.screen === 'brand' || data.screen === 'warranty' || data.screen === 'claim' || data.screen === 'properties' ? 'treeview active' : 'treeview'))
 							a(href="#")
 								i(class=(data.screen === 'product' || data.screen === 'category' || data.screen === 'brand' || data.screen === 'warranty' || data.screen === 'claim' || data.screen === 'properties' ? 'fa fa-cubes text-aqua' : 'fa fa-cubes'))
