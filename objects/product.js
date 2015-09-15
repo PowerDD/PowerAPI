@@ -146,8 +146,8 @@ exports.getItemImage = function(req, res, data) {
 	var fs = require('fs');
 	delete data.result[0].image;
 
-	var file = [];
-	file = fs.readdirSync('/var/www/powerdd/src/img/product/'+data.result[0].shop+'/'+data.result[0].sku+'/');
+	var files = [];
+	files = fs.readdirSync('/var/www/powerdd/src/img/product/'+data.result[0].shop+'/'+data.result[0].sku+'/');
 	var type = '|jpg|jpeg|png|gif|'; // ชื่อ type รูปภาพ
 	var image = [];
 	var imageDetail = [];
