@@ -39,6 +39,14 @@ exports.action = function(req, res, data) {
 				data.util.query(req, res, data); 
 			}
 		}
+		else if (data.action == 'profit'){
+			if (typeof req.body.shop != 'undefined' && req.body.shop != '' ) {
+				data.json.return = false;
+				data.json.returnResult = true;
+				data.command = 'EXEC sp_Pos_ShopCategoryProfit \''+req.body.shop+'\'';
+				data.util.query(req, res, data)
+			}
+		}
 		else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
