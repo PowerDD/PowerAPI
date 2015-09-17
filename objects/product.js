@@ -91,16 +91,6 @@ exports.action = function(req, res, data) {
 				data.util.query(req, res, data)
 			}
 		}
-		else if (data.action == 'report'){
-			if (data.subAction[0] == 'monthly'){
-				if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
-					data.json.return = false;
-					data.json.returnResult = true;
-					data.command = 'EXEC sp_ReportMonthlySaleByCategory \''+req.body.shop+'\', \''+((typeof req.body.shop == 'undefined' || req.body.shop == '') ? '0' : req.body.month)+'\'';
-					data.util.query(req, res, data)
-				}
-			}
-		}
 		else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
