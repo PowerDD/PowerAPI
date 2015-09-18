@@ -5,12 +5,11 @@ exports.action = function(req, res, data) {
 	try {
 		console.log(data.action)
 		if (data.action == 'list'){
-			if (typeof req.body.shop != 'undefined' && req.body.shop != '' ) {
-				data.json.return = false;
-				data.json.returnResult = true;
-				data.command = 'EXEC sp_Pos_ProvinceInfo \''+lang+'\'';
-				data.util.query(req, res, data)
-			}
+			data.json.return = false;
+			data.json.returnResult = true;
+			data.command = 'EXEC sp_Pos_ProvinceInfo \''+lang+'\'';
+			data.util.query(req, res, data)
+			
 		}
 		else if (data.action == 'district'){
 			if (typeof req.body.province != 'undefined' && req.body.province != '') {
