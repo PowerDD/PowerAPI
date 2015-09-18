@@ -7,7 +7,7 @@ exports.action = function(req, res, data) {
 		if (data.action == 'list'){
 			data.json.return = false;
 			data.json.returnResult = true;
-			data.command = 'EXEC sp_Pos_ProvinceInfo \''+lang+'\'';
+			data.command = 'EXEC sp_ProvinceInfo \''+lang+'\'';
 			data.util.query(req, res, data)
 			
 		}
