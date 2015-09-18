@@ -27,3 +27,34 @@ block content
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+					
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#headSaleReportMonthly', aria-expanded='false')
+						strong Head Sale Monthly Sales Report
+						&#58; รายงานยอดขายสินค้ารายเดือนของหัวหน้าเซลล์
+			#headSaleReportMonthly.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/report/headsale-monthly
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Month
+									.col-sm-10
+										input.form-control.month(type='text', placeholder='Month')
+										p.help-block
+											span.font-pre.label.label-warning month
+											|   เดือน (2 หลัก เช่น 05)
+								.form-group
+									label.col-sm-2.control-label(for='input') Year
+									.col-sm-10
+										input.form-control.year(type='text', placeholder='Year')
+										p.help-block
+											span.font-pre.label.label-warning year
+											|   ปี ค.ศ. (2 หลัก เช่น 15)
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
