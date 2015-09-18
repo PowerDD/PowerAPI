@@ -9,7 +9,7 @@ exports.action = function(req, res, data) {
 					&& typeof req.body.year != 'undefined' && req.body.year != '' ) {
 					data.json.return = false;
 					data.json.returnResult = true;
-					data.command = 'EXEC Sbs.Remax.dbo.sp_HeadSaleCommission \''+req.body.month+'\', \''+req.body.year+'\'';
+					data.command = 'EXEC Sbs.Remax.dbo.sp_HeadSaleCommission \''+req.body.year+'\', \''+req.body.month+'\'';
 					data.util.query(req, res, data)
 				}
 			}
