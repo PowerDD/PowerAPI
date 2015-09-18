@@ -12,10 +12,10 @@ exports.action = function(req, res, data) {
 			
 		}
 		else if (data.action == 'district'){
-			if (typeof req.body.province != 'undefined' && req.body.province != '') {
-				data.json.return = false;
-				exports.getDistrict(req, res, data);
-			}
+			data.json.return = false;
+			data.json.returnResult = true;
+			data.command = 'EXEC sp_DistrictInfo \''+lang+'\',\''+req.body.province+'\'';
+			data.util.query(req, res, data)
 		}
 		else {
 			data.json.error = 'API0011';
