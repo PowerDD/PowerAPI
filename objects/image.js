@@ -7,7 +7,7 @@ exports.generate = function(req, res, url) {
 	}
 	else {
 		var ref = req.headers.referer.split('/');
-		if ( ref[2].indexOf('powerdd.com') == -1 && ref[2].indexOf('remaxthailand.co.th') == -1 && ref[2].indexOf('remaxthail.net') == -1 ) {
+		if ( ref[2].indexOf('powerdd.com') == -1 && ref[2].indexOf('remaxthailand.co.th') == -1 && ref[2].indexOf('remaxthail.net') == -1 && ref[2].indexOf('azurewebsites.net') == -1 ) {
 			res.redirect('//src.powerdd.com/img/watermark/'+((brand == 'source') ? 'remax' : brand)+'-text.png');
 		}
 		else if ( brand == 'source' ) {
