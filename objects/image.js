@@ -3,11 +3,18 @@ exports.generate = function(req, res, url) {
 	var brand = (url[1] == '' || (url[1] != 'source' && url[1] != 'remax' && url[1] != 'powerdd')) ? 'remax' : url[1];
 
 	if ( typeof req.headers.referer == 'undefined' ) {
+		if ( typeof req.headers.url != 'undefined' ) {
+			req.headers.referer = 'http://'+req.headers.url;
+		}
+	}
+
+	if ( typeof req.headers.referer == 'undefined' ) {
 		res.redirect('//src.powerdd.com/img/watermark/'+((brand == 'source') ? 'remax' : brand)+'.png');
 	}
 	else {
 		var ref = req.headers.referer.split('/');
-		if ( ref[2].indexOf('powerdd.com') == -1 && ref[2].indexOf('remaxthailand.co.th') == -1 && ref[2].indexOf('remaxthail.net') == -1 && ref[2].indexOf('azurewebsites.net') == -1 ) {
+		console.log(ref);
+		if ( ref[2].indexOf('powerdd.com') == -1 && ref[2].indexOf('remaxthailand.co.th') == -1 && ref[2].indexOf('remaxthail.net') == -1 ) {
 			res.redirect('//src.powerdd.com/img/watermark/'+((brand == 'source') ? 'remax' : brand)+'-text.png');
 		}
 		else if ( brand == 'source' ) {
