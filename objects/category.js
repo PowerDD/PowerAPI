@@ -60,7 +60,9 @@ exports.action = function(req, res, data) {
 				if (typeof req.body.shop != 'undefined' && req.body.shop != '') {
 					data.json.return = false;
 					data.json.returnResult = true;
-					data.command = 'EXEC sp_ReportMonthlySaleByCategory \''+req.body.shop+'\', \''+((typeof req.body.shop == 'undefined' || req.body.shop == '') ? '0' : req.body.month)+'\'';
+					data.command = 'EXEC sp_ReportMonthlySaleByCategory \''+req.body.shop+'\', \''+
+						((typeof req.body.shop == 'undefined' || req.body.shop == '') ? '0' : req.body.month)+'\', \''+
+						((typeof req.body.type == 'undefined' || req.body.type == '') ? 'all' : req.body.type)+'\'';
 					data.util.query(req, res, data)
 				}
 			}

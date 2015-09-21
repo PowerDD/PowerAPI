@@ -212,7 +212,7 @@ block content
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
 					a(data-toggle='collapse', data-parent='#accordion', href='#reportMonthly', aria-expanded='false')
-						strong Monthly Sales Report
+						strong Monthly Sales Report 
 						&#58; รายงานยอดขายสินค้ารายเดือน
 			#reportMonthly.panel-collapse.collapse(role='tabpanel')
 				.panel-body
@@ -234,6 +234,13 @@ block content
 										p.help-block
 											span.font-pre.label.label-warning month
 											|   เดือน (default = 0) 0 = เดือนปัจจุบัน, -1 = ดูย้อนหลัง 1 เดือน
+								.form-group
+									label.col-sm-2.control-label(for='input') Data Type
+									.col-sm-10
+										input.form-control.type(type='text', placeholder='Data Type')
+										p.help-block
+											span.font-pre.label.label-warning type
+											|   ประเภทข้อมูล (default = all) all = รวมทั้งหมด, chain = แยกตามบริษัท
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
