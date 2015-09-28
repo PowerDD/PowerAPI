@@ -154,7 +154,7 @@ exports.registerWeb = function(req, res, data) {
 //## Internal Method ##//
 exports.process = function(req, res, data) {
 	if (data.action == 'register'){
-		data.json.result = data.result[0];
+		data.json.result = data.result[0].result;
 		data.json.return = true;
 		//data.json.error = 'MBR0060';
 		//data.json.errorMessage = 'Please input entity Email';
