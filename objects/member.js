@@ -154,10 +154,26 @@ exports.registerWeb = function(req, res, data) {
 //## Internal Method ##//
 exports.process = function(req, res, data) {
 	if (data.action == 'register'){
-		data.json.result = data.result[0].result;
 		data.json.return = true;
-		//data.json.error = 'MBR0060';
-		//data.json.errorMessage = 'Please input entity Email';
+		if( data.result[0].result == 'username already exists' ) {
+			data.json.error = 'MBR0031';
+			data.json.errorMessage = 'Username already exists';
+		}
+		else if( data.result[0].result == 'shop does not exist' ) {
+			data.json.error = 'MBR0041';
+			data.json.errorMessage = 'Shop does not exist';
+		}
+		else if( data.result[0].result == 'mobile already exists' ) {
+			data.json.error = 'MBR0051';
+			data.json.errorMessage = 'Mobile phone number already exists';
+		}
+		else if( data.result[0].result == 'email already exists' ) {
+			data.json.error = 'MBR0061';
+			data.json.errorMessage = 'Email already exists';
+		}
+		else {
+			data.json.success = true;
+		}
 		data.util.responseJson(req, res, data.json);
 	}
 };
