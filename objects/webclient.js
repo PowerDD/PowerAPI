@@ -38,7 +38,12 @@ exports.action = function(req, res, control, action, url) {
 						data.result = azure.queryBarcode(req, res, action, url[0], req.body.shopid, req.body.barcode)
 					}	
 			}
-		}			
+		}else if(action == 'simplelog')	{
+			data.json.return = false;
+			data.json.returnResult = true;
+			data.command = 'EXEC sp_SimpleLog \''+req.body.name+'\', \''+req.body.value+'\'';
+			data.util.query(req, res, data);
+		}	
 		if (data.return) {
 			delete data.return;
 			if (data.success) delete data.error;
