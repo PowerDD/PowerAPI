@@ -1,6 +1,6 @@
 exports.action = function(req, res, data) {
 	try {
-		// if(data.action == 'simplelog'){
+		if(data.action == 'simplelog'){
 			// if (typeof req.body.name != 'undefined' && req.body.name != '' &&
 				// typeof req.body.value != 'undefined' && req.body.value != ''{
 					// data.json.return = false;
@@ -8,17 +8,14 @@ exports.action = function(req, res, data) {
 					// data.command = 'EXEC sp_SimpleLog \''+req.body.name+'\', \''+req.body.value+'\'';
 					// data.util.query(req, res, data);
 					
-					// data.json.result = data.screen+'-'+ data.action;
-					// data.util.responseJson(req, res, data.json);
+					data.json.result = data.screen+'-'+ data.action;
+					data.util.responseJson(req, res, data.json);
 				// }			
-		// }
-		// else {
-			// data.json.error = 'API0011';
-			// data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
-		// } 
-		// data.util.responseJson(req, res, data.json);
-		
-		data.json.result = data.screen+'-'+ data.action;
+		}
+		else {
+			data.json.error = 'API0011';
+			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
+		} 
 		data.util.responseJson(req, res, data.json);
 	}
 	catch(error) {
