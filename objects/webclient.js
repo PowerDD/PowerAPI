@@ -1,6 +1,6 @@
 exports.action = function(req, res, data) {
 	try {
-		if(action == 'simplelog'){
+		if(data.action == 'simplelog'){
 			if (typeof req.body.name != 'undefined' && req.body.name != '' &&
 				typeof req.body.value != 'undefined' && req.body.value != ''{
 					data.json.return = false;
