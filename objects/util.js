@@ -145,3 +145,17 @@ exports.responseError = function(req, res, error) {
 exports.isNumeric = function(input) {
     return (input - 0) == input && (''+input).trim().length > 0;
 };
+
+
+
+exports.encrypt = function(text, password) {
+	var crypto = require('crypto');
+	var cipher = crypto.createCipher(config.crypto.algorithm, password);
+	return cipher.update(text, 'utf8', 'hex') + cipher.final('hex');
+};
+
+exports.decrypt = function(encrypted, password) {
+	var crypto = require('crypto');
+	var decipher = crypto.createDecipher(config.crypto.algorithm, password);
+	return decipher.update(encrypted, 'hex', 'utf8') + decipher.final('utf8');
+};
