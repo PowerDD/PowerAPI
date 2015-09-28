@@ -1,13 +1,13 @@
 exports.action = function(req, res, data) {
 	try {
 		if(data.action == 'simplelog'){
-			// if (typeof req.body.name != 'undefined' && req.body.name != '' &&
-				// typeof req.body.value != 'undefined' && req.body.value != ''{
+			if (typeof req.body.name != 'undefined' && req.body.name != '' &&
+				typeof req.body.value != 'undefined' && req.body.value != ''{
 					data.json.return = false;
 					data.json.returnResult = true;
 					data.command = 'EXEC sp_SimpleLog \''+req.body.name+'\', \''+req.body.value+'\'';
 					data.util.query(req, res, data);
-				// }			
+				}			
 		}
 		else {
 			data.json.error = 'API0011';
