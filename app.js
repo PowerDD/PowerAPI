@@ -78,8 +78,8 @@ app.get('*', function(req, res) {
 
 app.post('*', function(req, res) {
 
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");	
+	res.header('Access-Control-Allow-Origin', '*');
+	//res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");	
 				
 	var json = {};
 	json.success = false;
