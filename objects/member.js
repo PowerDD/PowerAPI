@@ -144,7 +144,7 @@ exports.registerWeb = function(req, res, data) {
 		data.util.responseJson(req, res, data.json);
 	}
 	else {	
-		data.json.return = true;
+		data.json.return = false;
 		data.json.returnResult = true;
 		data.command = 'EXEC sp_MemberRegister \''+req.body.shop+'\', \''+data.jsonPost.username+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.username.toLowerCase())+'\', \''+data.jsonPost.mobile+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.mobile.toLowerCase())+'\', \''+data.jsonPost.email+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.email.toLowerCase())+'\'';
 		data.util.execute(req, res, data);
