@@ -23,7 +23,7 @@ exports.action = function(req, res, data) {
 				}
 				else {
 					data.json.return = false;
-					data.jsonPost = JSON.parse( data.value );
+					data.jsonPost = JSON.parse( req.body.value );
 					if ( req.body.type == 'Web' ) {
 						exports.registerWeb(req, res, data);
 					}
