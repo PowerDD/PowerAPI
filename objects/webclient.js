@@ -2,11 +2,6 @@
 var azure = require('../objects/azure');*/
 
 exports.action = function(req, res, control, action, url) {
-	data = {};
-	data.success = false;
-	data.error = 'No Action';
-	data.return = true;
-	
 	try {
 		if (action == 'get'){
 			if(url[0] == 'html'){
@@ -40,23 +35,21 @@ exports.action = function(req, res, control, action, url) {
 			}
 		}
 		else if(action == 'simplelog')	{
-			data.json.return = false;
-			data.json.returnResult = true;
-			data.command = 'EXEC sp_SimpleLog \''+req.body.name+'\', \''+req.body.value+'\'';
-			data.util.query(req, res, data);
-		}	
-		
-		if (data.return) {
-			delete data.return;
-			if (data.success) delete data.error;
-			res.json(data);
+			if (typeof req.body.name != 'undefined' && req.body.name != '' &&
+				typeof req.body.value != 'undefined' && req.body.value != ''{
+					data.json.return = false;
+					data.json.returnResult = true;
+					data.command = 'EXEC sp_SimpleLog \''+req.body.name+'\', \''+req.body.value+'\'';
+					data.util.query(req, res, data);
+				}			
 		}
+		else {
+			data.json.error = 'API0011';
+			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
+		}
+		data.util.responseJson(req, res, data.json);
 	}
-	catch(err) {
-		data = {};
-		data.success = false;
-		data.error = err.message;
-		data.stack = err.stack;
-		res.json(data);
+	catch(error) {
+		data.util.responseError(req, res, error);
 	}
 };
