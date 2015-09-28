@@ -9,13 +9,13 @@ exports.action = function(req, res, data) {
 					// data.util.query(req, res, data);
 					
 					data.json.result = data.action;
+					data.util.responseJson(req, res, data.json);
 				}			
 		}
 		else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
 		} 
-		data.json.result = data.action;
 		data.util.responseJson(req, res, data.json);
 	}
 	catch(error) {
