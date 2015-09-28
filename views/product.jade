@@ -612,3 +612,48 @@ block content
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+					
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#updatePos', aria-expanded='false')
+						strong Product Update [Pos]
+						&#58; แก้ไขข้อมูลสินค้า แยกตามร้านค้า
+			#updatePos.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/updatePos
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Product ID
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='Product ID')
+										p.help-block
+											span.font-pre.label.label-warning id
+											|   รหัสสินค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity
+									.col-sm-10
+										input.form-control.entity(type='text', placeholder='Entity')
+										p.help-block
+											span.font-pre.label.label-warning entity
+											|   ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Price,Price1)
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Entity Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Product 999,99)
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
