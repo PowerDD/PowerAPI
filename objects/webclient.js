@@ -1,40 +1,6 @@
-/*var util = require('../objects/util');
-var azure = require('../objects/azure');*/
-
 exports.action = function(req, res, data) {
 	try {
-		if (action == 'get'){
-			if(url[0] == 'html'){
-				if (typeof req.body.url == 'undefined' || req.body.url == '') {
-						data.error = 'Please fill out all required fields';
-					}
-					else {
-						data.return = false;
-						data.result = util.request(req, res, action, req.body.url);
-					}	
-			}
-
-			else if(url[0] == 'azure'){
-				if (typeof req.body.table == 'undefined' || req.body.table == '' || req.body.partitionkey == 'undefined' || req.body.partitionkey == '' || req.body.rowkey == 'undefined' || req.body.rowkey == '') {
-						data.error = 'Please fill out all required fields';
-					}
-					else {
-						data.return = false;
-						data.result = azure.queryBarcode(req, res, action, req.body.table, req.body.partitionkey, req.body.rowkey)
-					}	
-			}
-			
-			else if(url[0] == 'product'){
-				if (typeof req.body.shopid == 'undefined' || req.body.shopid == '' || req.body.barcode == 'undefined' || req.body.barcode == '') {
-						data.error = 'Please fill out all required fields';
-					}
-					else {
-						data.return = false;
-						data.result = azure.queryBarcode(req, res, action, url[0], req.body.shopid, req.body.barcode)
-					}	
-			}
-		}
-		else if(action == 'simplelog')	{
+		if(action == 'simplelog'){
 			if (typeof req.body.name != 'undefined' && req.body.name != '' &&
 				typeof req.body.value != 'undefined' && req.body.value != ''{
 					data.json.return = false;
