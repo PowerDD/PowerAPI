@@ -1,5 +1,5 @@
-var util = require('../objects/util');
-var azure = require('../objects/azure');
+/*var util = require('../objects/util');
+var azure = require('../objects/azure');*/
 
 exports.action = function(req, res, control, action, url) {
 	data = {};
