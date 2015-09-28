@@ -33,9 +33,6 @@ exports.action = function(req, res, data) {
 						data.json.errorMessage = 'Waiting for develop';
 						data.util.responseJson(req, res, data.json);
 					}
-					//data.json.returnResult = true;
-					//data.command = 'EXEC '+((req.body.type == 'category') ? 'sp_ShopCategoryEntity' : 'sp_ShopProductPropertiesCommon')+' \''+req.body.shop+'\'';
-					//data.util.query(req, res, data);
 				}
 			}
 		}
@@ -134,11 +131,23 @@ exports.registerWeb = function(req, res, data) {
 		data.json.errorMessage = 'Please input entity Password';
 		data.util.responseJson(req, res, data.json);
 	}
+	else if ( typeof data.jsonPost.mobile == 'undefined' || data.jsonPost.mobile == '' ) {
+		data.json.return = true;
+		data.json.error = 'MBR0005';
+		data.json.errorMessage = 'Please input entity Mobile Phone Number';
+		data.util.responseJson(req, res, data.json);
+	}
+	else if ( typeof data.jsonPost.email == 'undefined' || data.jsonPost.email == '' ) {
+		data.json.return = true;
+		data.json.error = 'MBR0006';
+		data.json.errorMessage = 'Please input entity Email';
+		data.util.responseJson(req, res, data.json);
+	}
 	else {	
 		data.json.return = true;
-		data.json.error = 'SUCCESS';
-		data.json.errorMessage = 'SUCCESS';
-		data.util.responseJson(req, res, data.json);
+		data.json.returnResult = true;
+		data.command = 'EXEC sp_MemberRegister \''+req.body.shop+'\', \''+data.jsonPost.username+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.username.toLowerCase())+'\', \''+data.jsonPost.mobile+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.mobile.toLowerCase())+'\', \''+data.jsonPost.email+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.email.toLowerCase())+'\'';
+		data.util.execute(req, res, data);
 	}
 };
 
