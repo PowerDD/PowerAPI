@@ -121,36 +121,46 @@ exports.action = function(req, res, data) {
 exports.registerWeb = function(req, res, data) {
 	if ( typeof data.jsonPost.username == 'undefined' || data.jsonPost.username == '' ) {
 		data.json.return = true;
-		data.json.error = 'MBR0003';
+		data.json.error = 'MBR0030';
 		data.json.errorMessage = 'Please input entity Username';
 		data.util.responseJson(req, res, data.json);
 	}
 	else if ( typeof data.jsonPost.password == 'undefined' || data.jsonPost.password == '' ) {
 		data.json.return = true;
-		data.json.error = 'MBR0004';
+		data.json.error = 'MBR0040';
 		data.json.errorMessage = 'Please input entity Password';
 		data.util.responseJson(req, res, data.json);
 	}
 	else if ( typeof data.jsonPost.mobile == 'undefined' || data.jsonPost.mobile == '' ) {
 		data.json.return = true;
-		data.json.error = 'MBR0005';
+		data.json.error = 'MBR0050';
 		data.json.errorMessage = 'Please input entity Mobile Phone Number';
 		data.util.responseJson(req, res, data.json);
 	}
 	else if ( typeof data.jsonPost.email == 'undefined' || data.jsonPost.email == '' ) {
 		data.json.return = true;
-		data.json.error = 'MBR0006';
+		data.json.error = 'MBR0060';
 		data.json.errorMessage = 'Please input entity Email';
 		data.util.responseJson(req, res, data.json);
 	}
 	else {	
 		data.json.return = false;
-		data.json.returnResult = true;
 		data.command = 'EXEC sp_MemberRegister \''+req.body.shop+'\', \''+data.jsonPost.username+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.username.toLowerCase())+'\', \''+data.jsonPost.mobile+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.mobile.toLowerCase())+'\', \''+data.jsonPost.email+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.email.toLowerCase())+'\'';
-		data.util.execute(req, res, data);
+		data.util.query(req, res, data);
 	}
 };
 
+
+//## Internal Method ##//
+exports.process = function(req, res, data) {
+	if (data.action == 'register'){
+		data.json.result = data.result[0];
+		data.json.return = true;
+		//data.json.error = 'MBR0060';
+		//data.json.errorMessage = 'Please input entity Email';
+		data.util.responseJson(req, res, data.json);
+	}
+};
 
 //## Utilities Method ##//
 String.prototype.capitalizeCase = function() {
