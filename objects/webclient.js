@@ -1,7 +1,7 @@
 /*var util = require('../objects/util');
 var azure = require('../objects/azure');*/
 
-exports.action = function(req, res, control, action, url) {
+exports.action = function(req, res, data) {
 	try {
 		if (action == 'get'){
 			if(url[0] == 'html'){
