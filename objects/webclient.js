@@ -3,13 +3,10 @@ exports.action = function(req, res, data) {
 		if(data.action == 'simplelog'){
 			// if (typeof req.body.name != 'undefined' && req.body.name != '' &&
 				// typeof req.body.value != 'undefined' && req.body.value != ''{
-					// data.json.return = false;
-					// data.json.returnResult = true;
-					// data.command = 'EXEC sp_SimpleLog \''+req.body.name+'\', \''+req.body.value+'\'';
-					// data.util.query(req, res, data);
-					
-					data.json.result = data.screen+'-'+ data.action;
-					data.util.responseJson(req, res, data.json);
+					data.json.return = false;
+					data.json.returnResult = true;
+					data.command = 'EXEC sp_SimpleLog \''+req.body.name+'\', \''+req.body.value+'\'';
+					data.util.query(req, res, data);
 				// }			
 		}
 		else {
