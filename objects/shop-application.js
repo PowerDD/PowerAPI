@@ -12,12 +12,12 @@ exports.action = function(req, res, data) {
 			}
 		}
 		else if (data.action == 'infoPos'){			
-			if (typeof req.body.shop != 'undefined' && req.body.shop != ''  &&
+			if (typeof req.body.apiKey != 'undefined' && req.body.apiKey != ''  &&
 				typeof req.body.licenseKey != 'undefined' && req.body.licenseKey != ''  && 
 				typeof req.body.deviceId != 'undefined' && req.body.deviceId != '' ) {
 				data.json.return = false;
 				data.json.returnResult = true;
-				data.command = 'EXEC sp_Pos_ShopApplication \''+req.body.shop+'\' , \''+req.body.licenseKey+'\', \''+req.body.deviceId+'\'';
+				data.command = 'EXEC sp_Pos_ShopApplication \''+req.body.apiKey+'\' , \''+req.body.licenseKey+'\', \''+req.body.deviceId+'\'';
 				data.util.query(req, res, data)
 			}			
 		}
