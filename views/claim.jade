@@ -208,11 +208,19 @@ block content
 										p.help-block
 											span.font-pre.label.label-warning sellNo
 											|   Sell Number 
+								.form-group
+									label.col-sm-2.control-label(for='input') Username Claim
+									.col-sm-10
+										input.form-control.usernameClaim(type='text', placeholder='Username Claim')
+										p.help-block
+											span.font-pre.label.label-default usernameClaim
+											|   Username Claim
 								
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
@@ -253,6 +261,30 @@ block content
 										p.help-block
 											span.font-pre.label.label-warning value
 											|   Value (ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Broken,SH))
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#update', aria-expanded='false')
+						strong Customer Address  
+						&#58; ที่อยู่ลูกค้า
+			#update.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/customerAddress
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Username
+									.col-sm-10
+										input.form-control.username(type='text', placeholder='Username')
+										p.help-block
+											span.font-pre.label.label-default username
+											|   Username
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit

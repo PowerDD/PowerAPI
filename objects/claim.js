@@ -27,7 +27,7 @@ exports.action = function(req, res, data) {
 				typeof req.body.sellNo != 'undefined' && req.body.sellNo != '') {
 					data.json.return = false;
 					data.json.returnResult = true;
-					data.command = 'EXEC sp_ClaimAdd \''+req.body.from+'\',\''+req.body.shop+'\',\''+req.body.barcode+'\',\''+req.body.product+'\',\''+req.body.description+'\',\''+req.body.firstname+'\',\''+req.body.lastname+'\',\''+req.body.nickname+'\',\''+req.body.address+'\',\''+req.body.address2+'\',\''+req.body.province+'\',\''+req.body.district+'\',\''+req.body.subDistrict+'\',\''+req.body.zipcode+'\',\''+req.body.tel+'\',\''+req.body.email+'\',\''+req.body.images+'\',\''+req.body.lastShop+'\',\''+req.body.firstname+'\',\''+req.body.firstname+'\', \''+req.body.sellNo+'\'';
+					data.command = 'EXEC sp_ClaimAdd \''+req.body.from+'\',\''+req.body.shop+'\',\''+req.body.barcode+'\',\''+req.body.product+'\',\''+req.body.description+'\',\''+req.body.firstname+'\',\''+req.body.lastname+'\',\''+req.body.nickname+'\',\''+req.body.address+'\',\''+req.body.address2+'\',\''+req.body.province+'\',\''+req.body.district+'\',\''+req.body.subDistrict+'\',\''+req.body.zipcode+'\',\''+req.body.tel+'\',\''+req.body.email+'\',\''+req.body.images+'\',\''+req.body.lastShop+'\',\''+req.body.firstname+'\',\''+req.body.firstname+'\', \''+req.body.sellNo+'\',\''+req.body.usernameClaim+'\'';
 					data.util.query(req, res, data);
 			} 
 		}
@@ -41,6 +41,13 @@ exports.action = function(req, res, data) {
 					data.command = 'EXEC sp_ClaimUpdate \''+req.body.shop+'\', \''+req.body.id+'\', \''+req.body.column+'\', \''+req.body.value+'\'';
 					data.util.execute(req, res, data);
 			}
+		}
+		else if (data.action == 'customerAddress'){			
+				data.json.return = false;
+				data.json.returnResult = true;
+				data.command = 'EXEC sp_ClaimCustomerAddress \''+req.body.shop+'\'';
+				data.util.query(req, res, data);
+			
 		}else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
