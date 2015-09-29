@@ -45,7 +45,7 @@ exports.action = function(req, res, data) {
 		else if (data.action == 'customerAddress'){			
 				data.json.return = false;
 				data.json.returnResult = true;
-				data.command = 'EXEC sp_ClaimCustomerAddress \''+req.body.shop+'\'';
+				data.command = 'EXEC sp_ClaimCustomerAddress \''+req.body.username+'\'';
 				data.util.query(req, res, data);
 			
 		}else {
