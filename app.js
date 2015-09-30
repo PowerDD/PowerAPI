@@ -35,6 +35,8 @@ if ('development' == app.get('env')) {
 
 app.get('*', function(req, res) {
 
+	res.header('Access-Control-Allow-Origin', '*');
+
 	data = {};
 	data.screen = 'index';
 	data.systemName = config.systemName;
