@@ -224,10 +224,17 @@ block content
 								.form-group
 									label.col-sm-2.control-label(for='input') Password
 									.col-sm-10
-										input.form-control.password(type='text', placeholder='Password')
+										input.form-control.password(type='password', placeholder='Password')
 										p.help-block 
 											span.font-pre.label.label-warning password
 											|   รหัสผ่าน
+								.form-group
+									label.col-sm-2.control-label(for='input') Stay signed in ?
+									.col-sm-10
+										input.form-control.remember(type='text', placeholder='Stay signed in ?')
+										p.help-block 
+											span.font-pre.label.label-default remember
+											|   คงอยู่ในระบบ (default = 0, 1 = จำสถานะการ Login ตลอดไป)
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
