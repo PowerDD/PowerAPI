@@ -191,7 +191,7 @@ exports.login = function(req, res, data) {
 	data.json.return = true;
 	if( data.result[0].result == 'not exists' ) {
 		data.json.error = 'MBR0032';
-		data.json.errorMessage = 'Member does not exist';
+		data.json.errorMessage = 'Invalid Username or Password';
 	}
 	else if( data.result[0].result == 'shop does not exist' ) {
 		data.json.error = 'MBR0041';
