@@ -191,7 +191,7 @@ exports.login = function(req, res, data) {
 	data.json.return = true;
 	if( data.result[0].result == 'not exists' ) {
 		data.json.error = 'MBR0032';
-		data.json.errorMessage = 'Member already exists';
+		data.json.errorMessage = 'Member does not exist';
 	}
 	else if( data.result[0].result == 'shop does not exist' ) {
 		data.json.error = 'MBR0041';
