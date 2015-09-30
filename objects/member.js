@@ -1,17 +1,6 @@
-exports.action = function(req, res, data) {
-	data.tableName = 'Member';
-	data.arrayNameList = '';	
-	data.arrayRejectList = '|PartitionKey|RowKey|Timestamp|'; // ชื่อ Entity ที่ไม่ต้องการให้ส่งข้อมูล;
-	
+exports.action = function(req, res, data) {	
 	try {
-		if (data.action == 'info'){
-			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
-				typeof req.body.memberKey != 'undefined' && req.body.memberKey != '' ) {
-					data.json.return = false;
-					data.util.getShop(req, res, data);
-			}
-		}
-		else if (data.action == 'register'){
+		if (data.action == 'register'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
 				typeof req.body.type != 'undefined' && req.body.type != '' &&
 				typeof req.body.value != 'undefined' && req.body.value != '') {
@@ -36,20 +25,6 @@ exports.action = function(req, res, data) {
 				}
 			}
 		}
-		else if (data.action == 'exist'){
-			if (data.subAction[0] == 'username' || data.subAction[0] == 'email' || data.subAction[0] == 'mobile' || data.subAction[0] == 'memberKey'){
-				if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
-					typeof req.body[data.subAction[0]] != 'undefined' && req.body[data.subAction[0]] != '') {
-					data.json.return = false;
-					data.util.getShop(req, res, data);
-				}
-			}
-			else {
-				data.json.error = 'MBR0001';
-				data.json.errorMessage = 'Unknown type ' + data.subAction[0];
-				data.util.responseJson(req, res, data.json);
-			}
-		}
 		else if (data.action == 'login'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
 				typeof req.body.username != 'undefined' && req.body.username != '' &&
@@ -57,53 +32,7 @@ exports.action = function(req, res, data) {
 					data.json.return = false;
 					var password = data.util.encrypt(req.body.password, req.body.username.toLowerCase());
 					data.command = 'EXEC sp_MemberLogin \''+req.body.shop+'\', \''+req.body.username+'\', \''+password+'\', \''+((typeof req.body.remember == 'undefined' || req.body.remember == '') ? '0' : req.body.remember)+'\'';
-					console.log(req.headers);
 					data.util.query(req, res, data);
-			}
-		}
-		else if (data.action == 'logout'){
-			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
-				typeof req.body.memberKey != 'undefined' && req.body.memberKey != '' ) {
-					data.json.return = false;
-					data.util.getShop(req, res, data);
-			}
-		}
-		else if (data.action == 'membertype'){
-			if (data.subAction[0] == 'info'){
-				data.json.return = false;
-				exports.getMemberTypeInfo(req, res, data);
-			}
-			else if (data.subAction[0] == 'add'){
-				if (typeof req.body.id != 'undefined' && req.body.id != '' &&
-				typeof req.body.level != 'undefined' && req.body.level != '') {
-					data.json.return = false;
-					exports.addMemberType(req, res, data);
-				}
-			}
-		}
-		else if (data.action == 'memberprice'){
-			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
-				typeof req.body.memberType != 'undefined' && req.body.memberType != '' &&
-				typeof req.body.sellPrice != 'undefined' && req.body.sellPrice != '') {
-					data.json.return = false;
-					data.util.getShop(req, res, data);					
-			}
-		}
-		else if (data.action == 'mapping'){
-			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
-				typeof req.body.memberId != 'undefined' && req.body.memberId != '' &&
-				typeof req.body.memberType != 'undefined' && req.body.memberType != '' ) {
-					data.json.return = false;
-					data.util.getShop(req, res, data);
-			}
-		}
-		else if (data.action == 'role'){
-			if (data.subAction[0] == 'info'){
-				if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
-				typeof req.body.memberKey != 'undefined' && req.body.memberKey != '' ) {
-					data.json.return = false;
-					data.util.getShop(req, res, data);
-				}
 			}
 		}
 		else {
