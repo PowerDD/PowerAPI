@@ -56,7 +56,7 @@ exports.action = function(req, res, data) {
 				typeof req.body.password != 'undefined' && req.body.password != '') {
 					data.json.return = false;
 					var password = data.util.encrypt(req.body.password, req.body.username.toLowerCase());
-					data.command = 'EXEC sp_MemberLogin \''+req.body.shop+'\', \''+req.body.username+'\', \''+password+'\', \''+((typeof req.body.remember != 'undefined' || req.body.remember == '') ? '0' : req.body.remember)+'\'';
+					data.command = 'EXEC sp_MemberLogin \''+req.body.shop+'\', \''+req.body.username+'\', \''+password+'\', \''+((typeof req.body.remember == 'undefined' || req.body.remember == '') ? '0' : req.body.remember)+'\'';
 					data.util.query(req, res, data);
 			}
 		}
