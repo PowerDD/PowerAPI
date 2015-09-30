@@ -2,11 +2,20 @@ exports.action = function(req, res, data) {
 	try {
 		if (data.action == 'geoip'){
 			if (typeof req.body.ip != 'undefined' && req.body.ip) {
-				var geoip = require('geoip-lite');
-				data.json.return = true;
-				data.json.success = true;
-				data.json.result = geoip.lookup(req.body.ip);
-				data.util.responseJson(req, res, data.json);
+				data.json.return = false;
+				var request = require('request');
+				request.get({url: 'http://ip-api.com/json/'+req.body.ip},
+				function (error, response, body) {
+					data.json.return = true;
+					if (!error) {
+						data.json.success = true;
+						data.json.result = JSON.parse(body);
+						data.util.responseJson(req, res, data.json);
+					}
+					else {	
+						data.util.responseError(req, res, error);
+					}
+				});
 			}
 		}
 		else if(data.action == 'simplelog'){
