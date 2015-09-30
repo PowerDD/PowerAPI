@@ -33,11 +33,11 @@ block content
 				h4.panel-title
 					a(data-toggle='collapse', data-parent='#accordion', href='#geoip', aria-expanded='false')
 						i.fa.fa-check-circle.text-green  
-						strong  GeoIP API from MaxMind    
-						&#58;  ตรวจสอบ IP Address
+						strong  Geolocation Information      
+						&#58;  ตรวจสอบข้อมูล IP Address
 			#geoip.panel-collapse.collapse(role='tabpanel')
 				.panel-body
-					pre URL : /#{data.screen}/geoip
+					pre URL : /#{data.screen}/geoip/info
 					.panel.panel-default
 						.panel-body
 							form.form-horizontal
@@ -48,6 +48,31 @@ block content
 										p.help-block
 											span.font-pre.label.label-warning ip
 											|   IP Address
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#geoipUpdate', aria-expanded='false')
+						i.fa.fa-check-circle.text-green  
+						strong  Geolocation Update   
+						&#58;  แก้ไขข้อมูล IP Address
+			#geoipUpdate.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/geoip/update
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Json Data
+									.col-sm-10
+										input.form-control.data(type='text', placeholder='Json Data')
+										p.help-block
+											span.font-pre.label.label-warning data
+											|   Json Data
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
