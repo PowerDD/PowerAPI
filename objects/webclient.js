@@ -24,7 +24,7 @@ exports.action = function(req, res, data) {
 					var json = JSON.parse(req.body.data);
 					data.json.return = false;
 					data.json.returnResult = true;
-					data.command = 'EXEC sp_GeolocationUpdate \''+ipAddress+'\', \''+asn+'\', \''+city+'\', \''+country+'\', \''+countryCode+'\', \''+isp+'\', \''+organization+'\', \''+zipcode+'\', \''+latitude+'\', \''+longitude+'\'';
+					data.command = 'EXEC sp_GeolocationUpdate \''+json.query+'\', \''+json.as+'\', \''+json.city+'\', \''+json.country+'\', \''+json.countryCode+'\', \''+json.isp+'\', \''+json.org+'\', \''+json.zip+'\', \''+json.lat+'\', \''+json.lon+'\'';
 					data.util.execute(req, res, data);
 				}
 			}
