@@ -59,6 +59,10 @@ app.get('*', function(req, res) {
 			var image = require('./objects/image');
 			image.generate(req, res, url);
 		}
+		else if ( data.screen == 'ip' ) {
+			res.writeHead(302, {'Location': 'http://ip-api.com/json/' + url[1]});
+			res.end();
+		}
 		else {
 			fs.exists('./views/'+data.screen+'.jade', function (exists) {
 				if (exists) {
