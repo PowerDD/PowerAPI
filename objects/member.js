@@ -55,7 +55,8 @@ exports.action = function(req, res, data) {
 				typeof req.body.username != 'undefined' && req.body.username != '' &&
 				typeof req.body.password != 'undefined' && req.body.password != '') {
 					data.json.return = false;
-					data.util.getShop(req, res, data);
+					data.command = 'EXEC sp_MemberLogin \''+req.body.shop+'\', \''+data.jsonPost.username+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.username.toLowerCase())+'\', \''+data.jsonPost.mobile+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.mobile.toLowerCase())+'\', \''+data.jsonPost.email+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.email.toLowerCase())+'\'';
+					data.util.query(req, res, data);
 			}
 		}
 		else if (data.action == 'logout'){
@@ -154,28 +155,51 @@ exports.registerWeb = function(req, res, data) {
 //## Internal Method ##//
 exports.process = function(req, res, data) {
 	if (data.action == 'register'){
-		data.json.return = true;
-		if( data.result[0].result == 'username already exists' ) {
-			data.json.error = 'MBR0031';
-			data.json.errorMessage = 'Username already exists';
-		}
-		else if( data.result[0].result == 'shop does not exist' ) {
-			data.json.error = 'MBR0041';
-			data.json.errorMessage = 'Shop does not exist';
-		}
-		else if( data.result[0].result == 'mobile already exists' ) {
-			data.json.error = 'MBR0051';
-			data.json.errorMessage = 'Mobile phone number already exists';
-		}
-		else if( data.result[0].result == 'email already exists' ) {
-			data.json.error = 'MBR0061';
-			data.json.errorMessage = 'Email already exists';
-		}
-		else {
-			data.json.success = true;
-		}
-		data.util.responseJson(req, res, data.json);
+		exports.register(req, res, data);
 	}
+	else if (data.action == 'login'){
+		exports.login(req, res, data);
+	}
+};
+
+exports.register = function(req, res, data) {
+	data.json.return = true;
+	if( data.result[0].result == 'username already exists' ) {
+		data.json.error = 'MBR0031';
+		data.json.errorMessage = 'Username already exists';
+	}
+	else if( data.result[0].result == 'shop does not exist' ) {
+		data.json.error = 'MBR0041';
+		data.json.errorMessage = 'Shop does not exist';
+	}
+	else if( data.result[0].result == 'mobile already exists' ) {
+		data.json.error = 'MBR0051';
+		data.json.errorMessage = 'Mobile phone number already exists';
+	}
+	else if( data.result[0].result == 'email already exists' ) {
+		data.json.error = 'MBR0061';
+		data.json.errorMessage = 'Email already exists';
+	}
+	else {
+		data.json.success = true;
+	}
+	data.util.responseJson(req, res, data.json);
+};
+
+exports.login = function(req, res, data) {
+	data.json.return = true;
+	if( data.result[0].result == 'not exists' ) {
+		data.json.error = 'MBR0032';
+		data.json.errorMessage = 'Member already exists';
+	}
+	else if( data.result[0].result == 'shop does not exist' ) {
+		data.json.error = 'MBR0041';
+		data.json.errorMessage = 'Shop does not exist';
+	}
+	else {
+		data.json.success = true;
+	}
+	data.util.responseJson(req, res, data.json);
 };
 
 //## Utilities Method ##//
