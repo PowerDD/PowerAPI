@@ -587,32 +587,8 @@ block content
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
-					
-					
-		.panel.panel-default
-			#headingOne.panel-heading(role='tab')
-				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#barcodePos', aria-expanded='false')
-						strong Barcode Information [Pos]
-						&#58; ข้อมูลบาร์โค้ดสินค้า แยกตามร้านค้า
-			#barcodePos.panel-collapse.collapse(role='tabpanel')
-				.panel-body
-					pre URL : /#{data.screen}/barcodePos
-					.panel.panel-default
-						.panel-body
-							form.form-horizontal
-								.form-group
-									label.col-sm-2.control-label(for='input') Shop ID
-									.col-sm-10
-										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
-										p.help-block
-											span.font-pre.label.label-warning shop
-											|   รหัสร้านค้า
-								.form-group.margin-bottom-0
-									.col-sm-offset-2.col-sm-10
-										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
-					
+		
+		
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
@@ -652,7 +628,78 @@ block content
 										input.form-control.value(type='text', placeholder='Entity Value')
 										p.help-block
 											span.font-pre.label.label-warning value
-											|   ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Product 999,99)
+											|   ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น 999,99)
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+					
+		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#barcodePos', aria-expanded='false')
+						strong Barcode Information [Pos]
+						&#58; ข้อมูลบาร์โค้ดสินค้า แยกตามร้านค้า
+			#barcodePos.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/barcodePos
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+			
+			
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#updateBarcodePos', aria-expanded='false')
+						strong Barcode Update [Pos]
+						&#58; แก้ไขบาร์โค้ดสินค้า แยกตามร้านค้า
+			#updateBarcodePos.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/updateBarcodePos
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Barcode ID
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='Barcode ID')
+										p.help-block
+											span.font-pre.label.label-warning id
+											|   รหัสสินค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity
+									.col-sm-10
+										input.form-control.entity(type='text', placeholder='Entity')
+										p.help-block
+											span.font-pre.label.label-warning entity
+											|   ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น SellNo,SellBy)
+								.form-group
+									label.col-sm-2.control-label(for='input') Entity Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Entity Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น  15091522,0000)
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
