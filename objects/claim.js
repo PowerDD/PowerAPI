@@ -53,8 +53,7 @@ exports.action = function(req, res, data) {
 				data.json.return = false;
 				data.json.returnResult = true;
 				data.command = 'EXEC sp_ClaimBarcodeExist \''+req.body.barcode+'\'';
-				data.util.query(req, res, data);
-			
+				data.util.query(req, res, data);			
 		}
 		else {
 			data.json.error = 'API0011';
