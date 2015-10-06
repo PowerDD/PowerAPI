@@ -48,7 +48,15 @@ exports.action = function(req, res, data) {
 				data.command = 'EXEC sp_ClaimCustomerAddress \''+req.body.username+'\'';
 				data.util.query(req, res, data);
 			
-		}else {
+		}
+		else if (data.action == 'barcodeExist'){			
+				data.json.return = false;
+				data.json.returnResult = true;
+				data.command = 'EXEC sp_ClaimBarcodeExist \''+req.body.barcode+'\'';
+				data.util.query(req, res, data);
+			
+		}
+		else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
 		}

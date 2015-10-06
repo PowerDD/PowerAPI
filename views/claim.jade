@@ -289,3 +289,27 @@ block content
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#barcodeExist', aria-expanded='false')
+						strong Barcode Exist 
+						&#58; ตรวจสอบว่าสินค้านี้ส่งเคลมแล้วหรือไม่
+			#barcodeExist.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/barcodeExist
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Barcode
+									.col-sm-10
+										input.form-control.barcode(type='text', placeholder='Barcode')
+										p.help-block
+											span.font-pre.label.label-warning barcode
+											|   Barcode
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
