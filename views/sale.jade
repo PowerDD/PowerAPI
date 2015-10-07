@@ -7,12 +7,12 @@ block content
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#customerInfo', aria-expanded='false')
-						strong Customer Information
-						&#58; ข้อมูลลูกค้า
-			#customerInfo.panel-collapse.collapse(role='tabpanel')
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleInfo', aria-expanded='false')
+						strong Sale Information
+						&#58; ข้อมูลการขายสินค้า
+			#saleInfo.panel-collapse.collapse(role='tabpanel')
 				.panel-body
-					pre URL : /customer/customerInfo
+					pre URL : /sale/saleInfo
 					.panel.panel-default
 						.panel-body
 							form.form-horizontal
@@ -26,4 +26,53 @@ block content
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')                                              
+			.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')                                              
+				
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleAdd', aria-expanded='false')
+						strong Sale Add
+						&#58; เพิ่มข้อมูลการขายสินค้า
+			#saleAdd.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /sale/saleAdd
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')     
+		
+		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleUpdate', aria-expanded='false')
+						strong Sale Add
+						&#58; แก้ไขข้อมูลการขายสินค้า
+			#saleUpdate.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /sale/saleUpdate
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')     
