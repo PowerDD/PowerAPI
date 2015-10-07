@@ -29,6 +29,17 @@ exports.action = function(req, res, data) {
 				}
 			}
 		}
+		else if (data.action == 'browserInfo'){
+			if (data.subAction[0] == 'add'){
+				if (typeof req.body.memberKey != 'undefined' && req.body.memberKey != '' &&
+					typeof req.body.ipAddress != 'undefined' && req.body.ipAddress != ''){
+					data.json.return = false;
+					data.json.returnResult = true;
+					data.command = 'EXEC sp_LoginLog \''+req.body.memberKey+'\', \''+req.body.ipAddress+'\', \''+req.body.browser+'\', \''+req.body.version+'\', \''+req.body.platform+'\', \''+req.body.os+'\', \''+req.body.deviceType+'\'';
+					data.util.execute(req, res, data);
+				}
+			}
+		}
 		else if(data.action == 'simplelog'){
 			if (typeof req.body.name != 'undefined' && req.body.name != '' &&
 				typeof req.body.value != 'undefined' && req.body.value != ''){

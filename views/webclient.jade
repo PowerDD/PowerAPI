@@ -31,6 +31,36 @@ block content
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#simple', aria-expanded='false')
+						strong Simple Log 
+						&#58; เก็บ Log
+			#simple.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/simplelog
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group									
+									label.col-sm-2.control-label(for='input') Log Name
+									.col-sm-10
+										input.form-control.name(type='text', placeholder='Log Name')
+										p.help-block
+											span.font-pre.label.label-warning name
+											|   Log Name
+									label.col-sm-2.control-label(for='input') Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   Value
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
 					a(data-toggle='collapse', data-parent='#accordion', href='#geoip', aria-expanded='false')
 						i.fa.fa-check-circle.text-green  
 						strong  Geolocation Information      
@@ -81,28 +111,65 @@ block content
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#simple', aria-expanded='false')
-						strong Simple Log 
-						&#58; เก็บ Log
-			#simple.panel-collapse.collapse(role='tabpanel')
+					a(data-toggle='collapse', data-parent='#accordion', href='#loginLog', aria-expanded='false')
+						i.fa.fa-check-circle.text-green  
+						strong  Add Login Log about Browser Information  
+						&#58;  เพิ่มข้อมูลการเข้าระบบเกี่ยวกับ Browser ลง Log
+			#loginLog.panel-collapse.collapse(role='tabpanel')
 				.panel-body
-					pre URL : /#{data.screen}/simplelog
+					pre URL : /#{data.screen}/browserInfo/add
 					.panel.panel-default
 						.panel-body
 							form.form-horizontal
-								.form-group									
-									label.col-sm-2.control-label(for='input') Log Name
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Key
 									.col-sm-10
-										input.form-control.name(type='text', placeholder='Log Name')
+										input.form-control.memberKey(type='text', placeholder='Member Key')
 										p.help-block
-											span.font-pre.label.label-warning name
-											|   Log Name
-									label.col-sm-2.control-label(for='input') Value
+											span.font-pre.label.label-warning memberKey
+											|   Member Key
+								.form-group
+									label.col-sm-2.control-label(for='input') IP Address
 									.col-sm-10
-										input.form-control.value(type='text', placeholder='Value')
+										input.form-control.ipAddress(type='text', placeholder='IP Address')
 										p.help-block
-											span.font-pre.label.label-warning value
-											|   Value
+											span.font-pre.label.label-warning ipAddress
+											|   IP Address
+								.form-group
+									label.col-sm-2.control-label(for='input') Browser Name
+									.col-sm-10
+										input.form-control.browser(type='text', placeholder='Browser Name')
+										p.help-block
+											span.font-pre.label.label-default browser
+											|   Browser Name
+								.form-group
+									label.col-sm-2.control-label(for='input') Browser Version
+									.col-sm-10
+										input.form-control.version(type='text', placeholder='Browser Version')
+										p.help-block
+											span.font-pre.label.label-default version
+											|   Browser Version
+								.form-group
+									label.col-sm-2.control-label(for='input') Platform
+									.col-sm-10
+										input.form-control.platform(type='text', placeholder='Platform')
+										p.help-block
+											span.font-pre.label.label-default platform
+											|   Platform
+								.form-group
+									label.col-sm-2.control-label(for='input') Operating System
+									.col-sm-10
+										input.form-control.os(type='text', placeholder='Operating System')
+										p.help-block
+											span.font-pre.label.label-default os
+											|   Operating System
+								.form-group
+									label.col-sm-2.control-label(for='input') Device Type
+									.col-sm-10
+										input.form-control.deviceType(type='text', placeholder='Device Type')
+										p.help-block
+											span.font-pre.label.label-default deviceType
+											|   Device Type
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
