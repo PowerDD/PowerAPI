@@ -23,12 +23,36 @@ block content
 										p.help-block
 											span.font-pre.label.label-warning shop
 											|   รหัสร้านค้า
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+			.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')                                              
+				
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleAdd', aria-expanded='false')
+						strong Sale Add
+						&#58; เพิ่มข้อมูลการขายสินค้า
+			#saleAdd.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /sale/saleAdd
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
 								.form-group
 									label.col-sm-2.control-label(for='input') SaleNo
 									.col-sm-10
 										input.form-control.sale(type='text', placeholder='SaleNo')
 										p.help-block
-											span.font-pre.label.label-warning sale
+											span.font-pre.label.label-warning saleno
 											|   SaleNo
 								.form-group
 									label.col-sm-2.control-label(for='input') Profit
@@ -47,7 +71,7 @@ block content
 								.form-group
 									label.col-sm-2.control-label(for='input') PayType
 									.col-sm-10
-										input.form-control.pay(type='text', placeholder='PayType', value="W")
+										input.form-control.pay(type='text', placeholder='PayType', value="1")
 										p.help-block
 											span.font-pre.label.label-warning payType
 											|   PayType
@@ -91,7 +115,7 @@ block content
 									.col-sm-10
 										input.form-control.date(type='text', placeholder='SaleDate')
 										p.help-block
-											span.font-pre.label.label-warning date
+											span.font-pre.label.label-warning saledate
 											|   SaleDate
 								.form-group
 									label.col-sm-2.control-label(for='input') SaleBy
@@ -100,30 +124,6 @@ block content
 										p.help-block
 											span.font-pre.label.label-warning saleby
 											|   SaleBy
-								.form-group.margin-bottom-0
-									.col-sm-offset-2.col-sm-10
-										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-			.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')                                              
-				
-		.panel.panel-default
-			#headingOne.panel-heading(role='tab')
-				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#saleAdd', aria-expanded='false')
-						strong Sale Add
-						&#58; เพิ่มข้อมูลการขายสินค้า
-			#saleAdd.panel-collapse.collapse(role='tabpanel')
-				.panel-body
-					pre URL : /sale/saleAdd
-					.panel.panel-default
-						.panel-body
-							form.form-horizontal
-								.form-group
-									label.col-sm-2.control-label(for='input') Shop ID
-									.col-sm-10
-										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
-										p.help-block
-											span.font-pre.label.label-warning shop
-											|   รหัสร้านค้า
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
