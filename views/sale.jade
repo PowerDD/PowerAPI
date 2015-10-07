@@ -129,7 +129,72 @@ block content
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')     
 		
-		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleAdd', aria-expanded='false')
+						strong SaleDatail Add
+						&#58; เพิ่มข้อมูลรายละเอียดการขายสินค้า
+			#saleAdd.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /sale/saleAdd
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') SaleNo
+									.col-sm-10
+										input.form-control.sale(type='text', placeholder='SaleNo')
+										p.help-block
+											span.font-pre.label.label-warning saleno
+											|   SaleNo
+								.form-group
+									label.col-sm-2.control-label(for='input') Product
+									.col-sm-10
+										input.form-control.product(type='text', placeholder='Product')
+										p.help-block
+											span.font-pre.label.label-default product
+											|   Product
+								.form-group
+									label.col-sm-2.control-label(for='input') SalePrice
+									.col-sm-10
+										input.form-control.Price(type='text', placeholder='SalePrice')
+										p.help-block
+											span.font-pre.label.label-warning Price
+											|   SalePrice
+								.form-group
+									label.col-sm-2.control-label(for='input') Cost
+									.col-sm-10
+										input.form-control.cost(type='text', placeholder='Cost')
+										p.help-block
+											span.font-pre.label.label-default cost
+											|   Cost
+								.form-group
+									label.col-sm-2.control-label(for='input') Quantity
+									.col-sm-10
+										input.form-control.quantity(type='text', placeholder='Quantity')
+										p.help-block
+											span.font-pre.label.label-default quantity
+											|   Quantity
+								.form-group
+									label.col-sm-2.control-label(for='input') Comment
+									.col-sm-10
+										input.form-control.comment(type='text', placeholder='Comment')
+										p.help-block
+											span.font-pre.label.label-default comment
+											|   Comment
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')  
+				
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
