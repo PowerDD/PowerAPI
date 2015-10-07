@@ -35,7 +35,7 @@ exports.action = function(req, res, data) {
 					typeof req.body.ipAddress != 'undefined' && req.body.ipAddress != ''){
 					data.json.return = false;
 					data.json.returnResult = true;
-					data.command = 'EXEC sp_LoginLog \''+req.body.memberKey+'\', \''+req.body.ipAddress+'\', \''+req.body.browser+'\', \''+req.body.version+'\', \''+req.body.platform+'\', \''+req.body.os+'\', \''+req.body.deviceType+'\', \''+req.body.success+'\', \''+req.body.failedCount+'\'';
+					data.command = 'EXEC sp_LoginLog \''+req.body.memberKey+'\', \''+req.body.ipAddress+'\', \''+req.body.browser+'\', \''+req.body.version+'\', \''+req.body.platform+'\', \''+req.body.os+'\', \''+req.body.deviceType+'\', \''+req.body.failedCount+'\'';
 					data.util.execute(req, res, data);
 				}
 			}
