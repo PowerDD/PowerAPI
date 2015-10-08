@@ -45,7 +45,8 @@ app.get('*', function(req, res) {
 	data.apiKey = config.apiKey;
 	data.shopIdTest = config.shopIdTest ;
         
-	var url = req.headers['uri'].split('/');
+	//var url = req.headers['uri'].split('/');	
+	var url = req.url.split('/');
 	url = url.filter(function(n){ return n !== ''; });
 	if ( url.length >= 1 ) {
 		data.screen = url[0];
