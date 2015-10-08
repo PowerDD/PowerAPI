@@ -163,7 +163,8 @@ block content
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')				
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+					
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
@@ -193,7 +194,75 @@ block content
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')					
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#existMemberKeyAndBrowser', aria-expanded='false')
+						i.fa.fa-check-circle.text-green  
+						strong  Member Key and Browser Info Exist   
+						&#58; ตรวจสอบว่ามี Member Key และ ข้อมูลของ Browser ในระบบหรือไม่
+			#existMemberKeyAndBrowser.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/exist/memberKeyAndBrowser
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Member Key
+									.col-sm-10
+										input.form-control.memberKey(type='text', placeholder='Member Key')
+										p.help-block 
+											span.font-pre.label.label-warning memberKey
+											|   Member Key
+								.form-group
+									label.col-sm-2.control-label(for='input') IP Address
+									.col-sm-10
+										input.form-control.ip(type='text', placeholder='IP Address')
+										p.help-block 
+											span.font-pre.label.label-warning ip
+											|   IP Address
+								.form-group
+									label.col-sm-2.control-label(for='input') Browser Name
+									.col-sm-10
+										input.form-control.browser(type='text', placeholder='Browser Name')
+										p.help-block 
+											span.font-pre.label.label-warning browser
+											|   Browser Name
+								.form-group
+									label.col-sm-2.control-label(for='input') Browser Version
+									.col-sm-10
+										input.form-control.version(type='text', placeholder='Browser Version')
+										p.help-block 
+											span.font-pre.label.label-warning version
+											|   Browser Version
+								.form-group
+									label.col-sm-2.control-label(for='input') Platform
+									.col-sm-10
+										input.form-control.platform(type='text', placeholder='Platform')
+										p.help-block 
+											span.font-pre.label.label-warning platform
+											|   Platform
+								.form-group
+									label.col-sm-2.control-label(for='input') Operating System Name
+									.col-sm-10
+										input.form-control.os(type='text', placeholder='Operating System Name')
+										p.help-block 
+											span.font-pre.label.label-warning os
+											|   Operating System Name
+								.form-group
+									label.col-sm-2.control-label(for='input') Device Type
+									.col-sm-10
+										input.form-control.deviceType(type='text', placeholder='Device Type')
+										p.help-block 
+											span.font-pre.label.label-warning deviceType
+											|   Device Type
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title

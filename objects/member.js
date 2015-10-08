@@ -35,6 +35,21 @@ exports.action = function(req, res, data) {
 					data.util.query(req, res, data);
 			}
 		}
+		else if (data.action == 'exist'){
+			if (data.subAction[0] == 'memberKeyAndBrowser'){				
+				if (typeof req.body.memberKey != 'undefined' && req.body.memberKey != '' &&
+					typeof req.body.ip != 'undefined' && req.body.ip != '' &&
+					typeof req.body.browser != 'undefined' && req.body.browser != '' &&
+					typeof req.body.version != 'undefined' && req.body.version != '' &&
+					typeof req.body.platform != 'undefined' && req.body.platform != '' &&
+					typeof req.body.os != 'undefined' && req.body.os != '' &&
+					typeof req.body.deviceType != 'undefined' && req.body.deviceType != '') {
+						data.json.return = false;
+						data.command = 'EXEC sp_MemberKeyAndBrowserExist \''+req.body.memberKey+'\', \''+req.body.ip+'\', \''+req.body.browser+'\', \''+req.body.version+'\', \''+req.body.platform+'\', \''+req.body.os+'\', \''+req.body.deviceType+'\'';
+						data.util.query(req, res, data);
+				}
+			}
+		}
 		else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
@@ -50,6 +65,20 @@ exports.action = function(req, res, data) {
 
 
 //## Internal Method ##//
+exports.process = function(req, res, data) {
+	if (data.action == 'register'){
+		exports.register(req, res, data);
+	}
+	else if (data.action == 'login'){
+		exports.login(req, res, data);
+	}
+	else if (data.action == 'exist'){
+		if (data.subAction[0] == 'memberKeyAndBrowser'){
+			exports.memberKeyAndBrowserExist(req, res, data);
+		}
+	}
+};
+
 exports.registerWeb = function(req, res, data) {
 	if ( typeof data.jsonPost.username == 'undefined' || data.jsonPost.username == '' ) {
 		data.json.return = true;
@@ -79,17 +108,6 @@ exports.registerWeb = function(req, res, data) {
 		data.json.return = false;
 		data.command = 'EXEC sp_MemberRegister \''+req.body.shop+'\', \''+data.jsonPost.username+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.username.toLowerCase())+'\', \''+data.jsonPost.mobile+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.mobile.toLowerCase())+'\', \''+data.jsonPost.email+'\', \''+data.util.encrypt(data.jsonPost.password, data.jsonPost.email.toLowerCase())+'\'';
 		data.util.query(req, res, data);
-	}
-};
-
-
-//## Internal Method ##//
-exports.process = function(req, res, data) {
-	if (data.action == 'register'){
-		exports.register(req, res, data);
-	}
-	else if (data.action == 'login'){
-		exports.login(req, res, data);
 	}
 };
 
@@ -130,6 +148,18 @@ exports.login = function(req, res, data) {
 	else {
 		data.json.success = true;
 		data.json.result = data.result[0].result
+	}
+	data.util.responseJson(req, res, data.json);
+};
+
+exports.memberKeyAndBrowserExist = function(req, res, data) {
+	data.json.return = true;
+	if( data.result[0].result == 'not exists' ) {
+		data.json.error = 'MBR0033';
+		data.json.errorMessage = 'Invalid Member Key';
+	}
+	else {
+		data.json.success = true;
 	}
 	data.util.responseJson(req, res, data.json);
 };
