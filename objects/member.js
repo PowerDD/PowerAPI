@@ -160,7 +160,6 @@ exports.memberKeyAndBrowserExist = function(req, res, data) {
 	}
 	else {
 		data.json.success = true;
-		data.json.command = data.command;
 	}
 	data.util.responseJson(req, res, data.json);
 };
