@@ -11,16 +11,8 @@ exports.action = function(req, res, data) {
 		else if (data.action == 'saleAdd'){
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
 				typeof req.body.saleno != 'undefined' && req.body.saleno != '' &&
-				typeof req.body.profit != 'undefined' && req.body.profit != '' &&
 				typeof req.body.totalPrice != 'undefined' && req.body.totalPrice != '' &&
-				typeof req.body.payType != 'undefined' && req.body.payType != '' &&
-				typeof req.body.cash != 'undefined' && req.body.cash != '' &&
-				typeof req.body.credit != 'undefined' && req.body.credit != '' &&
-				typeof req.body.customer != 'undefined' && req.body.customer != '' &&
-				typeof req.body.sex != 'undefined' && req.body.sex != '' &&
-				typeof req.body.age != 'undefined' && req.body.age != '' &&
-				typeof req.body.saledate != 'undefined' && req.body.saledate != '' &&
-				typeof req.body.saleby  != 'undefined' && req.body.saleby != '' ) {
+				typeof req.body.saledate != 'undefined' && req.body.saledate != '') {
 					data.json.return = false;
 					data.json.returnResult = true;
 					data.command = 'EXEC sp_Pos_SellHeaderInsert \''+req.body.shop+'\',\''+req.body.saleno+'\',\''+req.body.profit+'\',\''+req.body.totalPrice+'\',\''+req.body.payType+'\',\''+req.body.cash+'\',\''+req.body.credit+'\',\''+req.body.customer+'\',\''+req.body.sex+'\',\''+req.body.age+'\',\''+req.body.saledate+'\',\''+req.body.saleby+'\'';
@@ -33,8 +25,7 @@ exports.action = function(req, res, data) {
 				typeof req.body.product != 'undefined' && req.body.product != '' &&
 				typeof req.body.price != 'undefined' && req.body.price != '' &&
 				typeof req.body.cost != 'undefined' && req.body.cost != '' &&
-				typeof req.body.quantity != 'undefined' && req.body.quantity != '' &&
-				typeof req.body.comment != 'undefined' && req.body.comment != '' ) {
+				typeof req.body.quantity != 'undefined' && req.body.quantity != '') {
 					data.json.return = false;
 					data.json.returnResult = true;
 					data.command = 'EXEC sp_Pos_SellDetailInsert \''+req.body.shop+'\',\''+req.body.saleno+'\',\''+req.body.product+'\',\''+req.body.price+'\',\''+req.body.cost+'\',\''+req.body.quantity+'\',\''+req.body.comment+'\'';
