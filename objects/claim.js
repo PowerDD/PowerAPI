@@ -60,6 +60,7 @@ exports.action = function(req, res, data) {
 				data.json.returnResult = true;
 				data.command = 'EXEC sp_ClaimSwap \''+req.body.shop+'\',\''+req.body.shopSwap+'\',\''+req.body.barcode+'\', \''+req.body.barcodeSwap+'\'';
 				data.util.execute(req, res, data); 
+		}
 		else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
