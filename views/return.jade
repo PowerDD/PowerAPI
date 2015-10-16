@@ -1,0 +1,287 @@
+extends layout
+
+block content
+
+	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleInfo', aria-expanded='false')
+						strong Sale Information
+						&#58; ข้อมูลการขายสินค้า
+			#saleInfo.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /sale/saleInfo
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+			.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')                                              
+				
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleAdd', aria-expanded='false')
+						strong Sale Add
+						&#58; เพิ่มข้อมูลการขายสินค้า
+			#saleAdd.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /sale/saleAdd
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') SaleNo
+									.col-sm-10
+										input.form-control.saleno(type='text', placeholder='SaleNo')
+										p.help-block
+											span.font-pre.label.label-warning saleno
+											|   SaleNo
+								.form-group
+									label.col-sm-2.control-label(for='input') Profit
+									.col-sm-10
+										input.form-control.profit(type='text', placeholder='Profit')
+										p.help-block
+											span.font-pre.label.label-default profit
+											|   Profit
+								.form-group
+									label.col-sm-2.control-label(for='input') TotalPrice
+									.col-sm-10
+										input.form-control.totalPrice(type='text', placeholder='TotalPrice')
+										p.help-block
+											span.font-pre.label.label-warning totalPrice
+											|   TotalPrice
+								.form-group
+									label.col-sm-2.control-label(for='input') PayType
+									.col-sm-10
+										input.form-control.payType(type='text', placeholder='PayType', value="1")
+										p.help-block
+											span.font-pre.label.label-default payType
+											|   PayType
+								.form-group
+									label.col-sm-2.control-label(for='input') Cash
+									.col-sm-10
+										input.form-control.cash(type='text', placeholder='Cash')
+										p.help-block
+											span.font-pre.label.label-default cash
+											|   Cash
+								.form-group
+									label.col-sm-2.control-label(for='input') Credit
+									.col-sm-10
+										input.form-control.credit(type='text', placeholder='Credit')
+										p.help-block
+											span.font-pre.label.label-default credit
+											|   Credit
+								.form-group
+									label.col-sm-2.control-label(for='input') Customer
+									.col-sm-10
+										input.form-control.customer(type='text', placeholder='Customer')
+										p.help-block
+											span.font-pre.label.label-default customer
+											|   Customer
+								.form-group
+									label.col-sm-2.control-label(for='input') CustomerSex
+									.col-sm-10
+										input.form-control.sex(type='text', placeholder='CustomerSex')
+										p.help-block
+											span.font-pre.label.label-default sex
+											|   CustomerSex
+								.form-group
+									label.col-sm-2.control-label(for='input') CustomerAge
+									.col-sm-10
+										input.form-control.age(type='text', placeholder='CustomerAge')
+										p.help-block
+											span.font-pre.label.label-default age
+											|   CustomerAge
+								.form-group
+									label.col-sm-2.control-label(for='input') SaleDate 
+									.col-sm-10
+										input.form-control.saledate(type='text', placeholder='SaleDate')
+										p.help-block
+											span.font-pre.label.label-warning saledate
+											|   SaleDate
+								.form-group
+									label.col-sm-2.control-label(for='input') SaleBy
+									.col-sm-10
+										input.form-control.saleby(type='text', placeholder='SaleBy')
+										p.help-block
+											span.font-pre.label.label-default saleby 
+											|   SaleBy
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')     
+		
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleDetailAdd', aria-expanded='false')
+						strong SaleDatail Add
+						&#58; เพิ่มข้อมูลรายละเอียดการขายสินค้า
+			#saleDetailAdd.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /sale/saleDetailAdd
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   รหัสร้านค้า
+								.form-group
+									label.col-sm-2.control-label(for='input') SaleNo
+									.col-sm-10
+										input.form-control.saleno(type='text', placeholder='SaleNo')
+										p.help-block
+											span.font-pre.label.label-warning saleno
+											|   SaleNo
+								.form-group
+									label.col-sm-2.control-label(for='input') Product
+									.col-sm-10
+										input.form-control.product(type='text', placeholder='Product')
+										p.help-block
+											span.font-pre.label.label-warning product
+											|   Product
+								.form-group
+									label.col-sm-2.control-label(for='input') SalePrice
+									.col-sm-10
+										input.form-control.price(type='text', placeholder='SalePrice')
+										p.help-block
+											span.font-pre.label.label-warning price
+											|   SalePrice
+								.form-group
+									label.col-sm-2.control-label(for='input') Cost
+									.col-sm-10
+										input.form-control.cost(type='text', placeholder='Cost')
+										p.help-block
+											span.font-pre.label.label-warning cost
+											|   Cost
+								.form-group
+									label.col-sm-2.control-label(for='input') Quantity
+									.col-sm-10
+										input.form-control.quantity(type='text', placeholder='Quantity')
+										p.help-block
+											span.font-pre.label.label-warning quantity
+											|   Quantity
+								.form-group
+									label.col-sm-2.control-label(for='input') Comment
+									.col-sm-10
+										input.form-control.comment(type='text', placeholder='Comment')
+										p.help-block
+											span.font-pre.label.label-default comment
+											|   Comment
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')  
+				
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleUpdate', aria-expanded='false')
+						strong Sale Update
+						&#58; แก้ไขข้อมูลการขายสินค้า
+			#saleUpdate.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /sale/saleUpdate
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   Shop ID
+								.form-group
+									label.col-sm-2.control-label(for='input') Sale No
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='Sale No')
+										p.help-block
+											span.font-pre.label.label-warning id
+											|   Sale No
+								.form-group
+									label.col-sm-2.control-label(for='input') Column
+									.col-sm-10
+										input.form-control.column(type='text', placeholder='Column')
+										p.help-block
+											span.font-pre.label.label-warning column
+											|   Column (ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น description,status))
+								.form-group
+									label.col-sm-2.control-label(for='input') Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   Value (ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Broken,SH))
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')     
+				
+				
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#saleDetailUpdate', aria-expanded='false')
+						strong SaleDetail Update
+						&#58; แก้ไขข้อมูลรายละเอียดการขายสินค้า
+			#saleDetailUpdate.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /sale/saleDetailUpdate
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   Shop ID
+								.form-group
+									label.col-sm-2.control-label(for='input') Sale No
+									.col-sm-10
+										input.form-control.id(type='text', placeholder='Sale No')
+										p.help-block
+											span.font-pre.label.label-warning id
+											|   Sale No
+								.form-group
+									label.col-sm-2.control-label(for='input') Column
+									.col-sm-10
+										input.form-control.column(type='text', placeholder='Column')
+										p.help-block
+											span.font-pre.label.label-warning column
+											|   Column (ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น description,status))
+								.form-group
+									label.col-sm-2.control-label(for='input') Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   Value (ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Broken,SH))
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')     
