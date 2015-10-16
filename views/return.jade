@@ -7,12 +7,12 @@ block content
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#saleInfo', aria-expanded='false')
-						strong Sale Information
-						&#58; ข้อมูลการขายสินค้า
+					a(data-toggle='collapse', data-parent='#accordion', href='#returnInfo', aria-expanded='false')
+						strong return Information
+						&#58; ข้อมูลการคืนสินค้า
 			#saleInfo.panel-collapse.collapse(role='tabpanel')
 				.panel-body
-					pre URL : /sale/saleInfo
+					pre URL : /return/Info
 					.panel.panel-default
 						.panel-body
 							form.form-horizontal
@@ -31,12 +31,12 @@ block content
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#saleAdd', aria-expanded='false')
-						strong Sale Add
-						&#58; เพิ่มข้อมูลการขายสินค้า
+					a(data-toggle='collapse', data-parent='#accordion', href='#returnAdd', aria-expanded='false')
+						strong return Add
+						&#58; เพิ่มข้อมูลการคืนสินค้า
 			#saleAdd.panel-collapse.collapse(role='tabpanel')
 				.panel-body
-					pre URL : /sale/saleAdd
+					pre URL : /return/Add
 					.panel.panel-default
 						.panel-body
 							form.form-horizontal
@@ -124,163 +124,6 @@ block content
 										p.help-block
 											span.font-pre.label.label-default saleby 
 											|   SaleBy
-								.form-group.margin-bottom-0
-									.col-sm-offset-2.col-sm-10
-										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')     
-		
-		.panel.panel-default
-			#headingOne.panel-heading(role='tab')
-				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#saleDetailAdd', aria-expanded='false')
-						strong SaleDatail Add
-						&#58; เพิ่มข้อมูลรายละเอียดการขายสินค้า
-			#saleDetailAdd.panel-collapse.collapse(role='tabpanel')
-				.panel-body
-					pre URL : /sale/saleDetailAdd
-					.panel.panel-default
-						.panel-body
-							form.form-horizontal
-								.form-group
-									label.col-sm-2.control-label(for='input') Shop ID
-									.col-sm-10
-										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
-										p.help-block
-											span.font-pre.label.label-warning shop
-											|   รหัสร้านค้า
-								.form-group
-									label.col-sm-2.control-label(for='input') SaleNo
-									.col-sm-10
-										input.form-control.saleno(type='text', placeholder='SaleNo')
-										p.help-block
-											span.font-pre.label.label-warning saleno
-											|   SaleNo
-								.form-group
-									label.col-sm-2.control-label(for='input') Product
-									.col-sm-10
-										input.form-control.product(type='text', placeholder='Product')
-										p.help-block
-											span.font-pre.label.label-warning product
-											|   Product
-								.form-group
-									label.col-sm-2.control-label(for='input') SalePrice
-									.col-sm-10
-										input.form-control.price(type='text', placeholder='SalePrice')
-										p.help-block
-											span.font-pre.label.label-warning price
-											|   SalePrice
-								.form-group
-									label.col-sm-2.control-label(for='input') Cost
-									.col-sm-10
-										input.form-control.cost(type='text', placeholder='Cost')
-										p.help-block
-											span.font-pre.label.label-warning cost
-											|   Cost
-								.form-group
-									label.col-sm-2.control-label(for='input') Quantity
-									.col-sm-10
-										input.form-control.quantity(type='text', placeholder='Quantity')
-										p.help-block
-											span.font-pre.label.label-warning quantity
-											|   Quantity
-								.form-group
-									label.col-sm-2.control-label(for='input') Comment
-									.col-sm-10
-										input.form-control.comment(type='text', placeholder='Comment')
-										p.help-block
-											span.font-pre.label.label-default comment
-											|   Comment
-								.form-group.margin-bottom-0
-									.col-sm-offset-2.col-sm-10
-										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')  
-				
-		.panel.panel-default
-			#headingOne.panel-heading(role='tab')
-				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#saleUpdate', aria-expanded='false')
-						strong Sale Update
-						&#58; แก้ไขข้อมูลการขายสินค้า
-			#saleUpdate.panel-collapse.collapse(role='tabpanel')
-				.panel-body
-					pre URL : /sale/saleUpdate
-					.panel.panel-default
-						.panel-body
-							form.form-horizontal
-								.form-group
-									label.col-sm-2.control-label(for='input') Shop ID
-									.col-sm-10
-										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
-										p.help-block
-											span.font-pre.label.label-warning shop
-											|   Shop ID
-								.form-group
-									label.col-sm-2.control-label(for='input') Sale No
-									.col-sm-10
-										input.form-control.id(type='text', placeholder='Sale No')
-										p.help-block
-											span.font-pre.label.label-warning id
-											|   Sale No
-								.form-group
-									label.col-sm-2.control-label(for='input') Column
-									.col-sm-10
-										input.form-control.column(type='text', placeholder='Column')
-										p.help-block
-											span.font-pre.label.label-warning column
-											|   Column (ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น description,status))
-								.form-group
-									label.col-sm-2.control-label(for='input') Value
-									.col-sm-10
-										input.form-control.value(type='text', placeholder='Value')
-										p.help-block
-											span.font-pre.label.label-warning value
-											|   Value (ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Broken,SH))
-								.form-group.margin-bottom-0
-									.col-sm-offset-2.col-sm-10
-										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-				.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')     
-				
-				
-		.panel.panel-default
-			#headingOne.panel-heading(role='tab')
-				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#saleDetailUpdate', aria-expanded='false')
-						strong SaleDetail Update
-						&#58; แก้ไขข้อมูลรายละเอียดการขายสินค้า
-			#saleDetailUpdate.panel-collapse.collapse(role='tabpanel')
-				.panel-body
-					pre URL : /sale/saleDetailUpdate
-					.panel.panel-default
-						.panel-body
-							form.form-horizontal
-								.form-group
-									label.col-sm-2.control-label(for='input') Shop ID
-									.col-sm-10
-										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
-										p.help-block
-											span.font-pre.label.label-warning shop
-											|   Shop ID
-								.form-group
-									label.col-sm-2.control-label(for='input') Sale No
-									.col-sm-10
-										input.form-control.id(type='text', placeholder='Sale No')
-										p.help-block
-											span.font-pre.label.label-warning id
-											|   Sale No
-								.form-group
-									label.col-sm-2.control-label(for='input') Column
-									.col-sm-10
-										input.form-control.column(type='text', placeholder='Column')
-										p.help-block
-											span.font-pre.label.label-warning column
-											|   Column (ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น description,status))
-								.form-group
-									label.col-sm-2.control-label(for='input') Value
-									.col-sm-10
-										input.form-control.value(type='text', placeholder='Value')
-										p.help-block
-											span.font-pre.label.label-warning value
-											|   Value (ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น Broken,SH))
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
