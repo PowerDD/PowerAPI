@@ -187,6 +187,7 @@ exports.memberInfo = function(req, res, data) {
 	}
 	else {
 		data.json.success = true;
+		data.json.result = data.result[0].result
 	}
 	data.util.responseJson(req, res, data.json);
 };
