@@ -50,7 +50,17 @@ exports.action = function(req, res, data) {
 				}
 			}
 		}
-		else {
+		else if (data.action == 'info'){
+			if (data.subAction[0] == 'memberKeyAndBrowser'){				
+				if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
+					typeof req.body.memberKey != 'undefined' && req.body.memberKey != '') {
+						data.json.return = false;
+						data.command = 'EXEC sp_MemberInfo \''+req.body.shop+'\',\''+req.body.memberKey+'\'';
+						data.util.query(req, res, data);
+				}
+			}
+		}
+		else { 
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
 		}
@@ -157,6 +167,22 @@ exports.memberKeyAndBrowserExist = function(req, res, data) {
 	if( data.result[0].result == 'not exists' ) {
 		data.json.error = 'MBR0033';
 		data.json.errorMessage = 'Invalid Member Key';
+	}
+	else {
+		data.json.success = true;
+	}
+	data.util.responseJson(req, res, data.json);
+};
+
+exports.memberInfo = function(req, res, data) {
+	data.json.return = true;
+	if( data.result[0].result == 'shop does not exist' ) {
+		data.json.error = 'MBR0041';
+		data.json.errorMessage = 'Shop does not exist';
+	}
+	else if(data.result[0].result == 'member does not exist'){
+		data.json.error = 'MBR0071';
+		data.json.errorMessage = 'Member does not exist';
 	}
 	else {
 		data.json.success = true;
