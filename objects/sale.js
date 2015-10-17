@@ -25,10 +25,10 @@ exports.action = function(req, res, data) {
 				typeof req.body.product != 'undefined' && req.body.product != '' &&
 				typeof req.body.price != 'undefined' && req.body.price != '' &&
 				typeof req.body.cost != 'undefined' && req.body.cost != '' &&
-				typeof req.body.quantity != 'undefined' && req.body.quantity != '') {
+				typeof req.body.barcode != 'undefined' && req.body.barcode != '') {
 					data.json.return = false;
 					data.json.returnResult = true;
-					data.command = 'EXEC sp_Pos_SellDetailInsert \''+req.body.shop+'\',\''+req.body.saleno+'\',\''+req.body.product+'\',\''+req.body.price+'\',\''+req.body.cost+'\',\''+req.body.quantity+'\',\''+req.body.comment+'\'';
+					data.command = 'EXEC sp_Pos_SellDetailInsert \''+req.body.shop+'\',\''+req.body.saleno+'\',\''+req.body.product+'\',\''+req.body.price+'\',\''+req.body.cost+'\',\''+req.body.barcode+'\',\''+req.body.comment+'\'';
 					data.util.execute(req, res, data);
 			} 
 		}
