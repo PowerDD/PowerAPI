@@ -50,14 +50,12 @@ exports.action = function(req, res, data) {
 				}
 			}
 		}
-		else if (data.action == 'info'){
-			if (data.subAction[0] == 'memberKeyAndBrowser'){				
-				if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
-					typeof req.body.memberKey != 'undefined' && req.body.memberKey != '') {
-						data.json.return = false;
-						data.command = 'EXEC sp_MemberInfo \''+req.body.shop+'\',\''+req.body.memberKey+'\'';
-						data.util.query(req, res, data);
-				}
+		else if (data.action == 'info'){				
+			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
+				typeof req.body.memberKey != 'undefined' && req.body.memberKey != '') {
+					data.json.return = false;
+					data.command = 'EXEC sp_MemberInfo \''+req.body.shop+'\',\''+req.body.memberKey+'\'';
+					data.util.query(req, res, data);
 			}
 		}
 		else { 
@@ -82,10 +80,13 @@ exports.process = function(req, res, data) {
 	else if (data.action == 'login'){
 		exports.login(req, res, data);
 	}
-	else if (data.action == 'exist'){
+	else if (data.action == 'exist'){ memberInfo
 		if (data.subAction[0] == 'memberKeyAndBrowser'){
 			exports.memberKeyAndBrowserExist(req, res, data);
 		}
+	}
+	else if (data.action == 'info'){
+		exports.memberInfo(req, res, data);
 	}
 };
 
