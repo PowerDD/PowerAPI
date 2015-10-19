@@ -83,7 +83,7 @@ exports.process = function(req, res, data) {
 	else if (data.action == 'exist'){
 		if (data.subAction[0] == 'memberKeyAndBrowser'){
 			exports.memberKeyAndBrowserExist(req, res, data);
-		}
+		} 
 	}
 	else if (data.action == 'info'){
 		exports.memberInfo(req, res, data);
