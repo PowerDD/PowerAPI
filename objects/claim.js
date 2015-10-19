@@ -8,7 +8,7 @@ exports.action = function(req, res, data) {
 					data.util.query(req, res, data);
 			}
 		}
-		else if (data.action == 'add'){
+		else if (data.action == 'add'){ 
 			if (typeof req.body.shop != 'undefined' && req.body.shop != '' &&
 				typeof req.body.from != 'undefined' && req.body.from != '' &&
 				typeof req.body.barcode != 'undefined' && req.body.barcode != '' &&
