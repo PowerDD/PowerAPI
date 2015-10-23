@@ -146,9 +146,9 @@ exports.process = function(req, res, data) {
 
 exports.mkdir = function(req, res, data) {
 	var shell = require('shelljs');
-	shell.exec('mkdir "/var/www/powerdd/src/img/product/'+data.result[0].shop+'"', {async:false});
+	shell.exec('mkdir "/var/www/images/product/'+data.result[0].shop+'"', {async:false});
 	for(i=0; i<data.result.length; i++) {
-		shell.exec('mkdir "/var/www/powerdd/src/img/product/'+data.result[i].shop+'/'+data.result[i].sku+'"', {async:true});
+		shell.exec('mkdir "/var/www/images/product/'+data.result[i].shop+'/'+data.result[i].sku+'"', {async:true});
 	}
 	data.json.return = true;
 	data.json.success = true;
@@ -169,7 +169,7 @@ exports.getItemImage = function(req, res, data) {
 	delete data.result[0].image;
 
 	var files = [];
-	files = fs.readdirSync('/var/www/powerdd/src/img/product/'+data.result[0].shop+'/'+data.result[0].sku+'/');
+	files = fs.readdirSync('/var/www/images/product/'+data.result[0].shop+'/'+data.result[0].sku+'/');
 	var type = '|jpg|jpeg|png|gif|'; // ชื่อ type รูปภาพ
 	var image = [];
 	var imageDetail = [];
