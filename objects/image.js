@@ -1,6 +1,7 @@
 exports.generate = function(req, res, url) {
 	
 	var brand = (url[1] == '' || (url[1] != 'source' && url[1] != 'remax' && url[1] != 'powerdd')) ? 'remax' : url[1];
+	//0 = 'img', 1 = 'remax', 2 = 'product', 3 = 'D1500643', 4 = '300', 5 = '300', 6 = '1.jpg'
 
 	if ( typeof req.headers.referer == 'undefined' ) {
 		if ( typeof req.headers.url != 'undefined' ) {
@@ -13,7 +14,7 @@ exports.generate = function(req, res, url) {
 	}
 	else {
 		var ref = req.headers.referer.split('/');
-		if ( ref[2].indexOf('powerdd.com') == -1 && ref[2].indexOf('remaxthailand.co.th') == -1 && ref[2].indexOf('remaxthail.net') == -1 ) {
+		if ( ref[2].indexOf('powerdd.com') == -1 && ref[2].indexOf('remaxthailand.co.th') == -1 && ref[2].indexOf('remaxthail.net') == -1 && ref[2].indexOf('azurewebsites.net') == -1) {
 			res.redirect('//img.powerdd.com/watermark/'+((brand == 'source') ? 'remax' : brand)+'-text.png');
 		}
 		else if ( brand == 'source' ) {
@@ -21,8 +22,8 @@ exports.generate = function(req, res, url) {
 		}
 		else {
 			var gm = require('gm');
-			var name = (url.length == 8) ? url[7] : url[5];
-			var img = gm('/var/www/images/product/'+url[2]+'/'+url[3]+'/'+url[4]+'/'+ name );
+			var name = (url.length == 7) ? url[6] : url[4];
+			var img = gm('/var/www/images/'+url[2]+'/'+url[3]+'/'+ name );
 			img.size(function(err, value){
 				var box = value.width > value.height ? value.height/4 : value.width/4;
 				var textWidth = box*4/3;
@@ -42,7 +43,7 @@ exports.generate = function(req, res, url) {
 				}
 				img.draw(['image Over '+(value.width-box)+','+(value.height-box)+' '+box+','+box+' /var/www/images/watermark/'+brand+'.png'])
 
-				if(url.length == 8) img.resize(url[5], url[6]);
+				if(url.length == 7) img.resize(url[4], url[5]);
 
 				img.comment('RemaxThailand')
 					.compress('Lossless')
