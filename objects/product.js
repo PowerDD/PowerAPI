@@ -34,6 +34,7 @@ exports.action = function(req, res, data) {
 							', '+( (typeof req.body.visible != 'undefined' && req.body.visible != '') ? '\''+req.body.visible+'\'' : 'NULL' );
 					}
 					else if (req.body.type == 'byBrandUrl4Web') {
+						data.json.returnResult = true;
 						data.command = 'EXEC sp_ShopProductByBrandUrl \''+req.body.shop+'\', \''+req.body.value+'\'';
 					}
 					data.util.query(req, res, data); 
