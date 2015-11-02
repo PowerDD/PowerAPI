@@ -21,6 +21,16 @@ exports.action = function(req, res, data) {
 				data.util.query(req, res, data)
 			}			
 		}
+		else if (data.action == 'updatePos'){			
+			if (typeof req.body.apiKey != 'undefined' && req.body.apiKey != ''  &&
+				typeof req.body.column != 'undefined' && req.body.column != ''  && 
+				typeof req.body.value != 'undefined' && req.body.value != '' ) {
+				data.json.return = false;
+				data.json.returnResult = true;
+				data.command = 'EXEC sp_Pos_ShopApplicationUpdate \''+req.body.shop+'\', \''+req.body.column+'\', \''+req.body.value+'\'';
+				data.util.execute(req, res, data)
+			}			
+		}
 		else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';

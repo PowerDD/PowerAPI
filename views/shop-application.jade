@@ -86,3 +86,42 @@ block content
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+					
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#updatePos', aria-expanded='false')
+						strong Shop Application Update [POS] 
+						&#58; แก้ไขข้อมูลของโปรแกรมที่ร้านค้าใช้อยู่
+			#updatePos.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/updatePos
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Shop ID
+									.col-sm-10
+										input.form-control.shop(type='text', placeholder='Shop ID', value="#{data.shopIdTest}")
+										p.help-block
+											span.font-pre.label.label-warning shop
+											|   Shop ID
+								.form-group
+									label.col-sm-2.control-label(for='input') Column
+									.col-sm-10
+										input.form-control.column(type='text', placeholder='Column')
+										p.help-block
+											span.font-pre.label.label-warning column
+											|   Column (ชื่อคอลัมน์ที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น devicePrefix,printType))
+								.form-group
+									label.col-sm-2.control-label(for='input') Value
+									.col-sm-10
+										input.form-control.value(type='text', placeholder='Value')
+										p.help-block
+											span.font-pre.label.label-warning value
+											|   Value (ค่าที่ต้องการแก้ไข (ถ้ามีมากกว่า 1 ให้คั่นด้วยเครื่องหมาย , เช่น  A,Y))
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+		
