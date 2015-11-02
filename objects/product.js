@@ -14,7 +14,7 @@ exports.action = function(req, res, data) {
 				}
 				else {
 					data.json.return = false;
-					if (req.body.type == 'byCategoryName') {
+					if (req.body.type == 'byCategoryName') { 
 						data.json.returnResult = true;
 						data.command = 'EXEC sp_ShopProductByCategoryName \''+req.body.shop+'\', \''+req.body.value+'\', NULL, ' + 
 							( (typeof req.body.active != 'undefined' && req.body.active != '') ? '\''+req.body.active+'\'' : 'NULL' ) + 
