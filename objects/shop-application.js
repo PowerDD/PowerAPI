@@ -23,11 +23,12 @@ exports.action = function(req, res, data) {
 		}
 		else if (data.action == 'updatePos'){			
 			if (typeof req.body.apiKey != 'undefined' && req.body.apiKey != ''  &&
+				typeof req.body.licenseKey != 'undefined' && req.body.licenseKey != ''  &&
 				typeof req.body.column != 'undefined' && req.body.column != ''  && 
 				typeof req.body.value != 'undefined' && req.body.value != '' ) {
 				data.json.return = false;
 				data.json.returnResult = true;
-				data.command = 'EXEC sp_Pos_ShopApplicationUpdate \''+req.body.shop+'\', \''+req.body.column+'\', \''+req.body.value+'\'';
+				data.command = 'EXEC sp_Pos_ShopApplicationUpdate \''+req.body.shop+'\', \''+req.body.licenseKey+'\', \''+req.body.column+'\', \''+req.body.value+'\'';
 				data.util.execute(req, res, data)
 			}			
 		}
