@@ -228,6 +228,17 @@ html
 										i(class=(data.screen === 'repository' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
 										|  Source Control
 
+						li(class=(data.screen === 'bank_transaction' ? 'treeview active' : 'treeview'))
+							a(href="#")
+								i(class=(data.screen === 'bank_transaction' ? 'fa fa-database text-aqua' : 'fa fa-database'))
+								span  Wallet
+								i.fa.fa-angle-left.pull-right
+							ul.treeview-menu
+								li(class=(data.screen === 'bank_transaction' ? 'active' : ''))
+									a(href="./bank_transaction")
+										i(class=(data.screen === 'bank_transaction' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
+										|  Bank Transaction
+
 					ul.sidebar-menu
 						li.header  Developer
 						li
