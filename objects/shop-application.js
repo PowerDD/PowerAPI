@@ -17,7 +17,16 @@ exports.action = function(req, res, data) {
 				data.json.return = false;
 				data.json.returnResult = true;
 				data.command = 'EXEC sp_Pos_ShopApplication \''+req.body.licenseKey+'\', \''+req.body.deviceId+'\'';
-				data.util.query(req, res, data)
+				data.util.query(req, res, data) 
+			}			
+		}
+		else if (data.action == 'infoPosEX'){			
+			if (typeof req.body.licenseKey != 'undefined' && req.body.licenseKey != ''  && 
+				typeof req.body.deviceId != 'undefined' && req.body.deviceId != '' ) {
+				data.json.return = false;
+				data.json.returnResult = true;
+				data.command = 'EXEC sp_Pos_ShopApplicationEX \''+req.body.licenseKey+'\', \''+req.body.deviceId+'\'';
+				data.util.query(req, res, data) sp_Pos_ShopApplicationEX
 			}			
 		}
 		else if (data.action == 'updatePos'){			
