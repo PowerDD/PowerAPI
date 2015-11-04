@@ -1,5 +1,5 @@
 exports.action = function(req, res, data) {
-	data.tableName = 'ShopApplication';
+	//data.tableName = 'ShopApplication';
 	
 	try {
 		if (data.action == 'info'){
