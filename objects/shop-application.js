@@ -46,7 +46,7 @@ exports.action = function(req, res, data) {
 
 
 //## Internal Method ##//
-exports.getApiExist = function(req, res, data) {
+/*exports.getApiExist = function(req, res, data) {
 	if (data.action == 'info') { // ข้อมูลทั่วไป
 		var query = new data.azure.TableQuery().select(['PartitionKey', 'Name', 'Type']).where('RowKey eq ?', req.body.apiKey).and('Active eq ?', true);
 		data.table.queryEntities('API',query, null, function(error, result, response) {
@@ -147,6 +147,7 @@ exports.getShopKey = function(req, res, data) {
 		});
 	}
 };
+*/
 
 /*exports.actionAfterGetShop = function(req, res, data) {
 	if (data.action == 'info') { // ข้อมูลทั่วไป
