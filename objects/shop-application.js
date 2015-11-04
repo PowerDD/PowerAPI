@@ -17,7 +17,7 @@ exports.action = function(req, res, data) {
 				data.json.return = false;
 				data.json.returnResult = true;
 				data.command = 'EXEC sp_Pos_ShopApplication \''+req.body.licenseKey+'\', \''+req.body.deviceId+'\'';
-				data.util.query(req, res, data) 
+				data.util.query(req, res, data);
 			}			
 		}
 		else if (data.action == 'infoPosEX'){			
@@ -26,7 +26,7 @@ exports.action = function(req, res, data) {
 				data.json.return = false;
 				data.json.returnResult = true;
 				data.command = 'EXEC sp_Pos_ShopApplicationEX \''+req.body.licenseKey+'\', \''+req.body.deviceId+'\'';
-				data.util.query(req, res, data) sp_Pos_ShopApplicationEX
+				data.util.query(req, res, data);
 			}			
 		}
 		else if (data.action == 'updatePos'){			
@@ -37,7 +37,7 @@ exports.action = function(req, res, data) {
 				data.json.return = false;
 				data.json.returnResult = true;
 				data.command = 'EXEC sp_Pos_ShopApplicationUpdate \''+req.body.shop+'\', \''+req.body.licenseKey+'\', \''+req.body.column+'\', \''+req.body.value+'\'';
-				data.util.execute(req, res, data)
+				data.util.execute(req, res, data);
 			}			
 		}
 		else {
