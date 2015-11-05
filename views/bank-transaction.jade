@@ -8,28 +8,21 @@ block content
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
 					a(data-toggle='collapse', data-parent='#accordion', href='#collapseDealerInfo', aria-expanded='false')
-						strong Dealer Information
-						&#58; ข้อมูลดีลเลอร์
+						strong Account Information
+						&#58; ข้อมูลบัญชีธนาคาร
 			#collapseDealerInfo.panel-collapse.collapse(role='tabpanel')
 				.panel-body
-					pre URL : /#{data.screen}/list
+					pre URL : /#{data.screen}/account/info
 					.panel.panel-default
 						.panel-body
 							form.form-horizontal
 								.form-group
-									label.col-sm-2.control-label(for='input') Firstname
+									label.col-sm-2.control-label(for='input') Account Key
 									.col-sm-10
-										input.form-control.firstname(type='text', placeholder='Firstname')
+										input.form-control.firstname(type='text', placeholder='Account Key')
 										p.help-block
-											span.font-pre.label.label-default firstname
-											|   ชื่อ
-								.form-group
-									label.col-sm-2.control-label(for='input') Lastname
-									.col-sm-10
-										input.form-control.lastname(type='text', placeholder='Lastname')
-										p.help-block
-											span.font-pre.label.label-default lastname
-											|   นามสกุล
+											span.font-pre.label.label-warnning key
+											|   รหัสบัญชี
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
