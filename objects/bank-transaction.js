@@ -27,7 +27,7 @@ exports.action = function(req, res, data) {
 					var shop = req.body.key.substr(0,8);
 					var bankType = req.body.key.substr(8,2);
 					var accNo = req.body.key.substr(10);
-					data.command = 'EXEC sp_WalletUpdateBankTransaction \''+req.body.apiKey+'\', \''+ip+'\', \''+req.body.shop+'\', \''+req.body.bankType+'\', \''+req.body.accNo+
+					data.command = 'EXEC sp_WalletUpdateBankTransaction \''+req.body.apiKey+'\', \''+ip+'\', \''+shop+'\', \''+bankType+'\', \''+accNo+
 						'\', \''+req.body.transactionDate+'\', \''+req.body.transactionType+'\', \''+req.body.channel+'\', '+req.body.withdrawal+', '+req.body.deposit+
 						', \''+req.body.accountNo+'\', \''+req.body.details+'\'';
 					data.util.query(req, res, data)
