@@ -27,4 +27,77 @@ block content
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
 					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
+
+		.panel.panel-default
+			#headingOne.panel-heading(role='tab')
+				h4.panel-title
+					a(data-toggle='collapse', data-parent='#accordion', href='#updateBankTransaction', aria-expanded='false')
+						strong Bank Transaction Update
+						&#58; ปรับปรุงข้อมูลรายการเดินบัญชีธนาคาร
+			#updateBankTransaction.panel-collapse.collapse(role='tabpanel')
+				.panel-body
+					pre URL : /#{data.screen}/transaction/update
+					.panel.panel-default
+						.panel-body
+							form.form-horizontal
+								.form-group
+									label.col-sm-2.control-label(for='input') Account Key
+									.col-sm-10
+										input.form-control.key(type='text', placeholder='Account Key')
+										p.help-block
+											span.font-pre.label.label-warning key
+											|   รหัสบัญชี
+								.form-group
+									label.col-sm-2.control-label(for='input') Transaction Date
+									.col-sm-10
+										input.form-control.transactionDate(type='text', placeholder='Transaction Date')
+										p.help-block
+											span.font-pre.label.label-warning transactionDate
+											|   วันที่และเวลา
+								.form-group
+									label.col-sm-2.control-label(for='input') Transaction Type
+									.col-sm-10
+										input.form-control.transactionType(type='text', placeholder='Transaction Type')
+										p.help-block
+											span.font-pre.label.label-warning transactionType
+											|   ประเภทรายการ
+								.form-group
+									label.col-sm-2.control-label(for='input') Channel
+									.col-sm-10
+										input.form-control.channel(type='text', placeholder='Channel')
+										p.help-block
+											span.font-pre.label.label-warning channel
+											|   ช่องทาง
+								.form-group
+									label.col-sm-2.control-label(for='input') Withdrawal
+									.col-sm-10
+										input.form-control.withdrawal(type='text', placeholder='Withdrawal')
+										p.help-block
+											span.font-pre.label.label-warning withdrawal
+											|   จำนวนเงินที่ฝาก
+								.form-group
+									label.col-sm-2.control-label(for='input') Deposit
+									.col-sm-10
+										input.form-control.deposit(type='text', placeholder='Deposit')
+										p.help-block
+											span.font-pre.label.label-warning deposit
+											|   จำนวนเงินที่ถอน
+								.form-group
+									label.col-sm-2.control-label(for='input') Account Number
+									.col-sm-10
+										input.form-control.accountNo(type='text', placeholder='Account Number')
+										p.help-block
+											span.font-pre.label.label-warning accountNo
+											|   เลขที่บัญชี
+								.form-group
+									label.col-sm-2.control-label(for='input') Details
+									.col-sm-10
+										input.form-control.details(type='text', placeholder='Details')
+										p.help-block
+											span.font-pre.label.label-warning details
+											|   รายละเอียด
+								.form-group.margin-bottom-0
+									.col-sm-offset-2.col-sm-10
+										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
 		
