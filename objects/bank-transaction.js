@@ -17,7 +17,6 @@ exports.action = function(req, res, data) {
 				if (typeof req.body.key != 'undefined' && req.body.key != ''
 					 && typeof req.body.transactionDate != 'undefined' && req.body.transactionDate != ''
 					 && typeof req.body.transactionType != 'undefined' && req.body.transactionType != ''
-					 && typeof req.body.channel != 'undefined' && req.body.channel != ''
 					 && typeof req.body.withdrawal != 'undefined' && req.body.withdrawal != ''
 					 && typeof req.body.deposit != 'undefined' && req.body.deposit != ''
 					) {
