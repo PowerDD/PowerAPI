@@ -27,7 +27,7 @@ exports.action = function(req, res, data) {
 					var accNo = req.body.key.substr(10);
 					data.command = 'EXEC sp_WalletUpdateBankTransaction \''+req.body.apiKey+'\', \''+req.body.ip+'\', \''+shop+'\', \''+bankType+'\', \''+accNo+
 						'\', \''+req.body.transactionDate+'\', \''+req.body.transactionType+'\', \''+req.body.channel+'\', '+req.body.withdrawal+', '+req.body.deposit+
-						', \''+req.body.accountNo+'\', \''+req.body.details+'\'';
+						', \''+req.body.accountNo+'\', \''+req.body.details+'\', \''+req.body.comment+'\'';
 					data.util.query(req, res, data)
 				}
 			}
