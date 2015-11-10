@@ -55,6 +55,7 @@ exports.process = function(req, res, data) {
 
 exports.transactionUpdate = function(req, res, data) {
 	data.json.return = true;
+	data.json.result = data.result;
 	if( data.result[0].result == 'data already exists' ) {
 		data.json.error = 'BTS0001';
 		data.json.errorMessage = 'Transaction already exists';
