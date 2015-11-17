@@ -179,12 +179,7 @@ exports.getItemImage = function(req, res, data) {
 	delete data.result[0].image;
 
 	var files = [];
-	try
-	{
-		files = fs.readdirSync('/var/www/images/product/'+data.result[0].sku+'/');
-	}
-	catch(error) {
-	}
+	files = fs.readdirSync('/var/www/images/product/'+data.result[0].sku+'/');
 	var type = '|jpg|jpeg|png|gif|'; // ชื่อ type รูปภาพ
 	var image = [];
 	var imageDetail = [];
