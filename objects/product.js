@@ -183,7 +183,7 @@ exports.getItemImage = function(req, res, data) {
 	{
 		files = fs.readdirSync('/var/www/images/product/'+data.result[0].sku+'/');
 	}
-	catch () {
+	catch(error) {
 	}
 	var type = '|jpg|jpeg|png|gif|'; // ชื่อ type รูปภาพ
 	var image = [];
