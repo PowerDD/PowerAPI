@@ -3,13 +3,14 @@ extends layout
 block content
 
 	#accordion.panel-group(role='tablist', aria-multiselectable='true')
+	
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
-					a(data-toggle='collapse', data-parent='#accordion', href='#ShopRegisterInformation', aria-expanded='false')
-						strong  Register Shop Information
+					a(data-toggle='collapse', data-parent='#accordion', href='#ShopRegisterInfo', aria-expanded='false')
+						strong Register Shop Information
 						&#58; ข้อมูลผู้สมัครช็อป
-			#ShopRegisterInformation.panel-collapse.collapse(role='tabpanel')
+			#ShopRegisterInfo.panel-collapse.collapse(role='tabpanel')
 				.panel-body
 					pre URL : /register/shop/info
 					.panel.panel-default
@@ -32,8 +33,7 @@ block content
 								.form-group.margin-bottom-0
 									.col-sm-offset-2.col-sm-10
 										.btn.btn-sm.btn-primary.btn-submit(data-loading-text='Loading...', autocomplete='off') Submit
-					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')
-		
+					.result.hidden.alert.margin-top-10.margin-bottom-0.font-pre(role='alert')		
 		.panel.panel-default
 			#headingOne.panel-heading(role='tab')
 				h4.panel-title
