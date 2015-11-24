@@ -1,5 +1,6 @@
 exports.action = function(req, res, data) {
-	try{
+	try {
+		
 		if (data.action == 'shop'){
 			if (data.subAction[0] == 'info'){
 				data.json.return = true;
@@ -16,14 +17,15 @@ exports.action = function(req, res, data) {
 					data.util.query(req, res, data);			
 				}
 			}
+			data.util.query(req, res, data); 
 
 		}else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
 		}
 
-		data.util.responseJson(req, res, data.json);
-	}catch(error) {
+	}
+	catch(error) {
 		data.util.responseError(req, res, error);
 	}
 };
