@@ -238,6 +238,17 @@ html
 									a(href="./bank-transaction")
 										i(class=(data.screen === 'bank-transaction' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
 										|  Bank Transaction
+										
+						li(class=(data.screen === 'register' ? 'treeview active' : 'treeview'))
+							a(href="#")
+								i(class=(data.screen === 'register' ? 'fa fa-pencil-square-o text-aqua' : 'fa fa-pencil-square-o'))
+								span  Register
+								i.fa.fa-angle-left.pull-right
+							ul.treeview-menu
+								li(class=(data.screen === 'register' ? 'active' : ''))
+									a(href="./register")
+										i(class=(data.screen === 'register' ? 'fa fa-circle-o text-yellow' : 'fa fa-circle-o'))
+										|  Register Shop
 
 					ul.sidebar-menu
 						li.header  Developer

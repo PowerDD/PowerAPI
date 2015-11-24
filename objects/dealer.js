@@ -34,6 +34,7 @@ exports.action = function(req, res, data) {
 					/*data.json.return = false;
 					exports.registerDealerUpdate(req, res, data);*/
 			}
+		}
 		}else {
 			data.json.error = 'API0011';
 			data.json.errorMessage = 'Action ' + data.action.toUpperCase() + ' is not implemented';
