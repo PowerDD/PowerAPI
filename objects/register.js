@@ -3,11 +3,10 @@ exports.action = function(req, res, data) {
 		
 		if (data.action == 'shop'){
 			if (data.subAction[0] == 'info'){
-				/*data.json.return = false;
+				data.json.return = false;
 				data.json.returnResult = true;
-				data.command = 'EXEC sp_RegisterShopInfo \''+req.body.firstname+'\', \''+req.body.lastname+'\'';
-				data.util.query(req, res, data);*/
-				res.send(data);
+				data.command = 'EXEC sp_RegisterShopInfo \''+req.body.firstname+'\', \''+req.body.lastname+'\', \''+req.body.mobile+'\'';
+				data.util.query(req, res, data);
 			}else if(data.subAction[0] == 'register'){
 				if (typeof req.body.firstname != 'undefined' && req.body.firstname != '' &&
 					typeof req.body.lastname != 'undefined' && req.body.lastname != '' &&
