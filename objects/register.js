@@ -33,3 +33,9 @@ exports.action = function(req, res, data) {
 		data.util.responseError(req, res, error);
 	}
 };
+//## Internal Method ##//
+exports.process = function(req, res, data) {
+	data.json.error = 'API0002';
+	data.json.errorMessage = 'Unknow Action';
+	data.util.responseJson(req, res, data.json);
+};
